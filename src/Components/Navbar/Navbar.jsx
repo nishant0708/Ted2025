@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import "./Navbar.css";
-import logoblack from '../Assests/Images/logo-black 1.png';
+import logoblack from '../Assests/Images/logo-white 1.png';
 import { CgMenuLeftAlt } from "react-icons/cg";
 import { Link, useLocation } from 'react-router-dom';
 
