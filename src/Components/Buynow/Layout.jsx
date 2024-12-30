@@ -71,7 +71,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className='layout' ref={triggerRef}>
-      <Buy /> {/* Integrate the Buy component */}
+      {/* <Buy /> Integrate the Buy component */}
       {children}
     </div>
   );
