@@ -6,9 +6,16 @@
     z-index: 10;
 }
 
+@media (max-width: 768px){
+    .typing_text_para{
+        width: 80dvw;
+        font-size: 10px;
+    }
+}
+
 @media screen and (max-width: 480px){
     .typing_text_para{
         width: 90dvw;
-        font-size: 12px;
+        font-size: 8px;
     }
 }
