@@ -44,7 +44,7 @@ const SliderComponent = () => {
         scrollPerc = round(
           (window.scrollY / (slider.offsetHeight - window.innerHeight)) * 100,
           2
-        )-80;
+        )-90;
         sliderStyles.setProperty("--scroll-perc", scrollPerc);
         velocity = clamp(self.getVelocity() / -300);
         if (Math.abs(velocity) > Math.abs(proxy.velocity)) {
