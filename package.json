@@ -23,14 +23,14 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-   "parser": "@babel/eslint-parser",
+    "parser": "@babel/eslint-parser",
     "extends": [
       "react-app",
       "react-app/jest"
     ],
     "parserOptions": {
-    "requireConfigFile": false
-  }
+      "requireConfigFile": false
+    }
   },
   "browserslist": {
     "production": [
@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "autoprefixer": "^10.4.13",
     "babel-eslint": "^10.1.0",
     "concurrently": "^8.2.2",
