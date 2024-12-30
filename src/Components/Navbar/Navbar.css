@@ -3,9 +3,10 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 30px 100px;
-    background-color: transparent;
-    padding-top: 15px;
+    padding: 10px 100px;
+    background-color: rgba(0, 0, 0, 0.525);
+   
+    
     align-items: center;
     z-index: 1000 !important;
 }
