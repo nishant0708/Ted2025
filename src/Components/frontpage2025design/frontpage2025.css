@@ -4,10 +4,10 @@
 }
 
 .main-container25 {
-  position: relative;
+  position: relative !important;
   z-index: 3;
  background-color: black;
-  min-height: 200vh; /* Extend height for scroll animation */
+  min-height: 100vh; /* Extend height for scroll animation */
   
 
 }
