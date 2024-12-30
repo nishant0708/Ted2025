@@ -151,7 +151,7 @@ const StickyScroll = ({ content }) => {
         <BreakpointProvider>
             <Breakpoint medium up>
                 <div className="samarth">
-                    <div style={{marginTop:"50px"}}>
+                    <div >
                         <div id="Page" className="hero">
                             <div className="left">
                                 <div className="trigger absolute z-50 w-3 h-1"></div>
