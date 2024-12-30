@@ -41,7 +41,6 @@ const FrontPage2025 = ({ onScaleComplete }) => {
         start: "top",
         end: "+=2000",
         scrub: true,
-        markers: true,
         pin: true,
         onLeave: debounce(() => onScaleComplete && onScaleComplete(), 250),
       },

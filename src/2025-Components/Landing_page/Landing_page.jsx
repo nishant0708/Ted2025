@@ -11,17 +11,7 @@ import SideMarquee from "../Side Marquee/SideMarquee";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
+
 
 const Landing_page = () => {
 
@@ -58,171 +48,147 @@ useEffect(() => {
 }, []);
 
 
-  useEffect(() => {
-    const updateAnimation = () => {
-      // Create master timeline
-      const masterTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".landing_2025_main",
-          start: "top top",
-          end: "+=300%",
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-          markers: {startColor: "white", endColor: "white"},        
-          onLeave: () => {
-            ScrollTrigger.refresh();
-          },
-        },
-      });
+useEffect(() => {
+  const updateAnimation = () => {
+    // Create master timeline
+    const masterTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".landing_2025_main",
+        start: "top top",
+        end: () => `+=${window.innerHeight * 3}`,
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+       
+      },
+    });
 
-      // Split the "Within" text
-      const withinText = document.querySelector(".line_20252");
-      const chars = withinText.textContent.split("");
-      withinText.innerHTML = chars
-        .map((char) => `<span class="char_2025_land">${char}</span>`)
-        .join("");
+    // Split text logic
+    const withinText = document.querySelector(".line_20252");
+    const chars = withinText.textContent.split("");
+    withinText.innerHTML = chars
+      .map((char) => `<span class="char_2025_land">${char}</span>`)
+      .join("");
 
-      // Position calculations
-      const hChar = withinText.querySelectorAll(".char_2025_land")[10];
-      const hCharRect = hChar.getBoundingClientRect();
-      const mainContainer = document.querySelector(".landing_2025_main");
-      const mainRect = mainContainer.getBoundingClientRect();
+    // Position calculations
+    const hChar = withinText.querySelectorAll(".char_2025_land")[10];
+    const hCharRect = hChar.getBoundingClientRect();
+    const mainContainer = document.querySelector(".landing_2025_main");
+    const mainRect = mainContainer.getBoundingClientRect();
 
-      // Responsive calculations
-      const viewportWidth = window.innerWidth;
-      let offsetX =
-        viewportWidth > 1600
-          ? -40
-          : viewportWidth > 1300
-          ? -25
-          : viewportWidth > 768
-          ? -15
-          : -10;
+    const viewportWidth = window.innerWidth;
+    let offsetX =
+      viewportWidth > 1600
+        ? -40
+        : viewportWidth > 1300
+        ? -25
+        : viewportWidth > 768
+        ? -15
+        : -10;
 
-      const relativeX =
-        hCharRect.left + offsetX + hCharRect.width / 2 - mainRect.left;
-      const relativeY = hCharRect.top + hCharRect.height / 2 - mainRect.top;
+    const relativeX =
+      hCharRect.left + offsetX + hCharRect.width / 2 - mainRect.left;
+    const relativeY = hCharRect.top + hCharRect.height / 2 - mainRect.top;
 
-      // Scale factor calculations
-      let baseScaleFactor =
-        Math.min(window.innerWidth, window.innerHeight) / hCharRect.width;
-      let responsiveScaleFactor =
-        viewportWidth > 1600
-          ? baseScaleFactor * 3
-          : viewportWidth > 1300
-          ? baseScaleFactor * 2.5
-          : viewportWidth > 768
-          ? baseScaleFactor * 2
-          : baseScaleFactor * 1.5;
+    let baseScaleFactor =
+      Math.min(window.innerWidth, window.innerHeight) / hCharRect.width;
+    let responsiveScaleFactor =
+      viewportWidth > 1600
+        ? baseScaleFactor * 3
+        : viewportWidth > 1300
+        ? baseScaleFactor * 2.5
+        : viewportWidth > 768
+        ? baseScaleFactor * 2
+        : baseScaleFactor * 1.5;
 
-      // Content timeline
-      const contentTimeline = gsap.timeline();
-      contentTimeline
-        .to(".line_20251", {
-          opacity: 1,
-          scale: 1,
-          duration: 1.5,
-          ease: "power2.out",
-        })
-        .to(".line_20252", {
-          opacity: 1,
-          scale: 1,
-          duration: 1.5,
-          ease: "power2.out",
-        })
-        .to(".line_20253", {
-          opacity: 1,
-          scale: 1,
-          duration: 1.5,
-          ease: "power2.out",
-        })
-        .to(
-          [
-            ".line_20251",
-            ".line_20253",
-            ".person2025",
-            ".galaxy2025",
-            ".landing_2025_stars",
-          ],
-          {
-            opacity: 0,
-            duration: 1,
-            ease: "power2.inOut",
-          }
-        )
-        .to(".landing_2025_main", {
-          scale: responsiveScaleFactor,
+    // Content timeline
+    const contentTimelineDuration = 8; // Total duration of contentTimeline
+    const contentTimeline = gsap.timeline();
+    contentTimeline
+      .to(".line_20251", {
+        opacity: 1,
+        scale: 1,
+        duration: 2,
+        ease: "power2.out",
+      })
+      .to(".line_20252", {
+        opacity: 1,
+        scale: 1,
+        duration: 2,
+        ease: "power2.out",
+      })
+      .to(".line_20253", {
+        opacity: 1,
+        scale: 1,
+        duration: 2,
+        ease: "power2.out",
+      })
+      .to(
+        [
+          ".line_20251",
+          ".line_20253",
+          ".person2025",
+          ".galaxy2025",
+          ".landing_2025_stars",
+        ],
+        {
+          opacity: 0,
           duration: 2,
           ease: "power2.inOut",
-          xPercent: viewportWidth > 1300 ? -55 : -50,
-          yPercent: -50,
-          transformOrigin: `${relativeX}px ${relativeY}px`,
-        });
-
-      // Path animation timeline
-      const pathTimeline = gsap.timeline();
-
-      gsap.set("#gradientRect", {
-        y: "-100%",
-      });
-      
-      gsap.set("#innerFlood", {
-        attr: { "flood-opacity": 0 }
-      });
-      
-      gsap.set("#outerFlood", {
-        attr: { "flood-opacity": 0 }
+        }
+      )
+      .to(".landing_2025_main", {
+        scale: responsiveScaleFactor,
+        duration: 2,
+        ease: "power2.inOut",
+        xPercent: viewportWidth > 1300 ? -55 : -50,
+        yPercent: -50,
+        transformOrigin: `${relativeX}px ${relativeY}px`,
       });
 
-      // Animate the gradient fill and glows
-      pathTimeline
-        .to("#gradientRect", {
-          y: "0%",
-          duration: 8,
-          ease: "none",
-        })
-        .to("#innerFlood", {
-          attr: { "flood-opacity": 0.5 },
-          duration: 2,
-          ease: "power2.inOut",
-        }, "-=2")
-        .to("#outerFlood", {
-          attr: { "flood-opacity": 0.7 },
-          duration: 2,
-          ease: "power2.inOut",
-        }, "-=1.5");
-      
+    // Path timeline
+    const pathTimeline = gsap.timeline();
+    gsap.set("#gradientRect", { y: "-100%" });
+    gsap.set("#innerFlood", { attr: { "flood-opacity": 0 } });
+    gsap.set("#outerFlood", { attr: { "flood-opacity": 0 } });
+
+    pathTimeline
+      .to("#gradientRect", {
+        y: "0%",
+        markers: true,
+        duration: contentTimelineDuration, // Match the duration of contentTimeline
+        ease: "none",
+      });
      
 
-      // Add timelines to master timeline
-      masterTimeline.add(contentTimeline, 0).add(pathTimeline, 1);
+    // Add timelines to master
+    masterTimeline.add(contentTimeline, 0); // Start contentTimeline
+    masterTimeline.add(pathTimeline, "<"); // Start pathTimeline in parallel
 
-      return masterTimeline;
-    };
+    // Explicitly trigger next component when contentTimeline ends
+    contentTimeline.eventCallback("onComplete", () => {
+      console.log("Both timelines ended. Triggering next component...");
+      // Add your next component logic here
+    });
 
-    // Initial animation setup
-    let currentTimeline = updateAnimation();
+    return masterTimeline;
+  };
 
-    // Handle window resize
-    const resizeHandler = debounce(() => {
-      if (currentTimeline.scrollTrigger) {
-        currentTimeline.scrollTrigger.kill();
-      }
-      currentTimeline.kill();
-      currentTimeline = updateAnimation();
-    }, 250);
+  // Animation setup
+  let currentTimeline = updateAnimation();
 
-    window.addEventListener("resize", resizeHandler);
-      
-    return () => {
-      if (currentTimeline.scrollTrigger) {
-        currentTimeline.scrollTrigger.kill();
-      }
-      currentTimeline.kill();
-      window.removeEventListener("resize", resizeHandler);
-    };
-  }, []);
+  
+
+  return () => {
+    if (currentTimeline.scrollTrigger) {
+      currentTimeline.scrollTrigger.kill();
+    }
+    currentTimeline.kill();
+
+  };
+}, []);
+
+
 
   return (
     <div className="landing_2025_main">

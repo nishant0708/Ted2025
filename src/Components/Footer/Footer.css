@@ -32,9 +32,9 @@
     text-align: left;
     /* padding: 1rem; */
 }
-.fcontent a:hover{
+/* .fcontent a:hover{
     color: #E62B1E;
-}
+} */
 .fcontent h4{
     letter-spacing: 2px;
     font-size: 15pt;
@@ -63,8 +63,8 @@
 }
 
 .button:hover{
-    background-color: white;
-    color:#E62B1E;
+   
+    
     text-decoration: underline;
     /* border: 3px solid black; */
 }
@@ -77,6 +77,7 @@
 .mailus{
     padding: 2rem 0rem 2rem 0;
     font-size: 12pt;
+    color: black;
     line-height: 1.5rem;
 }
 .mailus .button{
@@ -88,7 +89,7 @@
     height: 2.7rem;
     width: 300px;
     padding: 0.5rem;
-    transform: translateY(-5px);
+    transform: translateY(0px);
 }
 .copyright p{
     text-align: center;
