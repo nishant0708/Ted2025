@@ -23,10 +23,14 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+   "parser": "@babel/eslint-parser",
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "parserOptions": {
+    "requireConfigFile": false
+  }
   },
   "browserslist": {
     "production": [
@@ -42,7 +46,9 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
+    "babel-eslint": "^10.1.0",
     "concurrently": "^8.2.2",
+    "eslint-config-react-app": "^7.0.1",
     "framer-motion": "^11.15.0",
     "gh-pages": "^5.0.0",
     "postcss": "^8.4.21",

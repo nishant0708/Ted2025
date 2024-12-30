@@ -11,9 +11,9 @@ const TypePara2 = (props) => {
     const typeParaRef = useRef(null);
     const [hasParaPlayed, setHasParaPlayed] = useState(false);
     const [shouldStartTyping, setShouldStartTyping] = useState(false);
-
+    gsap.registerPlugin(ScrollTrigger);
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
+        
         if (!hasParaPlayed) {
             const animation = gsap.fromTo(
                 typeParaRef.current,

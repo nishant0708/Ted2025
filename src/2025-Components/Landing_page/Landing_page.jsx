@@ -69,7 +69,7 @@ useEffect(() => {
           pin: true,
           scrub: 1,
           anticipatePin: 1,
-         
+          markers: {startColor: "white", endColor: "white"},        
           onLeave: () => {
             ScrollTrigger.refresh();
           },

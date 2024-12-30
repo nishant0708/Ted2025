@@ -410,6 +410,10 @@
         z-index: 1;
         
     }
+    .landing_2025_main{
+        min-height: 100vh;
+        
+    }
 
     .landing_2025_Contents {
         gap: 0px;
@@ -464,6 +468,7 @@
        
 }
 @media (max-width:400px) {
+  
     .eyeball2025{
         top: 28% !important;
         width: 15px !important;
@@ -483,6 +488,7 @@
 .landing_2025_main {
     position: relative;
     overflow: hidden;
+   
   }
   .char_2025_land:nth-child(2){
     animation: blink 4s infinite !important;
