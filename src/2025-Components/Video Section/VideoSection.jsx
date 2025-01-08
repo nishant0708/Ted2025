@@ -10,45 +10,70 @@ gsap.registerPlugin(ScrollTrigger);
 const VideoSection = () => {
     const [isMuted, setIsMuted] = useState(true);
     const [isVisible, setIsVisible] = useState(false);
-    const videoRef = useRef(null);
+    const [player, setPlayer] = useState(null);
     const sectionRef = useRef(null);
 
     useEffect(() => {
+        // Load YouTube API
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        window.onYouTubeIframeAPIReady = () => {
+            new window.YT.Player('youtube-player', {
+                videoId: 'jZRbOFMqESs',
+                playerVars: {
+                    autoplay: 1,
+                    loop: 1,
+                    controls: 0,
+                    modestbranding: 1,
+                    mute: 1,
+                    playlist: 'jZRbOFMqESs'
+                },
+                events: {
+                    onReady: (event) => {
+                        setPlayer(event.target);
+                    }
+                }
+            });
+        };
+
         const ctx = gsap.context(() => {
-            // Video visibility control
-            const videoTrigger = ScrollTrigger.create({
+            ScrollTrigger.create({
                 trigger: sectionRef.current,
                 start: 'top 50%',
                 end: 'bottom 50%',
                 onEnter: () => {
                     setIsVisible(true);
-                    setIsMuted(false);
-                    if (videoRef.current) {
-                        videoRef.current.contentWindow.postMessage(
-                            JSON.stringify({
-                                event: 'command',
-                                func: 'playVideo',
-                                args: []
-                            }),
-                            '*'
-                        );
+                    if (player) {
+                        player.playVideo();
+                        !isMuted && player.unMute();
                     }
                 },
                 onLeave: () => {
                     setIsVisible(false);
-                    setIsMuted(true);
+                    if (player) {
+                        player.mute();
+                        player.pauseVideo();
+                    }
                 },
                 onEnterBack: () => {
                     setIsVisible(true);
-                    setIsMuted(false);
+                    if (player) {
+                        player.playVideo();
+                        !isMuted && player.unMute();
+                    }
                 },
                 onLeaveBack: () => {
                     setIsVisible(false);
-                    setIsMuted(true);
+                    if (player) {
+                        player.mute();
+                        player.pauseVideo();
+                    }
                 }
             });
 
-            // Animations
             gsap.fromTo('.highlightsBG', {
                 opacity: 0,
             }, {
@@ -89,25 +114,15 @@ const VideoSection = () => {
                 duration: 0.8,
                 ease: 'sine.out',
             });
-
-            return () => {
-                videoTrigger.kill();
-            };
         });
 
         return () => ctx.revert();
-    }, []);
-
-    useEffect(() => {
-        if (videoRef.current) {
-            const iframe = videoRef.current;
-            iframe.src = `https://www.youtube.com/embed/jZRbOFMqESs?autoplay=1&loop=1&playlist=jZRbOFMqESs&controls=0&modestbranding=1&mute=${isMuted ? 1 : 0}&showinfo=0&rel=0&enablejsapi=1&version=3&playerapiid=ytplayer`;
-        }
-    }, [isMuted]);
+    }, [player, isMuted]);
 
     const toggleMute = () => {
-        if (isVisible) {
+        if (isVisible && player) {
             setIsMuted(!isMuted);
+            isMuted ? player.unMute() : player.mute();
         }
     };
 
@@ -118,24 +133,20 @@ const VideoSection = () => {
             </Marquee>
 
             <ReactParallaxTilt className="withoutSound relative">
-                <iframe 
-                    ref={videoRef}
-                    className="border-y-0 border-x-[3px] border-x-red-950 relative z-30 rounded-md md:rounded-3xl"
-                    width="330" 
-                    height="590" 
-                    title="YouTube Shorts Video" 
-                    frameBorder="0" 
-                    allow="autoplay" 
-                    allowFullScreen
-                />
-                <button
-                    onClick={toggleMute}
-                    className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white ${!isVisible ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}
-                    aria-label={isMuted ? "Unmute video" : "Mute video"}
-                    disabled={!isVisible}
-                >
-                    {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
-                </button>
+                <div className="relative">
+                    <div 
+                        id="youtube-player"
+                        className="border-y-0 border-x-[3px] border-x-red-950 relative z-30 rounded-md md:rounded-3xl w-[330px] h-[590px]"
+                    />
+                    <button
+                        onClick={toggleMute}
+                        className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white ${!isVisible ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}
+                        aria-label={isMuted ? "Unmute video" : "Mute video"}
+                        disabled={!isVisible}
+                    >
+                        {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
+                    </button>
+                </div>
             </ReactParallaxTilt>
 
             <span className="uppercase text-left text-white font-thin overflow-x-hidden" style={{ display: 'flex', flexDirection: 'column', rowGap: '50px'}}>
