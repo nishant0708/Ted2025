@@ -12,8 +12,8 @@
     flex-direction: column;
     row-gap: 80px;
     padding: 60px 100px;
-    background: url('../../Images/stars1.jpg')  top center; 
-    background-size: 100%;
+    /* background: url('../../Images/stars1.jpg')  top center; 
+    background-size: 100%; */
     text-transform: uppercase;
 }
 

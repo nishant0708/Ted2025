@@ -37,8 +37,9 @@
     z-index: 2;
     font-size: 4vh;
     padding-left: 3%;
-   font-family: "Inter", serif;
+
     color: white;
+   font-family: "Inter", serif;
 }
 
 button {
