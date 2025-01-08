@@ -2,19 +2,20 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 const VideoSection = () => {
-  const [isMuted, setIsMuted] = useState(false); // Changed default to false
+  const [isMuted, setIsMuted] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
-  const playerRef = useRef(null);
 
   useEffect(() => {
+    // Load GSAP dynamically
     const loadGSAP = async () => {
       try {
         const gsap = (await import('gsap')).default;
         const ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
         gsap.registerPlugin(ScrollTrigger);
 
+        // GSAP animations
         gsap.fromTo('.highlightsBG', 
           { opacity: 0 },
           {
@@ -61,17 +62,12 @@ const VideoSection = () => {
 
     loadGSAP();
 
+    // Intersection Observer setup
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           setIsVisible(entry.isIntersecting);
-          if (!entry.isIntersecting && playerRef.current) {
-            playerRef.current.mute();
-            setIsMuted(true);
-          } else if (entry.isIntersecting && playerRef.current) {
-            playerRef.current.unMute();
-            setIsMuted(false);
-          }
+          setIsMuted(!entry.isIntersecting);
         });
       },
       { threshold: 0.5 }
@@ -88,14 +84,17 @@ const VideoSection = () => {
     };
   }, []);
 
+  // Setup YouTube player
   useEffect(() => {
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     const firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+    let player;
+
     window.onYouTubeIframeAPIReady = () => {
-      playerRef.current = new window.YT.Player('youtube-player', {
+      player = new window.YT.Player('youtube-player', {
         videoId: 'jZRbOFMqESs',
         playerVars: {
           autoplay: 1,
@@ -105,12 +104,11 @@ const VideoSection = () => {
           showinfo: 0,
           rel: 0,
           enablejsapi: 1,
-          playlist: 'jZRbOFMqESs',
-          mute: 0 // Start unmuted
+          playlist: 'jZRbOFMqESs'
         },
         events: {
           onReady: (event) => {
-            event.target.unMute(); // Ensure video starts unmuted
+            event.target.mute();
             event.target.playVideo();
           },
           onStateChange: (event) => {
@@ -123,21 +121,24 @@ const VideoSection = () => {
     };
 
     return () => {
-      if (playerRef.current) {
-        playerRef.current.destroy();
+      if (player) {
+        player.destroy();
       }
     };
   }, []);
 
   const toggleMute = () => {
     if (!isVisible) return;
-    if (playerRef.current) {
-      if (isMuted) {
-        playerRef.current.unMute();
-      } else {
-        playerRef.current.mute();
-      }
-      setIsMuted(!isMuted);
+    setIsMuted(!isMuted);
+    const player = document.getElementById('youtube-player');
+    if (player?.contentWindow) {
+      player.contentWindow.postMessage(
+        JSON.stringify({
+          event: 'command',
+          func: isMuted ? 'unMute' : 'mute'
+        }), 
+        '*'
+      );
     }
   };
 
