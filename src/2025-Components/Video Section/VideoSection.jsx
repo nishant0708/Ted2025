@@ -1,10 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
-import Marquee from 'react-fast-marquee';
-import ReactParallaxTilt from 'react-parallax-tilt';
 import { Volume2, VolumeX } from 'lucide-react';
 
 const VideoSection = () => {
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(false); // Changed default to false
   const [isVisible, setIsVisible] = useState(false);
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
@@ -108,11 +106,11 @@ const VideoSection = () => {
           rel: 0,
           enablejsapi: 1,
           playlist: 'jZRbOFMqESs',
-          mute: 0
+          mute: 0 // Start unmuted
         },
         events: {
           onReady: (event) => {
-            event.target.unMute();
+            event.target.unMute(); // Ensure video starts unmuted
             event.target.playVideo();
           },
           onStateChange: (event) => {
@@ -144,12 +142,12 @@ const VideoSection = () => {
   };
 
   return (
-    <div ref={sectionRef} className="relative flex flex-col-reverse py-[80px] lg:flex-row justify-center gap-[50px] lg:gap-[100px] items-center w-screen min-h-screen bg-black z-1">
-      <Marquee autoFill={true} className="blur-[7px] min-w-[120vw] rotate-12 text-[200px] font-black absolute bg-gradient-to-b from-purple-500 to-pink-500">
-        <p className="mr-20">HIGHLIGHTS</p>
-      </Marquee>
+    <div ref={sectionRef} className="relative flex flex-col-reverse py-20 lg:flex-row justify-center gap-12 lg:gap-24 items-center w-screen min-h-screen bg-black">
+      <div className="blur-[7px] min-w-[120vw] rotate-12 text-[200px] font-black absolute bg-gradient-to-b from-purple-500 to-pink-500 overflow-hidden whitespace-nowrap animate-marquee">
+        <span className="inline-block mr-20">HIGHLIGHTS</span>
+      </div>
 
-      <ReactParallaxTilt className="withoutSound relative">
+      <div className="withoutSound relative transform transition-transform duration-300 hover:scale-[1.02]">
         <div id="youtube-player" className="border-x-[3px] border-x-red-950 relative z-30 rounded-md md:rounded-3xl w-[330px] h-[590px]" />
         <button
           onClick={toggleMute}
@@ -159,16 +157,16 @@ const VideoSection = () => {
         >
           {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
         </button>
-      </ReactParallaxTilt>
+      </div>
 
-      <span className="uppercase text-left text-white font-thin overflow-x-hidden" style={{ display: 'flex', flexDirection: 'column', rowGap: '50px'}}>
-        <h2 className="highlightsText uppercase w-min overflow-clip leading-[48px] lg:leading-[70px] z-40 text-left font-black text-[60px] lg:text-[80px] max-w-[90vw] text-white">
+      <div className="text-left text-white font-thin space-y-12">
+        <h2 className="highlightsText uppercase w-min overflow-clip leading-[48px] lg:leading-[70px] z-40 font-black text-[60px] lg:text-[80px] max-w-[90vw]">
           Reliving the magic
         </h2>
-        <p className="highlightsText text-justify hidden md:block leading-8 max-w-[485px]">
+        <p className="highlightsText hidden md:block leading-8 max-w-[485px] text-justify">
           Last year's event was nothing short of extraordinary—a perfect blend of creativity, passion, and inspiration! Thrilling talks by our incredible speakers sparked ideas and the energy was contagious, the vibe unmatched—relive the magic through our highlights video!
         </p>
-      </span>
+      </div>
     </div>
   );
 };
