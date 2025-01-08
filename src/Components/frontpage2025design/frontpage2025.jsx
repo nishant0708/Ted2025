@@ -137,22 +137,22 @@ const FrontPage2025 = ({ onScaleComplete }) => {
         <div className="columns-container25">
           <div className="column25">
             <span ref={el => (textRefs.current[0] = el)} className="text25">
-              <TypePara2 para="CAPTURING THE CONNECTION BETWEEN THE SEEN AND THE UNSEEN"/>
+              <TypePara2 para="WHAT DEFINES YOUR TRUE SELF—THE IMAGE YOU SHOW OR THE THOUGHTS YOU KEEP HIDDEN? "/>
             </span>
           </div>
           <div className="column25">
             <p ref={el => (textRefs.current[1] = el)} className="text25">
               <div className="text2">
-                <TypePara2 para="SNAPSHOTS OF IDEAS THAT RESONATED WITHIN AND BEYOND"/>
+                <TypePara2 para="WHAT HAPPENS WHEN WE EMBRACE OUR CHAOS INSTEAD OF HIDING IT? CAN DISORDER SPARK GROWTH OR GENIUS? "/>
               </div>
             </p>
           </div>
           <div className="column25 combined-column25">
             <p ref={el => (textRefs.current[2] = el)} className="text25">
-              <TypePara2 para="UNMASKING THE HIDDEN TRUTHS THROUGH WORDS THAT INSPIRE"/>
+              <TypePara2 para="IF THE BODY IS A UNIVERSE OF CELLS AND SIGNALS, ARE YOU AN INDIVIDUAL OR A COLLECTIVE?  "/>
             </p>
             <p ref={el => (textRefs.current[3] = el)} className="text25">
-              <TypePara2 para="OUR SPEAKERS SHARE STORIES THAT IGNITE YOUR INNER JOURNEY"/>
+              <TypePara2 para="OUR SPEAKERS SHARE STORIES THAT SPARK YOUR INNER JOURNEY, LEADING YOU TO NEW DEPTHS OF SELF-DISCOVERY."/>
             </p>
           </div>
         </div>

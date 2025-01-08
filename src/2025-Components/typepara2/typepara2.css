@@ -1,9 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap');
+
+
 .typing_text_para{
-    font-weight: 100;
-    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
     width: 400px;
     color: rgb(202, 202, 202);
     z-index: 10;
+}
+@media (max-width: 1080px){
+    .typing_text_para{
+        width: 60dvw;
+        font-size: 10px;
+    }
 }
 
 @media (max-width: 768px){
