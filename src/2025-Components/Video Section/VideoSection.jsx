@@ -1,21 +1,22 @@
 import React, { useEffect, useState, useRef } from 'react';
+import Marquee from 'react-fast-marquee';
+import ReactParallaxTilt from 'react-parallax-tilt';
 import { Volume2, VolumeX } from 'lucide-react';
 
 const VideoSection = () => {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
+  const playerRef = useRef(null);
 
   useEffect(() => {
-    // Load GSAP dynamically
     const loadGSAP = async () => {
       try {
         const gsap = (await import('gsap')).default;
         const ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
         gsap.registerPlugin(ScrollTrigger);
 
-        // GSAP animations
         gsap.fromTo('.highlightsBG', 
           { opacity: 0 },
           {
@@ -62,12 +63,17 @@ const VideoSection = () => {
 
     loadGSAP();
 
-    // Intersection Observer setup
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           setIsVisible(entry.isIntersecting);
-          setIsMuted(!entry.isIntersecting);
+          if (!entry.isIntersecting && playerRef.current) {
+            playerRef.current.mute();
+            setIsMuted(true);
+          } else if (entry.isIntersecting && playerRef.current) {
+            playerRef.current.unMute();
+            setIsMuted(false);
+          }
         });
       },
       { threshold: 0.5 }
@@ -84,17 +90,14 @@ const VideoSection = () => {
     };
   }, []);
 
-  // Setup YouTube player
   useEffect(() => {
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     const firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    let player;
-
     window.onYouTubeIframeAPIReady = () => {
-      player = new window.YT.Player('youtube-player', {
+      playerRef.current = new window.YT.Player('youtube-player', {
         videoId: 'jZRbOFMqESs',
         playerVars: {
           autoplay: 1,
@@ -104,11 +107,12 @@ const VideoSection = () => {
           showinfo: 0,
           rel: 0,
           enablejsapi: 1,
-          playlist: 'jZRbOFMqESs'
+          playlist: 'jZRbOFMqESs',
+          mute: 0
         },
         events: {
           onReady: (event) => {
-            event.target.mute();
+            event.target.unMute();
             event.target.playVideo();
           },
           onStateChange: (event) => {
@@ -121,34 +125,31 @@ const VideoSection = () => {
     };
 
     return () => {
-      if (player) {
-        player.destroy();
+      if (playerRef.current) {
+        playerRef.current.destroy();
       }
     };
   }, []);
 
   const toggleMute = () => {
     if (!isVisible) return;
-    setIsMuted(!isMuted);
-    const player = document.getElementById('youtube-player');
-    if (player?.contentWindow) {
-      player.contentWindow.postMessage(
-        JSON.stringify({
-          event: 'command',
-          func: isMuted ? 'unMute' : 'mute'
-        }), 
-        '*'
-      );
+    if (playerRef.current) {
+      if (isMuted) {
+        playerRef.current.unMute();
+      } else {
+        playerRef.current.mute();
+      }
+      setIsMuted(!isMuted);
     }
   };
 
   return (
-    <div ref={sectionRef} className="relative flex flex-col-reverse py-20 lg:flex-row justify-center gap-12 lg:gap-24 items-center w-screen min-h-screen bg-black">
-      <div className="blur-[7px] min-w-[120vw] rotate-12 text-[200px] font-black absolute bg-gradient-to-b from-purple-500 to-pink-500 overflow-hidden whitespace-nowrap animate-marquee">
-        <span className="inline-block mr-20">HIGHLIGHTS</span>
-      </div>
+    <div ref={sectionRef} className="relative flex flex-col-reverse py-[80px] lg:flex-row justify-center gap-[50px] lg:gap-[100px] items-center w-screen min-h-screen bg-black z-1">
+      <Marquee autoFill={true} className="blur-[7px] min-w-[120vw] rotate-12 text-[200px] font-black absolute bg-gradient-to-b from-purple-500 to-pink-500">
+        <p className="mr-20">HIGHLIGHTS</p>
+      </Marquee>
 
-      <div className="withoutSound relative transform transition-transform duration-300 hover:scale-[1.02]">
+      <ReactParallaxTilt className="withoutSound relative">
         <div id="youtube-player" className="border-x-[3px] border-x-red-950 relative z-30 rounded-md md:rounded-3xl w-[330px] h-[590px]" />
         <button
           onClick={toggleMute}
@@ -158,16 +159,16 @@ const VideoSection = () => {
         >
           {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
         </button>
-      </div>
+      </ReactParallaxTilt>
 
-      <div className="text-left text-white font-thin space-y-12">
-        <h2 className="highlightsText uppercase w-min overflow-clip leading-[48px] lg:leading-[70px] z-40 font-black text-[60px] lg:text-[80px] max-w-[90vw]">
+      <span className="uppercase text-left text-white font-thin overflow-x-hidden" style={{ display: 'flex', flexDirection: 'column', rowGap: '50px'}}>
+        <h2 className="highlightsText uppercase w-min overflow-clip leading-[48px] lg:leading-[70px] z-40 text-left font-black text-[60px] lg:text-[80px] max-w-[90vw] text-white">
           Reliving the magic
         </h2>
-        <p className="highlightsText hidden md:block leading-8 max-w-[485px] text-justify">
+        <p className="highlightsText text-justify hidden md:block leading-8 max-w-[485px]">
           Last year's event was nothing short of extraordinary—a perfect blend of creativity, passion, and inspiration! Thrilling talks by our incredible speakers sparked ideas and the energy was contagious, the vibe unmatched—relive the magic through our highlights video!
         </p>
-      </div>
+      </span>
     </div>
   );
 };
