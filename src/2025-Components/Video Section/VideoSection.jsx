@@ -112,7 +112,7 @@ const VideoSection = () => {
     };
 
     return (
-        <div ref={sectionRef} className="relative flex flex-col-reverse py-[80px] lg:flex-row justify-center gap-[50px] lg:gap-[100px] items-center w-screen min-h-screen bg-black z-20">
+        <div ref={sectionRef} className="relative flex flex-col-reverse py-[80px] lg:flex-row justify-center gap-[50px] lg:gap-[100px] items-center w-screen min-h-screen bg-black z-1">
             <Marquee autoFill={true} className="blur-[7px] min-w-[120vw] rotate-12 text-[200px] font-black absolute bg-gradient-to-b from-purple-500 to-pink-500">
                 <p className="mr-20">HIGHLIGHTS</p>
             </Marquee>
