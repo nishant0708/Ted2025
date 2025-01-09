@@ -954,31 +954,8 @@
                 "anger":90,
                 "fun": 46,
                 "ln":""
-            },{
-                "id": "sponsorship",
-                "name": "Harshali",
-                "info": "TEDxDAVV",
-                "image": "https://imgur.com/lZg7ePn.jpeg",
-                "ig": "https://www.instagram.com/_thakurharshali_/profilecard/?igsh=NnR5ZnluamtnaHNz",
-                "cuteness":80,
-                "IQ":80,
-                "humour":70,
-                "anger":40,
-                "fun": 90,
-                "ln":"https://in.linkedin.com/in/harshali-thakur-576753274?utm_source=share&utm_medium=member_mweb&utm_campaign=share_via&utm_content=profile"
-            },{
-                "id": "sponsorship",
-                "name": "Bhaskar",
-                "info": "TEDxDAVV",
-                "image": "https://imgur.com/gT8eGAw.jpeg",
-                "ig": "https://www.instagram.com/bhaskar_04/",
-                "cuteness":60,
-                "IQ":80,
-                "humour":20,
-                "anger":90,
-                "fun": 46,
-                "ln":"https://in.linkedin.com/in/harshali-thakur-576753274?utm_source=share&utm_medium=member_mweb&utm_campaign=share_via&utm_content=profile"
-            },{
+            },
+            {
                 "id": "sponsorship",
                 "name": "Priyanshi",
                 "info": "TEDxDAVV",
