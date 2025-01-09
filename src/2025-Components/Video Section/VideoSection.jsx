@@ -76,7 +76,7 @@ const VideoSection = () => {
         trigger: sectionRef.current,
         start: "top 50%", // When 50% of the section is visible
         end: "bottom 50%",
-        markers: true,
+        markers: false,
         onEnter: () => {
           toggleVideoPlayback(true);
         },

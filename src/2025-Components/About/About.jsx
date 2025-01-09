@@ -11,13 +11,39 @@ import './About.css';
 import React, { useEffect, useRef } from 'react'
 import TypeSmall from '../Typing Small/TypingSmall';
 import SideMarquee from '../Side Marquee/SideMarquee';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const About = () => {
-    const aboutTextContainerRef = useRef(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.about_section_1',
+            start: "top 20%",
+            end: "+=1000",
+            // scrub: true,
+            markers: true,
+            pin: '.ABOUT_2025_main',
+            pinSpacing: true
+        },
+        });
+        
+
+        
+
+       
+        return () => { 
+    
+            ScrollTrigger.killAll(); // Cleanup when component unmounts
+        };
+
+    },[])
 
     
   return (
-    <div className='ABOUT_2025_main overflow-y-clip'>
+    <div className='ABOUT_2025_main overflow-y-clip bg-black'>
 
         <SideMarquee isRight={false}/>
 
@@ -28,7 +54,7 @@ const About = () => {
 
             <ImageAbout img={image4} />
 
-            <span ref={aboutTextContainerRef} className=' flex flex-col gap-[50px] w-[90dvw] lg:w-auto' >
+            <span className=' flex flex-col gap-[50px]' >
                 <TypeHeading content='Interconnectedness' />
 
                 <TypePara para='Our identities are shaped by the reflections we see in others. Relationships and communities help reveal the chaos, the unspoken, and the unexplored within, guiding us toward deeper understanding and bringing us closer to the essence of the within.' />
