@@ -78,7 +78,8 @@ const ImageAbout = (props) => {
             scrollTrigger:{
                 trigger: aboutImagesContainerRef.current,
                 start: 'top 35%',
-                
+                // pin: '',
+                // pinSpacing: true
             }
         })
 
@@ -177,7 +178,7 @@ const ImageAbout = (props) => {
         </div>
 
         {/* image div 8 */}
-        <div ref={aboutImage8} className=' AboutImage_8' style={{height: '233px', overflow: 'hidden'}}>
+        <div ref={aboutImage8} className=' AboutImage_8 block md:hidden lg:block' style={{height: '233px', overflow: 'hidden'}}>
             <img loading='lazy' src={aboutImage} alt="" width={'100%'} height={'auto'} />
         </div>
 
