@@ -33,9 +33,6 @@ const VideoSection = () => {
           markers: false,
         },
         duration: 0.8,
-        stagger:{
-          each: 0.6
-        },
         ease: "sine.out",
       }
     );

@@ -559,19 +559,19 @@
                 "info": "TEDxDAVV ",
                 "image": "https://imgur.com/iWm1s4H.jpeg",
                 "ig": "https://www.instagram.com/nishant0760/",
-                "cuteness":35,
+                "cuteness":75,
                 "IQ":80,
                 "humour":90,
-                "anger":40,
+                "anger":80,
                 "fun": 36,
                 "ln":""
             },{
                 "id": "Web-Dev-Team",
                 "name": "Shubhansh ",
                 "info": "TEDxDAVV ",
-                "image": "https://imgur.com/nsewDyz.jpeg",
+                "image": "https://imgur.com/9HAM72L.jpeg",
                 "ig": "https://www.instagram.com/shubhansh364/",
-                "cuteness":25,
+                "cuteness":75,
                 "IQ":70,
                 "humour":80,
                 "anger":10,
@@ -596,8 +596,8 @@
                 "image": "https://imgur.com/QmUHjCi.jpeg",
                 "ig": "https://www.instagram.com/c.k.rajwal/",
                 "cuteness":85,
-                "IQ":40,
-                "humour":70,
+                "IQ":80,
+                "humour":30,
                 "anger":10,
                 "fun": 76,
                 "ln":""
@@ -663,7 +663,7 @@
                 "image": "https://imgur.com/uTXzXbd.jpeg",
                 "ig": "https://www.instagram.com/priyanshiishuklaa/profilecard/?igsh=OWZua2czZzR6aGV4",
                 "cuteness":95,
-                "IQ":90,
+                "IQ":10,
                 "humour":85,
                 "anger":85,
                 "fun": 96,
@@ -740,7 +740,11 @@
                 "anger":70,
                 "fun": 76,
                 "ln":""
-            },{
+            }
+        ],
+
+        "MARKETING-II": [
+            {
                 "id": "organisers",
                 "name": "Kratika",
                 "info": "TEDxDAVV",
@@ -752,10 +756,7 @@
                 "anger":43.56,
                 "fun": 96,
                 "ln":""
-            }
-        ],
-
-        "MARKETING-II": [
+            },
             {
                 "id": "organisers",
                 "name": "Hariom",
@@ -869,6 +870,18 @@
                 "ln":""
             },{
                 "id": "organisers",
+                "name": "Ruqaiya",
+                "info": "TEDxDAVV",
+                "image": "https://imgur.com/xdRWXnD.jpeg",
+                "ig": "",
+                "cuteness":60,
+                "IQ":80,
+                "humour":20,
+                "anger":90,
+                "fun": 46,
+                "ln":""
+            },{
+                "id": "organisers",
                 "name": "Chitranshi",
                 "info": "TEDxDAVV",
                 "image": "https://imgur.com/3OlwRpS.jpeg",
@@ -908,18 +921,6 @@
                 "name": "Mahima",
                 "info": "TEDxDAVV",
                 "image": "https://imgur.com/qYbOysl.jpeg",
-                "ig": "",
-                "cuteness":60,
-                "IQ":80,
-                "humour":20,
-                "anger":90,
-                "fun": 46,
-                "ln":""
-            },{
-                "id": "organisers",
-                "name": "Ruqaiya",
-                "info": "TEDxDAVV",
-                "image": "https://imgur.com/xdRWXnD.jpeg",
                 "ig": "",
                 "cuteness":60,
                 "IQ":80,
