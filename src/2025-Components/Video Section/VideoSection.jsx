@@ -137,7 +137,7 @@ const VideoSection = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative flex flex-col-reverse py-[80px] lg:flex-row justify-center gap-[50px] lg:gap-[100px] items-center w-screen min-h-screen bg-black z-20"
+      className=" videoSectionContainer relative flex flex-col-reverse py-[80px] lg:flex-row justify-center gap-[50px] lg:gap-[100px] items-center w-screen min-h-screen bg-black z-20"
     >
       <Marquee
         autoFill={true}
