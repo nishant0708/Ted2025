@@ -1,35 +1,24 @@
+// import './VideoSection.css';
 import React, { useEffect, useState, useRef } from "react";
 import Marquee from "react-fast-marquee";
 import ReactParallaxTilt from "react-parallax-tilt";
 import gsap from "gsap";
 import { Volume2, VolumeX } from "lucide-react";
 import { useMediaQuery } from "react-responsive";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 const VideoSection = () => {
   const [isMuted, setIsMuted] = useState(true);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
 
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   useEffect(() => {
-    // GSAP Animations
-    gsap.fromTo(
-      ".highlightsBG",
-      { opacity: 0 },
-      {
-        opacity: 1,
-        scrollTrigger: {
-          trigger: ".highlightsBG",
-          start: "top center",
-          end: "top top",
-          scrub: true,
-          markers: false,
-        },
-        ease: "sine.out",
-      }
-    );
 
     gsap.fromTo(
       ".highlightsText",
@@ -37,13 +26,16 @@ const VideoSection = () => {
       {
         xPercent: 0,
         scrollTrigger: {
-          trigger: ".highlightsText",
+          trigger: sectionRef.current,
           toggleActions: "play none none reverse",
           start: "top 50%",
           scrub: false,
           markers: false,
         },
         duration: 0.8,
+        stagger:{
+          each: 0.6
+        },
         ease: "sine.out",
       }
     );
@@ -55,7 +47,7 @@ const VideoSection = () => {
         opacity: 1,
         xPercent: 0,
         scrollTrigger: {
-          trigger: ".highlightsText",
+          trigger: sectionRef.current,
           toggleActions: "play none none reverse",
           start: "top 50%",
           scrub: false,
@@ -66,38 +58,70 @@ const VideoSection = () => {
       }
     );
 
-    // Intersection Observer for Video Visibility
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const isComponentVisible = entry.isIntersecting;
-          setIsVisible(isComponentVisible);
-          setIsMuted(!isComponentVisible);
+    const toggleVideoPlayback = (play) => {
+      console.log('play- ', play)
+        const iframe = videoRef.current.contentWindow;
+        iframe.postMessage(
+          JSON.stringify({
+            event: "command",
+            func: play ? "playVideo" : "pauseVideo",
+          }),
+          "*"
+        );
+    };
 
-          if (videoRef.current) {
-            const iframe = videoRef.current.contentWindow;
-            iframe.postMessage(
-              JSON.stringify({
-                event: "command",
-                func: isComponentVisible ? "playVideo" : "pauseVideo",
-              }),
-              "*"
-            );
-          }
-        });
-      },
-      { threshold: 0.5 } // Trigger when 50% of the component is visible
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if(!isMobile){
+     
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 50%", // When 50% of the section is visible
+        end: "bottom 50%",
+        markers: true,
+        onEnter: () => {
+          toggleVideoPlayback(true);
+        },
+        onLeave: () => {
+          toggleVideoPlayback(false);
+        },
+        onEnterBack: () => {
+          toggleVideoPlayback(true);
+        },
+        onLeaveBack: () => {
+          toggleVideoPlayback(false);
+        },
+      }); 
+    }else{
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 50%", // When 50% of the section is visible
+        end: "bottom 50%",
+        markers: true,
+        onEnter: () => {
+          toggleVideoPlayback(true);
+          // setIsMuted(false);
+          // console.log('entered')
+        },
+        onLeave: () => {
+          toggleVideoPlayback(false);
+          // setIsMuted(true);
+          // console.log('left')
+        },
+        onEnterBack: () => {
+          toggleVideoPlayback(true);
+          // setIsMuted(false);
+          // console.log('enter back')
+        },
+        onLeaveBack: () => {
+          toggleVideoPlayback(false);
+          // console.log('leaveback')
+        },
+      });
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+      ScrollTrigger.killAll(); // Cleanup when component unmounts
     };
+
   }, []);
 
   useEffect(() => {
@@ -107,9 +131,7 @@ const VideoSection = () => {
   }, [isMuted]);
 
   const toggleMute = () => {
-    if (isVisible) {
-      setIsMuted((prev) => !prev);
-    }
+      setIsMuted(!isMuted);
   };
 
   return (
@@ -119,7 +141,7 @@ const VideoSection = () => {
     >
       <Marquee
         autoFill={true}
-        className="blur-[7px] min-w-[120vw] rotate-12 text-[200px] font-black absolute bg-gradient-to-b from-purple-500 to-pink-500"
+        className="blur-[7px] min-w-[150vw] rotate-12 text-[200px] font-black absolute bg-gradient-to-b from-purple-500 to-pink-500"
       >
         <p className="mr-20">HIGHLIGHTS</p>
       </Marquee>
@@ -139,7 +161,7 @@ const VideoSection = () => {
           <button
             onClick={toggleMute}
             className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white ${
-              !isVisible ? `opacity-50 cursor-not-allowed` : `opacity-100`
+              !isVisible ? `opacity-50` : `opacity-100`
             }`}
             aria-label={isMuted ? "Unmute video" : "Mute video"}
             disabled={!isVisible}
@@ -162,7 +184,7 @@ const VideoSection = () => {
           <button
             onClick={toggleMute}
             className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white ${
-              !isVisible ? `opacity-50 cursor-not-allowed` : `opacity-100`
+              !isVisible ? `opacity-50` : `opacity-100`
             }`}
             aria-label={isMuted ? "Unmute video" : "Mute video"}
             disabled={!isVisible}
