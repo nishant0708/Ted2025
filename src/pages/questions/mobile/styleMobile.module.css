@@ -6,7 +6,7 @@
     z-index: 2;
     display: flex;
     flex-direction: column;
-    font-family: "Poppins";
+   font-family: "Inter", serif;
     overflow: hidden;
 }
 
@@ -48,7 +48,7 @@
     border-radius: 10px;
     text-wrap: pretty;
     text-shadow: 100px;
-    font-family: "Poppins";
+   font-family: "Inter", serif;
 }
 
 .Question select {

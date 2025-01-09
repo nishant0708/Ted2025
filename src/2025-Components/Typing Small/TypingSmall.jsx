@@ -5,14 +5,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
 
 const TypeSmall = (props) => {
     const typeSmallRef = useRef(null);
     const [hasSmallPlayed, setHasSmallPlayed] = useState(false);
 
     useEffect(() => {
-      
+        gsap.registerPlugin(ScrollTrigger);
+
         if (!hasSmallPlayed) {
             const animation = gsap.fromTo(
                 typeSmallRef.current,
@@ -42,7 +42,7 @@ const TypeSmall = (props) => {
     }, [hasSmallPlayed]);
 
     return (
-        <span className='typing_text_para relative' ref={typeSmallRef} 
+        <span className='typing_text_para text-wrap relative' ref={typeSmallRef} 
             style={{width: '100px',}}  
         >
             {hasSmallPlayed && (

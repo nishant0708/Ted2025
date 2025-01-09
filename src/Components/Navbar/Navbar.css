@@ -1,225 +1,344 @@
 .navbar{
-   position: fixed;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 30px 100px;
-    background-color: transparent;
-    padding-top: 15px;
-    align-items: center;
-    z-index: 1000 !important;
-}
-.nav-logo{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 20px;
-}
-.tedx-logo{
-    width: 150px;
-}
-
-.nav-logo p{
-    color: #171717;
-    font-size: 18px;
-    font-weight: 600;
-}
-.nav-menu{
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 50px;
-    
-    font-size: 16px;
-    font-weight: 500;
-    
-}
-.nav-menu li span:hover{
-    color: #eb0028;
-    
-}
-.nav-menu li{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    
-    cursor: pointer;
-}
-.nav-menu li span{
-   transition: forwards 0.5s ease;
-}
-
-.nav-menu hr {
-    border: none;
-    width: 80%;
-    height: 3px;
-    border-radius: 10px;
-    background: #eb0028;
-    animation: wid 2s ;
-    transition: wid 1s;
-}
-.nav-menu .hr-transition {
-    border: none;
-    width: 0;
-    height: 3px;
-    border-radius: 10px;
-    background: #eb0028;
-    transition: wid 1s;
-}
-@keyframes wid {
-    0%{
-        width: 0%;
-    }
-    100%{
-        width: 80%;
-    }
-}
-.nav-menu .hr-transition.active {
-    width: 80%;
-}
-.con{
-    margin-right: 0px;
-}
-
-
-
-@media(max-width:1280px){
-    .navbar{
-        padding: 12px 50px;
-        z-index: 200;
-    }
-   .tedx-logo{
-    width: 150px;
-   }
-    
-    .nav-menu{
-        gap: 30px;
-        font-size: 16px;
-    }
-  
-
-}
-
-@media(max-width:1024px){
-    .navbar{
-        padding: 12px 30px;
-        z-index: 200;
-    }
-    .con{
-        margin-right: 0px;
-    }
-   
-    .nav-menu{
-        gap: 25px;
-        font-size: 14px;
-    }
-   
-   
-}
-@media (max-width:800px) {
-    
-    .navbar{
-        position: fixed;
-        padding: 10px 0px;
-        background-color: transparent;
-        z-index: 5777775;
-      
-        height: 5vh;
-        display: block;
-        width: 100%;
-    }
-   
-    .nav-menu{
-       
-        height: 150vh;
-       display: flex;
-       flex-direction: column;
-        background-color: transparent;
-        justify-content: center;
-        list-style: none;
-        gap: 0vh;
-       
-        z-index: 777;
-        clip-path: circle(100px at 100% -10%);
-        transition: all 0.5s;
-       transform: translateY(-20px);
-        z-index: 99;
-        top: 75px;
-    }
-    
-    .nav-menu li{
-        font-size: 72px;
-        font-weight: bold;
-    }
-    .tedx-logo{
-        width: 100px;
-    }
-    .nav-menu li span{
-        color: white;
-    }
- .nav-menu.open {
-    
-    display: flex; /* Display when open class is present */
-   
-    flex-direction: column;
-    z-index: 777;
-    background-color: rgba(236, 8, 8, 0.808);
-   transform: translateY(-4%);
-    max-height: 150vh; /* Adjust the max-height based on your content */
-    opacity: 1;
-   height: 110vh;
-   clip-path: circle(2311px at 150% -100%);
-      } 
-       
-    
-}
-@media (max-width:500px){
-    .navbar{
-        position: fixed;
-        background-color: transparent;
-        padding: 8px 0px;
-        height: 5vh;
-        z-index: 55;
-    }
-    .nav-menu li{
-        font-size: 5vh;
-        font-weight: bold;
-    
-    } 
-    .nav-menu li span{
-        color: white;
-    }
-    .nav-menu {
-        gap: 1vh;
-    }
-    .tedx-logo{
-       width: 150px ;
-    }
-    .Nav-logo{
-        display: flex;
-        margin-left: 30px;
-        width: 100%;
-        justify-content: flex-start;
-    }
-    .nav-menu{
-
-   
-      z-index: 60;
-        height: 150vh;
-        transform: translateY(-10%);
-       
-    }
-    .nav-menu.open{
-       background-color: rgba(0, 0, 0, 0.912);
-        clip-path: circle(1511px at 270% -20%);
-    }
-   
-}
-.fixed-hamburger {
     position: fixed;
-    top: 1%;
-    right: 1%;
-    z-index: 55;
+     width: 100%;
+     display: flex;
+     justify-content: space-between;
+     padding: 10px 100px;
+     background-color: rgba(0, 0, 0, 0.525);
+    
+     
+     align-items: center;
+     z-index: 1000 !important;
+ }
+ .nav-logo{
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     width: 20px;
+ }
+ .tedx-logo{
+     width: 150px;
+ }
+ 
+ .nav-logo p{
+     color: #171717;
+     font-size: 18px;
+     font-weight: 600;
+ }
+ .nav-menu{
+     display: flex;
+     align-items: center;
+     list-style: none;
+     gap: 50px;
+     
+     font-size: 16px;
+     font-weight: 500;
+     
+ }
+ .nav-menu li span:hover{
+     color: #eb0028;
+     
+ }
+ .nav-menu li{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     gap: 3px;
+     
+     cursor: pointer;
+ }
+ .nav-menu li span{
+    transition: forwards 0.5s ease;
+ }
+ 
+ .nav-menu hr {
+     border: none;
+     width: 80%;
+     height: 3px;
+     border-radius: 10px;
+     background: #eb0028;
+     animation: wid 2s ;
+     transition: wid 1s;
+ }
+ .nav-menu .hr-transition {
+     border: none;
+     width: 0;
+     height: 3px;
+     border-radius: 10px;
+     background: #eb0028;
+     transition: wid 1s;
+ }
+ @keyframes wid {
+     0%{
+         width: 0%;
+     }
+     100%{
+         width: 80%;
+     }
+ }
+ .nav-menu .hr-transition.active {
+     width: 80%;
+ }
+ .con{
+     margin-right: 0px;
+ }
+ 
+ 
+ 
+ @media(max-width:1280px){
+     .navbar{
+         padding: 12px 50px;
+         z-index: 200;
+     }
+    .tedx-logo{
+     width: 150px;
+    }
+     
+     .nav-menu{
+         gap: 30px;
+         font-size: 16px;
+     }
+   
+ 
+ }
+ 
+ @media(max-width:1024px){
+     .navbar{
+         padding: 12px 30px;
+         z-index: 200;
+     }
+     .con{
+         margin-right: 0px;
+     }
+    
+     .nav-menu{
+         gap: 25px;
+         font-size: 14px;
+     }
+    
+    
+ }
+ @media (max-width:800px) {
+     
+     .navbar{
+         position: fixed;
+         padding: 10px 0px;
+         background-color: transparent;
+         z-index: 5777775;
+       
+         height: 5vh;
+         display: block;
+         width: 100%;
+     }
+    
+     .nav-menu{
+        
+         height: 150vh;
+        display: flex;
+        flex-direction: column;
+         background-color: transparent;
+         justify-content: center;
+         list-style: none;
+         gap: 0vh;
+        
+         z-index: 777;
+         clip-path: circle(100px at 100% -10%);
+         transition: all 0.5s;
+        transform: translateY(-20px);
+         z-index: 99;
+         top: 75px;
+     }
+     
+     .nav-menu li{
+         font-size: 72px;
+         font-weight: bold;
+     }
+     .tedx-logo{
+         width: 100px;
+     }
+     .nav-menu li span{
+         color: white;
+     }
+     .family_button {
+        font-size: 3vh !important;
+     }
+  .nav-menu.open {
+     
+     display: flex; /* Display when open class is present */
+    
+     flex-direction: column;
+     z-index: 777;
+     background-color: rgba(236, 8, 8, 0.808);
+    transform: translateY(-4%);
+     max-height: 150vh; /* Adjust the max-height based on your content */
+     opacity: 1;
+    height: 110vh;
+    clip-path: circle(2311px at 150% -100%);
+       } 
+        
+     
+ }
+ @media (max-width:500px){
+     .navbar{
+         position: fixed;
+         background-color: transparent;
+         padding: 8px 0px;
+         height: 5vh;
+         z-index: 55;
+     }
+     .nav-menu li{
+         font-size: 5vh;
+         font-weight: bold;
+     
+     } 
+     .nav-menu li span{
+         color: white;
+     }
+     .nav-menu {
+         gap: 1vh;
+     }
+     .tedx-logo{
+        width: 150px ;
+     }
+     .Nav-logo{
+         display: flex;
+         margin-left: 30px;
+         width: 100%;
+         justify-content: flex-start;
+     }
+     .nav-menu{
+ 
+    
+       z-index: 60;
+         height: 150vh;
+         transform: translateY(-10%);
+        
+     }
+     .nav-menu.open{
+        background-color: rgba(0, 0, 0, 0.912);
+         clip-path: circle(1511px at 270% -20%);
+     }
+    
+ }
+ 
+ .fixed-hamburger {
+     position: fixed;
+     top: 1%;
+     right: 1%;
+     z-index: 55;
+   }
+
+   .family_button {
+    position: relative;
+    font-size: 16px;
+    padding: 5px 10px;
+    color: white;
+    
+  
+    text-align: center;
+    z-index: 5;
+    overflow: hidden;
   }
+  .family_button:hover a span {
+    color: #E62B1E;
+  }
+  
+  .family_button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid white; /* White border */
+    
+    z-index: 1; /* Place it below the#E62B1E animation */
+    box-sizing: border-box;
+  }
+  
+  .family_button .family_button_span {
+    position: absolute;
+    display: block;
+    z-index: 2; /* Red animation above the white border */
+  }
+  
+  .family_button .family_button_span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent,#E62B1E);
+    animation: btn-anim1 2s linear infinite; /* Slower speed */
+  }
+  
+  @keyframes btn-anim1 {
+    0% {
+      left: -100%;
+    }
+    50%,
+    100% {
+      left: 100%;
+    }
+  }
+  
+  .family_button .family_button_span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent,#E62B1E);
+    animation: btn-anim2 2s linear infinite; /* Slower speed */
+    animation-delay: 0.5s;
+  }
+  
+  @keyframes btn-anim2 {
+    0% {
+      top: -100%;
+    }
+    50%,
+    100% {
+      top: 100%;
+    }
+  }
+  
+  .family_button .family_button_span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent,#E62B1E);
+    animation: btn-anim3 2s linear infinite; /* Slower speed */
+    animation-delay: 1s;
+  }
+  
+  @keyframes btn-anim3 {
+    0% {
+      right: -100%;
+    }
+    50%,
+    100% {
+      right: 100%;
+    }
+  }
+  
+  .family_button .family_button_span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent,#E62B1E);
+    animation: btn-anim4 2s linear infinite; /* Slower speed */
+    animation-delay: 1.5s;
+  }
+  
+  @keyframes btn-anim4 {
+    0% {
+      bottom: -100%;
+    }
+    50%,
+    100% {
+      bottom: 100%;
+    }
+  }
+  

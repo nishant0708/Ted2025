@@ -26,6 +26,7 @@
 .frontpage-container25 {
   font-family: 'Protomolecule-regular', sans-serif;
   position: relative;
+  inset: 0px auto auto 0px !important;
   z-index: 2;
   inset:0px auto auto 0px !important;
 

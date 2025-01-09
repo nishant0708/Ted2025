@@ -1,17 +1,18 @@
-import './TypeHeading.css';
 import { TypeAnimation } from 'react-type-animation';
+import './TypeHeading.css';
+
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 
-gsap.registerPlugin(ScrollTrigger);
+
 const TypeHeading = (props) => {
     const typeHeadingRef = useRef(null);
     const [hasHeadingPlayed, setHasHeadingPlayed] = useState(false);
 
     useEffect(() => {
-       
+        gsap.registerPlugin(ScrollTrigger);
         if (!hasHeadingPlayed) {
             const animationHeadingType = gsap.fromTo(
                 typeHeadingRef.current,

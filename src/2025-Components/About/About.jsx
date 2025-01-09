@@ -31,7 +31,7 @@ const About = () => {
             <span ref={aboutTextContainerRef} className=' flex flex-col gap-[50px] w-[90dvw] lg:w-auto' >
                 <TypeHeading content='Interconnectedness' />
 
-                <TypePara para='As humans, we can only see ourselves through the reflections of others. "The Within" encourages us to reflect on how our internal worlds are shaped by our relationships and communities.' />
+                <TypePara para='Our identities are shaped by the reflections we see in others. Relationships and communities help reveal the chaos, the unspoken, and the unexplored within, guiding us toward deeper understanding and bringing us closer to the essence of the within.' />
 
                 <div className=' lg:self-end md:mt-14 flex lg:flex-col gap-7'>
                     <TypeSmall para='Exploring Identity, Purpose, and the Duality of Being.' />
@@ -47,10 +47,11 @@ const About = () => {
             <span className='' style={{ display: 'flex', flexDirection: 'column', rowGap: '50px'}} >
                 <TypeHeading content='Self - discovery' />
 
-                <TypePara para='Everyone has an innate desire to discover their purpose and identity. Yet, many of us get lost or give up, trapped by external expectations. This theme can explore how people find their inner truths and overcome these barriers.' />
+                <TypePara para='The search for purpose leads us through uncertainty, where external pressures often cloud our inner voice. Breaking free from these constraints uncovers raw truths, revealing the core of The Within. It’s a journey toward clarity, where chaos gives way to self-realization.' />
 
-                <div className=' self-start md:mt-10'>
-                    <TypeSmall para='Be a Part of a Conversation That Goes Beyond the Facade.' />
+                <div className=' self-start flex flex-col md:mt-10'>
+                    <TypeSmall para='Be a Part of a Conversation ' />
+                    <TypeSmall para='That Goes Beyond the Facade.' />
                 </div>
             </span>
 
@@ -67,7 +68,7 @@ const About = () => {
             <span className='' style={{ display: 'flex', flexDirection: 'column', rowGap: '50px'}} >
                 <TypeHeading content='Unseen Forces' />
 
-                <TypePara para='Much like the physical world is governed by unseen forces (like gravity or quantum phenomena), the psychological world is influenced by emotions, beliefs, and memories that operate beneath our consciousness. Talks can explore mental health, spirituality, or creativity.' />
+                <TypePara para='Emotions, beliefs, and memories shape our experiences in ways we don’t always see. Like gravity, these unseen forces guide our actions, creativity, and spirituality, leading us closer to The Within—the hidden energy that influences who we are.' />
             </span>
         </div>
 
