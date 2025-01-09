@@ -1,4 +1,4 @@
-// import './VideoSection.css';
+import './VideoSection.css';
 import React, { useEffect, useState, useRef } from "react";
 import Marquee from "react-fast-marquee";
 import ReactParallaxTilt from "react-parallax-tilt";
