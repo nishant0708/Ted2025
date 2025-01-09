@@ -24,7 +24,7 @@ const About = () => {
             start: "top 20%",
             end: "+=1000",
             // scrub: true,
-            markers: true,
+            markers: false,
             pin: '.ABOUT_2025_main',
             pinSpacing: true
         },
