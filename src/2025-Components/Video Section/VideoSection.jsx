@@ -10,7 +10,7 @@ import { useMediaQuery } from "react-responsive";
 gsap.registerPlugin(ScrollTrigger);
 
 const VideoSection = () => {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const videoRef = useRef(null);
   const playerRef = useRef(null);
@@ -39,7 +39,7 @@ const VideoSection = () => {
         playerVars: {
           autoplay: 1,
           controls: 0,
-          mute: 1,
+          mute: 0,
           loop: 1,
           modestbranding: 1,
           playsinline: 1,
@@ -50,6 +50,7 @@ const VideoSection = () => {
         events: {
           onReady: (event) => {
             event.target.playVideo();
+            event.target.unMute();
           }
         }
       });
@@ -125,6 +126,7 @@ const VideoSection = () => {
         setIsVisible(true);
         if (playerRef.current) {
           playerRef.current.playVideo();
+          playerRef.current.unMute();
         }
       },
       onLeave: () => {
