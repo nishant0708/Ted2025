@@ -115,7 +115,7 @@ const VideoSection = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative flex flex-col-reverse py-[80px] lg:flex-row justify-center gap-[50px] lg:gap-[100px] items-center w-screen min-h-screen bg-black z-20"
+      className="videosection relative flex flex-col-reverse py-[80px] lg:flex-row justify-center gap-[50px] lg:gap-[100px] items-center w-screen min-h-screen bg-black z-20"
     >
       <Marquee
         autoFill={true}
@@ -186,6 +186,7 @@ const VideoSection = () => {
           vibe unmatched—relive the magic through our highlights video!
         </p>
       </span>
+      <style></style>
     </div>
   );
 };
