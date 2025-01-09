@@ -140,6 +140,7 @@ const VideoSection = () => {
         setIsVisible(true);
         if (playerRef.current) {
           playerRef.current.playVideo();
+          playerRef.current.unMute();
         }
       },
       onLeaveBack: () => {
