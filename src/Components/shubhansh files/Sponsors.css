@@ -17,6 +17,7 @@
   
 .rfm-marquee-container{
     position: relative !important;
+    rotate: 0deg !important;
   }
   
   
