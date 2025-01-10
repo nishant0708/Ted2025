@@ -564,7 +564,7 @@
                 "humour":90,
                 "anger":40,
                 "fun": 36,
-                "ln":""
+                "ln":"https://www.linkedin.com/in/nishant-kaushal-12b25a267/"
             },{
                 "id": "Web-Dev-Team",
                 "name": "Shubhansh ",
@@ -576,7 +576,7 @@
                 "humour":80,
                 "anger":10,
                 "fun": 46,
-                "ln":""
+                "ln":"https://www.linkedin.com/in/shubhansh-sharma-308062263/"
             },{
                 "id": "Web-Dev-Team",
                 "name": "Kratik",
@@ -588,7 +588,7 @@
                 "humour":60,
                 "anger":50,
                 "fun": 86,
-                "ln":""
+                "ln":"https://www.linkedin.com/in/kratik-mandloi-7632a9287/"
             },{
                 "id": "Web-Dev-Team",
                 "name": "Chandra ",
@@ -600,7 +600,7 @@
                 "humour":70,
                 "anger":10,
                 "fun": 76,
-                "ln":""
+                "ln":"https://www.linkedin.com/in/chandra-kumar-rajwal-31774622a/"
             }
         ],
         "PRODUCTION": [

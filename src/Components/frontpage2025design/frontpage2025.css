@@ -149,10 +149,10 @@
 @media (max-width: 1080px) {
   .text25 {
     font-size:10px;
-    width: 70%; /* Adjust text width */
+    width: 60%; /* Adjust text width */
   }
   .text2{
-    left: -140px;
+    left: -130px;
   }
   .year25 {
     font-size: 18rem; /* Reduce year font size */
@@ -160,7 +160,7 @@
     gap: 0.4rem; /* Adjust gap between numbers */
   }
   .tagline25 {
-    font-size: 20px; /* Adjust tagline size */
+    font-size: 23px; /* Adjust tagline size */
   }
 }
 
@@ -201,7 +201,7 @@
     gap: 0.2rem;
   }
   .tagline25 {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
@@ -225,11 +225,14 @@
     gap: 0.1rem;
   }
   .tagline25 {
-    font-size: 6px; /* Reduce tagline font size */  
+    font-size: 7px; /* Reduce tagline font size */  
   }
   .tagline-container25 {
     top: 50%;
     padding: 0px;
+  }
+  .line-overlay25 {
+    display: none;
   }
 }
 @media (max-width: 320px) {
@@ -237,14 +240,14 @@
     padding: 5px;
     font-size: 6rem; }
   .tagline25 {
-      font-size: 6px; /* Reduce tagline font size */  
+      font-size: 5px; /* Reduce tagline font size */  
     }
     .text25 {
       font-size: 6px;
-      width: 50%; /* Adjust text width */
+      width: 55%; /* Adjust text width */
     }
     .text2{
-      left: -40px;
+      left: -35px;
     }
 }
 
