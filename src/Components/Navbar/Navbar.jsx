@@ -217,7 +217,7 @@ const Navbar = () => {
               color: menu === "teams" ? "#eb0028" : navTextColor,
               transition: "1s ease-out",
             }}
-            to="/teams-2024"
+            to="/teams-2025"
           >
             <span
               onClick={handleReload}
