@@ -34,14 +34,23 @@ const FrontPage2025 = ({ onScaleComplete }) => {
       ScrollTrigger.refresh();
     }, 250);
 
+    // Function to get scroll distance based on screen width
+    const getScrollDistance = () => {
+      return window.innerWidth <= 768 ? 1000 : 2000; // 768px is a common mobile breakpoint
+    };
+
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top",
-        end: "+=2000",
+        end: `+=${getScrollDistance()}`,
         scrub: true,
         pin: true,
         onLeave: debounce(() => onScaleComplete && onScaleComplete(), 250),
+        // Update end value on resize
+        onRefresh: (self) => {
+          self.end = `+=${getScrollDistance()}`;
+        },
       },
     });
 
@@ -124,11 +133,21 @@ const FrontPage2025 = ({ onScaleComplete }) => {
       }, 250),
     });
 
-    window.addEventListener("resize", debouncedRefresh);
+    // Handle resize events
+    const handleResize = () => {
+      debouncedRefresh();
+      ScrollTrigger.getAll().forEach(trigger => {
+        trigger.vars.end = `+=${getScrollDistance()}`;
+        trigger.refresh();
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
 
     ScrollTrigger.refresh();
+    
     return () => {
-      window.removeEventListener("resize", debouncedRefresh);
+      window.removeEventListener("resize", handleResize);
       timeline.kill();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
