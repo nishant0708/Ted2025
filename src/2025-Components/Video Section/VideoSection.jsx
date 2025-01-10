@@ -1,24 +1,87 @@
-import './VideoSection.css';
 import React, { useEffect, useState, useRef } from "react";
 import Marquee from "react-fast-marquee";
 import ReactParallaxTilt from "react-parallax-tilt";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { Volume2, VolumeX } from "lucide-react";
 import { useMediaQuery } from "react-responsive";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-
 const VideoSection = () => {
-  const [isMuted, setIsMuted] = useState(true);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const videoRef = useRef(null);
+  const playerRef = useRef(null);
   const sectionRef = useRef(null);
 
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
+  // Load YouTube IFrame API
   useEffect(() => {
+    const loadYouTubeAPI = () => {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      window.onYouTubeIframeAPIReady = () => {
+        createPlayer();
+      };
+    };
+
+    const createPlayer = () => {
+      if (!videoRef.current) return;
+
+      playerRef.current = new window.YT.Player(videoRef.current, {
+        videoId: 'jZRbOFMqESs',
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          mute: 0,
+          loop: 1,
+          modestbranding: 1,
+          playsinline: 1,
+          rel: 0,
+          showinfo: 0,
+          playlist: 'jZRbOFMqESs'
+        },
+        events: {
+          onReady: (event) => {
+            event.target.playVideo();
+            event.target.unMute();
+          }
+        }
+      });
+    };
+
+    loadYouTubeAPI();
+
+    return () => {
+      if (playerRef.current) {
+        playerRef.current.destroy();
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // GSAP Animations
+    gsap.fromTo(
+      ".highlightsBG",
+      { opacity: 0 },
+      {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".highlightsBG",
+          start: "top center",
+          end: "top top",
+          scrub: true,
+          markers: false,
+        },
+        ease: "sine.out",
+      }
+    );
 
     gsap.fromTo(
       ".highlightsText",
@@ -26,7 +89,7 @@ const VideoSection = () => {
       {
         xPercent: 0,
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: ".highlightsText",
           toggleActions: "play none none reverse",
           start: "top 50%",
           scrub: false,
@@ -44,7 +107,7 @@ const VideoSection = () => {
         opacity: 1,
         xPercent: 0,
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: ".highlightsText",
           toggleActions: "play none none reverse",
           start: "top 50%",
           scrub: false,
@@ -55,159 +118,124 @@ const VideoSection = () => {
       }
     );
 
-    const toggleVideoPlayback = (play) => {
-      console.log('play- ', play)
-        const iframe = videoRef.current.contentWindow;
-        iframe.postMessage(
-          JSON.stringify({
-            event: "command",
-            func: play ? "playVideo" : "pauseVideo",
-          }),
-          "*"
-        );
-    };
-
-    if(!isMobile){
-     
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top 50%", // When 50% of the section is visible
-        end: "bottom 50%",
-        markers: false,
-        onEnter: () => {
-          toggleVideoPlayback(true);
-        },
-        onLeave: () => {
-          toggleVideoPlayback(false);
-        },
-        onEnterBack: () => {
-          toggleVideoPlayback(true);
-        },
-        onLeaveBack: () => {
-          toggleVideoPlayback(false);
-        },
-      }); 
-    }else{
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top 50%", // When 50% of the section is visible
-        end: "bottom 50%",
-        markers: false,
-        onEnter: () => {
-          toggleVideoPlayback(true);
-          // setIsMuted(false);
-          // console.log('entered')
-        },
-        onLeave: () => {
-          toggleVideoPlayback(false);
-          // setIsMuted(true);
-          // console.log('left')
-        },
-        onEnterBack: () => {
-          toggleVideoPlayback(true);
-          // setIsMuted(false);
-          // console.log('enter back')
-        },
-        onLeaveBack: () => {
-          toggleVideoPlayback(false);
-          // console.log('leaveback')
-        },
-      });
-    }
+    const videoTrigger = ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top center",
+      end: "bottom center",
+      onEnter: () => {
+        setIsVisible(true);
+        if (playerRef.current) {
+          playerRef.current.playVideo();
+          playerRef.current.unMute();
+        }
+      },
+      onLeave: () => {
+        setIsVisible(false);
+        setIsMuted(true);
+        if (playerRef.current) {
+          playerRef.current.pauseVideo();
+        }
+      },
+      onEnterBack: () => {
+        setIsVisible(true);
+        if (playerRef.current) {
+          playerRef.current.playVideo();
+          playerRef.current.unMute();
+        }
+      },
+      onLeaveBack: () => {
+        setIsVisible(false);
+        setIsMuted(true);
+        if (playerRef.current) {
+          playerRef.current.pauseVideo();
+        }
+      },
+      markers: false,
+    });
 
     return () => {
-      ScrollTrigger.killAll(); // Cleanup when component unmounts
+      videoTrigger.kill();
     };
-
   }, []);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.src = `https://www.youtube.com/embed/jZRbOFMqESs?autoplay=1&loop=1&playlist=jZRbOFMqESs&controls=0&modestbranding=1&mute=${isMuted ? 1 : 0}&showinfo=0&rel=0&enablejsapi=1`;
+    if (playerRef.current) {
+      if (isMuted) {
+        playerRef.current.mute();
+      } else {
+        playerRef.current.unMute();
+      }
     }
   }, [isMuted]);
 
   const toggleMute = () => {
-      setIsMuted(!isMuted);
+    if (isVisible) {
+      setIsMuted((prev) => !prev);
+    }
   };
 
   return (
     <div
       ref={sectionRef}
-      className=" videoSectionContainer relative flex flex-col-reverse py-[80px] lg:flex-row justify-center gap-[50px] lg:gap-[100px] items-center w-screen min-h-screen bg-black z-20"
+      className="videosection relative flex flex-col-reverse py-[80px] lg:flex-row justify-center gap-[50px] lg:gap-[100px] items-center w-screen min-h-screen bg-black z-20"
     >
       <Marquee
         autoFill={true}
-        className="blur-[7px] min-w-[150vw] rotate-12 text-[200px] font-black absolute bg-gradient-to-b from-purple-500 to-pink-500"
+        className="blur-[7px] min-w-[120vw] rotate-12 text-[200px] font-black absolute bg-gradient-to-b from-purple-500 to-pink-500"
       >
         <p className="mr-20">HIGHLIGHTS</p>
       </Marquee>
 
-
-    <div className=' w-[95vw] absolute left-[50vw] ml-[-48vw] gap-8 lg:gap-20 flex flex-col-reverse items-center lg:flex-row  justify-center'>
       {isMobile ? (
-          <div className="withoutSound relative">
-            <iframe
-              ref={videoRef}
-              className="border-y-0 border-x-[3px] border-x-red-950 relative z-30 rounded-md md:rounded-3xl"
-              width="330"
-              height="590"
-              title="YouTube Shorts Video"
-              frameBorder="0"
-              allow="autoplay"
-              allowFullScreen
-            />
-            <button
-              onClick={toggleMute}
-              className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white ${
-                !isVisible ? `opacity-50` : `opacity-100`
-              }`}
-              aria-label={isMuted ? "Unmute video" : "Mute video"}
-              disabled={!isVisible}
-            >
-              {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
-            </button>
-          </div>
-        ) : (
-          <ReactParallaxTilt className="withoutSound relative">
-            <iframe
-              ref={videoRef}
-              className="border-y-0 border-x-[3px] border-x-red-950 relative z-30 rounded-md md:rounded-3xl"
-              width="330"
-              height="590"
-              title="YouTube Shorts Video"
-              frameBorder="0"
-              allow="autoplay"
-              allowFullScreen
-            />
-            <button
-              onClick={toggleMute}
-              className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white ${
-                !isVisible ? `opacity-50` : `opacity-100`
-              }`}
-              aria-label={isMuted ? "Unmute video" : "Mute video"}
-              disabled={!isVisible}
-            >
-              {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
-            </button>
-          </ReactParallaxTilt>
-        )}
+        <div className="withoutSound relative">
+          <div
+            ref={videoRef}
+            className="border-y-0 border-x-[3px] border-x-red-950 relative z-30 rounded-md md:rounded-3xl"
+            style={{ width: "330px", height: "590px" }}
+          />
+          <button
+            onClick={toggleMute}
+            className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white 
+              ${!isVisible ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
+            disabled={!isVisible}
+          >
+            {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
+          </button>
+        </div>
+      ) : (
+        <ReactParallaxTilt className="withoutSound relative">
+          <div
+            ref={videoRef}
+            className="border-y-0 border-x-[3px] border-x-red-950 relative z-30 rounded-md md:rounded-3xl"
+            style={{ width: "330px", height: "590px" }}
+          />
+          <button
+            onClick={toggleMute}
+            className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white ${
+              !isVisible ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
+            disabled={!isVisible}
+          >
+            {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
+          </button>
+        </ReactParallaxTilt>
+      )}
 
-        <span
-          className="uppercase text-left text-white font-thin overflow-x-hidden"
-          style={{ display: "flex", flexDirection: "column", rowGap: "50px" }}
-        >
-          <h2 className="highlightsText uppercase w-min overflow-clip leading-[55px] lg:leading-[80px] z-40 text-left font-black text-[60px] lg:text-[80px] max-w-[90vw] text-white">
-            Reliving the magic
-          </h2>
-          <p className="highlightsText text-justify hidden md:block leading-8 max-w-[485px]">
-            Last year's event was nothing short of extraordinary—a perfect blend
-            of creativity, passion, and inspiration! Thrilling talks by our
-            incredible speakers sparked ideas and the energy was contagious, the
-            vibe unmatched—relive the magic through our highlights video!
-          </p>
-        </span>
-    </div>
+      <span
+        className="uppercase text-left text-white font-thin overflow-x-hidden"
+        style={{ display: "flex", flexDirection: "column", rowGap: "50px" }}
+      >
+        <h2 className="highlightsText uppercase w-min overflow-clip leading-[55px] lg:leading-[80px] z-40 text-left font-black text-[60px] lg:text-[80px] max-w-[90vw] text-white">
+          Reliving the magic
+        </h2>
+        <p className="highlightsText text-justify hidden md:block leading-8 max-w-[485px]">
+          Last year's event was nothing short of extraordinary—a perfect blend
+          of creativity, passion, and inspiration! Thrilling talks by our
+          incredible speakers sparked ideas and the energy was contagious, the
+          vibe unmatched—relive the magic through our highlights video!
+        </p>
+      </span>
     </div>
   );
 };
