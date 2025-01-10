@@ -39,11 +39,11 @@
   position: absolute;
   top: 10%;
   left: 5%;
-  width: 100%;
+  width: 105%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4rem;
-  padding: 0 40px;
+  gap: 3rem;
+  padding: 5px 40px;
   z-index: 3;
 }
 
