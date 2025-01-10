@@ -68,6 +68,7 @@ function App() {
               <Route path='/sponsors' element={<Subh />} />
               <Route path='/teams-2024' element={<TeamSection />} />
               <Route path='/teams-2023' element={<TeamSection />} />
+              <Route path='/teams-2025' element={<TeamSection />} />
             </Routes>
             </Layout>
             <Footer />

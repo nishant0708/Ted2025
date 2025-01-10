@@ -32,7 +32,7 @@ const SideMarquee2 = () => {
             y: '450dvh',
             rotate: -90,
             x: -205,
-            duration: 20,
+            duration: 26,
             repeat: -1,
             ease: 'none'
         });

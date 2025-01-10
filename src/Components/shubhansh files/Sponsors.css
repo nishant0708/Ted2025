@@ -13,4 +13,11 @@
     position: relative;
     margin: auto;
   }
+
+  
+.rfm-marquee-container{
+    position: relative !important;
+    rotate: 0deg !important;
+  }
+  
   

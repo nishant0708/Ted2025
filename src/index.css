@@ -1,3 +1,5 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,9 +29,6 @@
   position: absolute !important;
   rotate: 12deg !important;
 }
-
-
-
 
 
 

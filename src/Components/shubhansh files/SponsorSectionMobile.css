@@ -3,6 +3,13 @@
     src: url('../../2025-Components/Fonts/Protomolecule-Regular.ttf') format('truetype');
   }
 
+  
+.rfm-marquee-container{
+    position: relative !important;
+    rotate: 0deg !important;
+  }
+  
+
 .sponsor-wrapper-Mobile{
     font-family: 'Protomolecule-regular', sans-serif;
     background: #000000;

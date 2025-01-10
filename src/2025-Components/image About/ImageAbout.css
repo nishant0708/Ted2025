@@ -36,6 +36,12 @@
     border-radius: 0 0 20px 20px;
 }
 
+@media screen and (max-width: 1080px){
+    .ImageAbout_2025_main{
+        width: 300px;
+        height: min-content;
+    }
+}
 
 @media screen and (max-width: 480px){
     .ImageAbout_2025_main{

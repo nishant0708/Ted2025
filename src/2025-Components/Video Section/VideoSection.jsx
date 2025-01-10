@@ -195,9 +195,8 @@ const VideoSection = () => {
           />
           <button
             onClick={toggleMute}
-            className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white ${
-              !isVisible ? `opacity-50 cursor-not-allowed` : `opacity-100`
-            }`}
+            className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white 
+              ${!isVisible ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}
             aria-label={isMuted ? "Unmute video" : "Mute video"}
             disabled={!isVisible}
           >
@@ -214,8 +213,7 @@ const VideoSection = () => {
           <button
             onClick={toggleMute}
             className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white ${
-              !isVisible ? `opacity-50 cursor-not-allowed` : `opacity-100`
-            }`}
+              !isVisible ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}
             aria-label={isMuted ? "Unmute video" : "Mute video"}
             disabled={!isVisible}
           >

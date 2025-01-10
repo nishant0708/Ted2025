@@ -4,16 +4,17 @@
 }
 .ABOUT_2025_main{
     width: screen;
-    min-height: 100vh;
+    padding-top: 40vh;
+    min-height: 300vh;
     background-color: black;
     z-index: 10;
     position: relative;
     display: flex;
     flex-direction: column;
     row-gap: 80px;
-    padding: 60px 100px;
-    /* background: url('../../Images/stars1.jpg')  top center; 
-    background-size: 100%; */
+    padding-right: 100px;
+    padding-left: 100px;
+    
     text-transform: uppercase;
 }
 
@@ -36,7 +37,7 @@
     flex-direction: row;
     justify-content: space-around;
     gap: 100px;
-    min-height: 100vh;
+    height: 100vh;
     
 }
 
@@ -45,31 +46,96 @@
     display:  flex;
     flex-direction: row;
     justify-content: space-around;
-    min-height: 100vh;   
+    height: 100vh;   
 }
 
-/* .about_2025_stars {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100vw;
-    height: 100vh;
-    z-index: 0; 
-    animation: ease star-blink  2s infinite alternate;
-    background: url('../../Images/stars1.jpg') no-repeat center center; 
-    opacity: 0.25;
-    background-size: cover; 
-} */
 
 
-/* Responsive  */
+@media screen and (max-width: 1080px) {
+    .ABOUT_2025_main{
+        background: url('../../Images/stars1.jpg')  top center; 
+        background-size: 100%;
+        
+        /* padding: 60px 10px; */
+        text-transform: uppercase;
+        align-items: center;
+    }
+
+    .about_section_1, .about_section_3 {
+        width: 100vw;
+        display:  flex;
+        justify-content: center;
+        gap: 80px;
+        height: 100vh;
+        align-items: center;
+        z-index: 5; 
+        padding: 0 20px;
+        margin-bottom: -120px;
+    }
+    
+    .about_section_2{
+        width: 100vh;
+        display:  flex;
+        justify-content: center;
+        height: 100vh;   
+        padding: 0 20px;
+        align-items: center;
+        margin-bottom: -120px;
+        z-index: 5; 
+        gap: 80px;
+    }
+    
+    
+}
+
+
+@media screen and (max-width: 800px) {
+    .ABOUT_2025_main{
+        background: url('../../Images/stars1.jpg')  top center; 
+        background-size: 100%;
+        
+        /* padding: 60px 10px; */
+        text-transform: uppercase;
+        align-items: center;
+    }
+
+    .about_section_1, .about_section_3 {
+        width: 100vw;
+        display:  flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        gap: 80px;
+        height: 100vh;
+        align-items: center;
+        z-index: 5; 
+        padding: 0 20px;
+        margin-bottom: -120px;
+    }
+    
+    .about_section_2{
+        width: 100vh;
+        display:  flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;   
+        padding: 0 20px;
+        align-items: center;
+        margin-bottom: -120px;
+        z-index: 5; 
+        gap: 80px;
+    }
+    
+    
+}
+
 
 @media screen and (max-width: 480px) {
     .ABOUT_2025_main{
         width: 100vw;
-        min-height: 100vh;
+        min-height: 300vh;
         background-color: black;
         z-index: 1;
+        padding-top: 40vh;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -87,7 +153,7 @@
         flex-direction: column-reverse;
         justify-content: space-between;
         gap: 80px;
-        min-height: 100vh;
+        height: 100vh;
         align-items: center;
         z-index: 5; 
         padding: 0 20px;
@@ -99,7 +165,7 @@
         display:  flex;
         flex-direction: column;
         justify-content: space-between;
-        min-height: 100vh;   
+        height: 100vh;   
         padding: 0 20px;
         align-items: center;
         margin-bottom: -120px;
@@ -107,17 +173,5 @@
         gap: 80px;
     }
     
-    /* .about_2025_stars {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: auto;
-        height: 100vh;
-        z-index: -10; 
-        animation: ease star-blink  2s infinite alternate;
-        background: url('../../Images/stars1.jpg') no-repeat center center; 
-        opacity: 0.25;
-        background-size: cover; 
-    } */
     
 }

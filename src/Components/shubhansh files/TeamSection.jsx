@@ -12,33 +12,25 @@ import { useNavigate } from 'react-router-dom';
 export default function TeamSection(){    
 
     
-   
 
-    
-    //fetching data
-    // let data_core = teamData[2024]['Core Team'];
-    // let data_web = teamData[2024]['Web-Dev Team'];
-    // console.log(data_core);
-    // Object.keys(teamData).forEach(element => {
-    //     Object.keys(element).forEach(e =>{
-    //         console.log(element);
-    //         console.log(e);
-    //     })
-    // });
-
-    const [year, setYear] = useState(2024);
+    const [year, setYear] = useState(2025);
     const [len, setLen] = useState(null);
     const navigate = useNavigate();
 
     function yearHandler(val){
-        setYear(val);
+        console.log('setting year-- ' ,val)
+        setYear(val.target.valur);
 
         scrollToTop();
 
         setTimeout(() => {
-            year === 2024 ? navigate('/teams-2023'): navigate('/teams-2024');
+            navigate(`/teams-${year}`);
         }, 800);
     }
+
+    useEffect(() => {
+        navigate(`/teams-${year}`)
+    },[year])
     
     // Current page
     const pathname = window.location.pathname;
@@ -114,7 +106,7 @@ export default function TeamSection(){
 
  
     return(
-        <div className="teams-section">\
+        <div className="teams-section">
 
             <div className='teams-section-bg'></div>
             
@@ -123,8 +115,10 @@ export default function TeamSection(){
 
             <div className='dropdown-wrapper' >
 
-                <select className='dropdown'  onChange={yearHandler}>
+                <select className='dropdown' value={year}  onChange={e => setYear(e.target.value)}>
                     
+                    <option value="2025" >2025</option>
+
                     <option value="2024" >2024</option>
 
                     <option value="2023" >2023</option>
@@ -135,22 +129,11 @@ export default function TeamSection(){
             <div>
                 {
                     
-                    pathname == '/teams-2024'
-                    ?
-                    Object.keys(teamData[2024]).map(team =>{
+                    Object.keys(teamData[year]).map(team =>{
                         //console.log(teamData[2023][team].length);
                         return(
                             <div key={team}>
-                                <Teams team_2024={teamData[2024][team]} nm={team}/>
-                            </div>
-                        )
-                    })
-                    :
-                    Object.keys(teamData[2023]).map(team =>{
-                        //console.log(teamData[2024][team]);
-                        return(
-                            <div key={team}>
-                                <Teams team_2024={teamData[2023][team]} nm={team}/>
+                                <Teams team_2024={teamData[year][team]} nm={team}/>
                             </div>
                         )
                     })
