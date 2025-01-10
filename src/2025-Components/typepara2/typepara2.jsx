@@ -51,7 +51,7 @@ const TypePara2 = (props) => {
                 <TypeAnimation
                     sequence={[props.para]}
                     wrapper="span"
-                    speed={10}
+                    speed={80}
                     style={{ whiteSpace: 'pre-line', display: 'inline-block', textAlign: 'justify' }}
                     repeat={0}
                     cursor={false}
