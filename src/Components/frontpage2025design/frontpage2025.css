@@ -6,12 +6,11 @@
 .main-container25 {
   position: relative !important;
   z-index: 3;
- background-color: black;
-  min-height: 100vh; /* Extend height for scroll animation */
-  
-
+  background-color: black;
+  min-height: 100vh;
 }
-.main-container25 .landing_2025_stars{
+
+.main-container25 .landing_2025_stars {
   position: absolute;
   top: 0;
   left: 0;
@@ -20,18 +19,17 @@
   background: url('../../Images/stars1.jpg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
-  opacity: 0.20  !important; /* Opacity for the background image */
-  z-index: 3; /* Place it behind the content */
+  opacity: 0.20 !important;
+  z-index: 3;
 }
+
 .frontpage-container25 {
   font-family: 'Protomolecule-regular', sans-serif;
   position: relative;
   inset: 0px auto auto 0px !important;
   z-index: 2;
-  inset:0px auto auto 0px !important;
-
   width: 100%;
-  height: 100vh; /* Occupy full viewport height */
+  height: 100vh;
   overflow: hidden;
   transform: scale(1);
   opacity: 1;
@@ -39,66 +37,44 @@
 
 .columns-container25 {
   position: absolute;
-  top: 5%; /* Position text above the year */
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  gap: 5%;
-  padding: 40px;
+  top: 10%;
+  left: 5%;
+  width: 105%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  padding: 5px 40px;
+  z-index: 3;
 }
-
-.combined-column25 {
-  display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center-align text */
-  gap: 1rem; /* Add spacing between lines */
-}
-
 
 .column25 {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+}
+
+.combined-column25 {
+  display: inline-grid;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center-align text */
+  gap: 2rem; /* Add spacing between lines */
 }
 
 .text25 {
-  z-index: 3;
   font-size: 15px;
   color: #ccc;
-  width: 50%;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  position: relative;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  text-underline-offset: 5px;
+  max-width: 200px;
+  opacity: 1;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  text-align: justify;
   transition: text-decoration-color 1s ease-in-out;
-
-}
-.text2{
-  position: relative;
-  left: -160px;
-}
-.text25:hover {
-  text-decoration-color: #ffffff;
-}
-
-.text25::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
- 
-  height: 2px;
-  background-color: #fff;
-  transition: width 1s ease;
 }
 
 .year-container25 {
   position: absolute;
-  top: 50%; /* Position below text */
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: black;
@@ -108,86 +84,60 @@
 .year25 {
   font-size: 20rem;
   color: #fff;
-  letter-spacing: 1.5rem; /* Reduce spacing between digits */
-  opacity: 0; /* Hidden initially */
-  transform: scale(0.5); /* Start slightly zoomed out */
+  letter-spacing: 1.5rem;
+  opacity: 0;
+  transform: scale(0.5);
   transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
   display: flex;
   justify-content: center;
-  gap: 0.5rem; /* Smaller gap between numbers */
+  gap: 0.5rem;
+}
+.text2{
+  position: relative;
+  left: -160px;
 }
 
 .zero {
-  opacity: 1; /* Initially visible */
-  transition: opacity 1s ease-out; /* Smooth fade-out */
+  opacity: 1;
+  transition: opacity 1s ease-out;
 }
 
 .tagline-container25 {
   display: flex;
-  justify-content: center; /* Horizontally center the tagline */
-  align-items: center; /* Vertically center the tagline */
+  justify-content: center;
+  align-items: center;
   position: relative;
-  top: 50%; /* Adjust the position */
-  transform: translateY(-50%); /* Center vertically */
+  top: 50%;
+  transform: translateY(-50%);
   width: 100%;
   z-index: 3;
 }
 
 .tagline25 {
-  font-size: 1rem; /* Adjust as needed */
-  font-weight: 200;
+  position: relative;
+  font-size: 26px;
+  padding: 5px 15px;
+  background-color: black;
   color: white;
-  text-align: center;
-  opacity: 1; /* Ensure visibility */
-  transform: none; /* Remove animation-related transforms */
+  z-index: 3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .line-overlay25 {
   position: absolute;
- top:50%;
+  top: 50%;
   left: 0;
   right: 0;
-  height: 2px; /* Line thickness */
-  background: white; /* Line color */
+  height: 2px;
+  background: white;
   z-index: 1;
   transform: translateY(-50%);
 }
 
-.tagline25 {
- position: relative;
-  font-size: 30px; /* Adjust as needed */
-  padding:5px;
-  background-color: black;
-  color: white;
-  mask-position: 0 0;
-  z-index: 3;
-}
-
-.text25 {
-  opacity: 1; /* Ensure text is visible */
-  visibility: visible; /* Prevent it from being hidden */
-}
-
-
-
-@keyframes marqueeAnimation {
-  0% {
-    mask-position: 100% 0;
-    -webkit-mask-position: 100% 0;
-  }
-  100% {
-    mask-position: -100% 0;
-    -webkit-mask-position: -100% 0;
-  }
-}
-
 @keyframes blink25 {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 .blinking25 {
@@ -199,10 +149,10 @@
 @media (max-width: 1080px) {
   .text25 {
     font-size:10px;
-    width: 70%; /* Adjust text width */
+    width: 60%; /* Adjust text width */
   }
   .text2{
-    left: -140px;
+    left: -130px;
   }
   .year25 {
     font-size: 18rem; /* Reduce year font size */
@@ -210,7 +160,7 @@
     gap: 0.4rem; /* Adjust gap between numbers */
   }
   .tagline25 {
-    font-size: 20px; /* Adjust tagline size */
+    font-size: 23px; /* Adjust tagline size */
   }
 }
 
@@ -226,7 +176,7 @@
     gap: 0.3rem;
   }
   .tagline25 {
-    font-size: 20px;
+    font-size: 18px;
    
   }
 }
@@ -246,12 +196,12 @@
     left: -100px;
   }
   .year25 {
-    font-size: 14rem; /* Adjust year font size */
+    font-size: 13rem; /* Adjust year font size */
     letter-spacing: 0.6rem;
     gap: 0.2rem;
   }
   .tagline25 {
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 
@@ -262,7 +212,7 @@
     top: 10%;
   }
   .text25 {
-    font-size: 8px;
+    font-size: 6px;
     width: 50%; /* Adjust text width */
   }
   .text2{
@@ -275,11 +225,14 @@
     gap: 0.1rem;
   }
   .tagline25 {
-    font-size: 9px; /* Reduce tagline font size */  
+    font-size: 6px; /* Reduce tagline font size */  
   }
   .tagline-container25 {
     top: 50%;
     padding: 0px;
+  }
+  .line-overlay25 {
+    display: none;
   }
 }
 @media (max-width: 320px) {
@@ -287,14 +240,14 @@
     padding: 5px;
     font-size: 6rem; }
   .tagline25 {
-      font-size: 8px; /* Reduce tagline font size */  
+      font-size: 5px; /* Reduce tagline font size */  
     }
     .text25 {
       font-size: 6px;
-      width: 50%; /* Adjust text width */
+      width: 55%; /* Adjust text width */
     }
     .text2{
-      left: -40px;
+      left: -35px;
     }
 }
 
