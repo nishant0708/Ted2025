@@ -11,13 +11,39 @@ import './About.css';
 import React, { useEffect, useRef } from 'react'
 import TypeSmall from '../Typing Small/TypingSmall';
 import SideMarquee from '../Side Marquee/SideMarquee';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const About = () => {
-    const aboutTextContainerRef = useRef(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.about_section_1',
+            start: "top 20%",
+            end: "+=1000",
+            // scrub: true,
+            markers: false,
+            pin: '.ABOUT_2025_main',
+            pinSpacing: true
+        },
+        });
+        
+
+        
+
+       
+        return () => { 
+    
+            ScrollTrigger.killAll(); // Cleanup when component unmounts
+        };
+
+    },[])
 
     
   return (
-    <div className='ABOUT_2025_main overflow-y-clip'>
+    <div className='ABOUT_2025_main overflow-y-clip bg-black'>
 
         <SideMarquee isRight={false}/>
 
@@ -28,7 +54,7 @@ const About = () => {
 
             <ImageAbout img={image4} />
 
-            <span ref={aboutTextContainerRef} className=' flex flex-col gap-[50px] w-[90dvw] lg:w-auto' >
+            <span className=' flex flex-col gap-[50px] max-w-[500px]' >
                 <TypeHeading content='Interconnectedness' />
 
                 <TypePara para='Our identities are shaped by the reflections we see in others. Relationships and communities help reveal the chaos, the unspoken, and the unexplored within, guiding us toward deeper understanding and bringing us closer to the essence of the within.' />
@@ -44,7 +70,7 @@ const About = () => {
 
             {/* <div className='about_2025_stars'></div> */}
 
-            <span className='' style={{ display: 'flex', flexDirection: 'column', rowGap: '50px'}} >
+            <span className=' max-w-[500px]' style={{ display: 'flex', flexDirection: 'column', rowGap: '50px'}} >
                 <TypeHeading content='Self - discovery' />
 
                 <TypePara para='The search for purpose leads us through uncertainty, where external pressures often cloud our inner voice. Breaking free from these constraints uncovers raw truths, revealing the core of The Within. It’s a journey toward clarity, where chaos gives way to self-realization.' />
@@ -65,7 +91,7 @@ const About = () => {
 
             <ImageAbout img={image3} />
 
-            <span className='' style={{ display: 'flex', flexDirection: 'column', rowGap: '50px'}} >
+            <span className=' max-w-[500px]' style={{ display: 'flex', flexDirection: 'column', rowGap: '50px'}} >
                 <TypeHeading content='Unseen Forces' />
 
                 <TypePara para='Emotions, beliefs, and memories shape our experiences in ways we don’t always see. Like gravity, these unseen forces guide our actions, creativity, and spirituality, leading us closer to The Within—the hidden energy that influences who we are.' />

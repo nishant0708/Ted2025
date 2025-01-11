@@ -1,6 +1,6 @@
 {
-    "2025":{
-        "Web-Dev Team": [
+    "2023":{
+        "DEVELOPERS": [
             {
                 "id": "Web-Dev-Team",
                 "name": "Rachita ",
@@ -13,7 +13,43 @@
                 "anger":50,
                 "fun": 46,
                 "ln":""
-            }
+            },{
+                "id": "Web-Dev-Team",
+                "name": "Nishant ",
+                "info": "TEDxDAVV ",
+                "image": "https://imgur.com/iWm1s4H.jpeg",
+                "ig": "https://www.instagram.com/nishant0760/",
+                "cuteness":35,
+                "IQ":80,
+                "humour":90,
+                "anger":40,
+                "fun": 36,
+                "ln":""
+            },{
+                "id": "Web-Dev-Team",
+                "name": "Samarth ",
+                "info": "TEDxDAVV ",
+                "image": "https://imgur.com/XVAuQVJ.jpeg",
+                "ig": "https://www.instagram.com/samarth__sv/",
+                "cuteness":85,
+                "IQ":40,
+                "humour":70,
+                "anger":10,
+                "fun": 76,
+                "ln":""
+            },{
+                "id": "Web-Dev-Team",
+                "name": "Shubhansh ",
+                "info": "TEDxDAVV ",
+                "image": "https://imgur.com/nsewDyz.jpeg",
+                "ig": "https://www.instagram.com/shubhansh364/",
+                "cuteness":25,
+                "IQ":70,
+                "humour":80,
+                "anger":10,
+                "fun": 46,
+                "ln":""
+            } 
         ],"Organisers": [
             {
                 "id": "organisers",
@@ -66,9 +102,9 @@
             }
         ]
 	},
-    "2023":{
+    "2024":{
 	
-        "Web-Dev Team": [
+        "DEVELOPERS": [
             {
                 "id": "Web-Dev-Team",
                 "name": "Rachita ",
@@ -550,7 +586,7 @@
             }
         ]
 	},
-    "2024":{
+    "2025":{
        
         "DEVELOPERS": [
             {
@@ -559,19 +595,19 @@
                 "info": "TEDxDAVV ",
                 "image": "https://imgur.com/iWm1s4H.jpeg",
                 "ig": "https://www.instagram.com/nishant0760/",
-                "cuteness":35,
+                "cuteness":75,
                 "IQ":80,
                 "humour":90,
-                "anger":40,
+                "anger":80,
                 "fun": 36,
                 "ln":"https://www.linkedin.com/in/nishant-kaushal-12b25a267/"
             },{
                 "id": "Web-Dev-Team",
                 "name": "Shubhansh ",
                 "info": "TEDxDAVV ",
-                "image": "https://imgur.com/nsewDyz.jpeg",
+                "image": "https://imgur.com/7W0VxIL.jpeg",
                 "ig": "https://www.instagram.com/shubhansh364/",
-                "cuteness":25,
+                "cuteness":75,
                 "IQ":70,
                 "humour":80,
                 "anger":10,
@@ -596,8 +632,8 @@
                 "image": "https://imgur.com/QmUHjCi.jpeg",
                 "ig": "https://www.instagram.com/c.k.rajwal/",
                 "cuteness":85,
-                "IQ":40,
-                "humour":70,
+                "IQ":80,
+                "humour":30,
                 "anger":10,
                 "fun": 76,
                 "ln":"https://www.linkedin.com/in/chandra-kumar-rajwal-31774622a/"
@@ -662,7 +698,7 @@
                 "image": "https://imgur.com/uTXzXbd.jpeg",
                 "ig": "https://www.instagram.com/priyanshiishuklaa/profilecard/?igsh=OWZua2czZzR6aGV4",
                 "cuteness":95,
-                "IQ":90,
+                "IQ":10,
                 "humour":85,
                 "anger":85,
                 "fun": 96,
@@ -743,7 +779,32 @@
         ],
 
         "MARKETING-II": [
-           {
+            {
+                "id": "organisers",
+                "name": "Kratika",
+                "info": "TEDxDAVV",
+                "image": "https://imgur.com/7ferBXE.jpeg",
+                "ig": "https://www.instagram.com/kratika3mj/profilecard/?igsh=MW8yNmttOWxtOW94ZA==",
+                "cuteness":33.3333,
+                "IQ":93.75,
+                "humour":5,
+                "anger":43.56,
+                "fun": 96,
+                "ln":""
+            },
+            {
+                "id": "organisers",
+                "name": "Hariom",
+                "info": "TEDxDAVV",
+                "image": "https://imgur.com/4WoW6Uq.jpeg",
+                "ig": "https://www.instagram.com/shahariom_/profilecard/?igsh=MXhybG1qaHBhcmJ1Nw==",
+                "cuteness":80,
+                "IQ":80,
+                "humour":20,
+                "anger":30,
+                "fun": 46,
+                "ln":"https://www.linkedin.com/in/hariom-shah-7974546716hs?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+            },{
                 "id": "organisers",
                 "name": "Jayansh ",
                 "info": "TEDxDAVV",
@@ -856,7 +917,7 @@
                 "ln":"https://www.linkedin.com/in/anuva-bhagtya-1239682a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             },{
                 "id": "organisers",
-                "name": "Chitranshi",
+                "name": "Ruqaiya",
                 "info": "TEDxDAVV",
                 "image": "https://imgur.com/3OlwRpS.jpeg",
                 "ig": "https://www.instagram.com/imchitranshee/profilecard/?igsh=d3Rpbzh0NnBpcWk1",
@@ -868,7 +929,7 @@
                 "ln":"https://www.linkedin.com/in/chitranshi-pushpad-a423a5269?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             },{
                 "id": "organisers",
-                "name": "Samyak",
+                "name": "Chitranshi",
                 "info": "TEDxDAVV",
                 "image": "https://imgur.com/AizBz1o.jpeg",
                 "ig": "https://www.instagram.com/_samyakk.j?igsh=MnB1eTcyZGhweDNn",
@@ -880,7 +941,7 @@
                 "ln":"https://www.linkedin.com/in/samyak-jain-211a50295?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             },{
                 "id": "organisers",
-                "name": "Zoha",
+                "name": "Samyak",
                 "info": "TEDxDAVV",
                 "image": "https://imgur.com/s61FRQC.jpeg",
                 "ig": "https://www.instagram.com/zohaaaaa01?igsh=Mm1lYWpzYTQ5dGU2",
@@ -892,7 +953,7 @@
                 "ln":"https://www.linkedin.com/in/zoha-fatima-91994b2b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             },{
                 "id": "organisers",
-                "name": "Mahima",
+                "name": "Zoha",
                 "info": "TEDxDAVV",
                 "image": "https://imgur.com/qYbOysl.jpeg",
                 "ig": "https://www.instagram.com/mahimasisodiaa/profilecard/?igsh=MXZpd25rMDgzNDBuYQ==",
@@ -904,7 +965,7 @@
                 "ln":"https://www.linkedin.com/in/mahima-sisodiya-1a5a512b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
             },{
                 "id": "organisers",
-                "name": "Ruqaiya",
+                "name": "Mahima",
                 "info": "TEDxDAVV",
                 "image": "https://imgur.com/xdRWXnD.jpeg",
                 "ig": "https://www.instagram.com/ruqx_saifee?igsh=MWJwY3lmcnZvM24xOQ==",

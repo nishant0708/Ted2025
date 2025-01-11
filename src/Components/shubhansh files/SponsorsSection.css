@@ -7,6 +7,12 @@
     overflow: hidden;
 }
 
+.rfm-marquee-container{
+    position: relative !important;
+    rotate: 0deg !important;
+  }
+  
+
 .sponsor-heading{
     font-size: 200px;
     color: #eb0028;

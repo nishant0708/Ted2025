@@ -2,16 +2,68 @@ import React, { useEffect, useState, useRef } from "react";
 import Marquee from "react-fast-marquee";
 import ReactParallaxTilt from "react-parallax-tilt";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { Volume2, VolumeX } from "lucide-react";
 import { useMediaQuery } from "react-responsive";
 
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
 const VideoSection = () => {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const videoRef = useRef(null);
+  const playerRef = useRef(null);
   const sectionRef = useRef(null);
 
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
+  // Load YouTube IFrame API
+  useEffect(() => {
+    const loadYouTubeAPI = () => {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      window.onYouTubeIframeAPIReady = () => {
+        createPlayer();
+      };
+    };
+
+    const createPlayer = () => {
+      if (!videoRef.current) return;
+
+      playerRef.current = new window.YT.Player(videoRef.current, {
+        videoId: 'jZRbOFMqESs',
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          mute: 0,
+          loop: 1,
+          modestbranding: 1,
+          playsinline: 1,
+          rel: 0,
+          showinfo: 0,
+          playlist: 'jZRbOFMqESs'
+        },
+        events: {
+          onReady: (event) => {
+            event.target.playVideo();
+            event.target.unMute();
+          }
+        }
+      });
+    };
+
+    loadYouTubeAPI();
+
+    return () => {
+      if (playerRef.current) {
+        playerRef.current.destroy();
+      }
+    };
+  }, []);
 
   useEffect(() => {
     // GSAP Animations
@@ -66,43 +118,53 @@ const VideoSection = () => {
       }
     );
 
-    // Intersection Observer for Video Visibility
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const isComponentVisible = entry.isIntersecting;
-          setIsVisible(isComponentVisible);
-          setIsMuted(!isComponentVisible);
-
-          if (videoRef.current) {
-            const iframe = videoRef.current.contentWindow;
-            iframe.postMessage(
-              JSON.stringify({
-                event: "command",
-                func: isComponentVisible ? "playVideo" : "pauseVideo",
-              }),
-              "*"
-            );
-          }
-        });
+    const videoTrigger = ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top center",
+      end: "bottom center",
+      onEnter: () => {
+        setIsVisible(true);
+        if (playerRef.current) {
+          playerRef.current.playVideo();
+          playerRef.current.unMute();
+        }
       },
-      { threshold: 0.5 } // Trigger when 50% of the component is visible
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+      onLeave: () => {
+        setIsVisible(false);
+        setIsMuted(true);
+        if (playerRef.current) {
+          playerRef.current.pauseVideo();
+        }
+      },
+      onEnterBack: () => {
+        setIsVisible(true);
+        if (playerRef.current) {
+          playerRef.current.playVideo();
+          playerRef.current.unMute();
+        }
+      },
+      onLeaveBack: () => {
+        setIsVisible(false);
+        setIsMuted(true);
+        if (playerRef.current) {
+          playerRef.current.pauseVideo();
+        }
+      },
+      markers: false,
+    });
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+      videoTrigger.kill();
     };
   }, []);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.src = `https://www.youtube.com/embed/jZRbOFMqESs?autoplay=1&loop=1&playlist=jZRbOFMqESs&controls=0&modestbranding=1&mute=${isMuted ? 1 : 0}&showinfo=0&rel=0&enablejsapi=1`;
+    if (playerRef.current) {
+      if (isMuted) {
+        playerRef.current.mute();
+      } else {
+        playerRef.current.unMute();
+      }
     }
   }, [isMuted]);
 
@@ -115,7 +177,7 @@ const VideoSection = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative flex flex-col-reverse py-[80px] lg:flex-row justify-center gap-[50px] lg:gap-[100px] items-center w-screen min-h-screen bg-black z-20"
+      className="videosection relative flex flex-col-reverse py-[80px] lg:flex-row justify-center gap-[50px] lg:gap-[100px] items-center w-screen min-h-screen bg-black z-20"
     >
       <Marquee
         autoFill={true}
@@ -126,21 +188,15 @@ const VideoSection = () => {
 
       {isMobile ? (
         <div className="withoutSound relative">
-          <iframe
+          <div
             ref={videoRef}
             className="border-y-0 border-x-[3px] border-x-red-950 relative z-30 rounded-md md:rounded-3xl"
-            width="330"
-            height="590"
-            title="YouTube Shorts Video"
-            frameBorder="0"
-            allow="autoplay"
-            allowFullScreen
+            style={{ width: "330px", height: "590px" }}
           />
           <button
             onClick={toggleMute}
-            className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white ${
-              !isVisible ? `opacity-50 cursor-not-allowed` : `opacity-100`
-            }`}
+            className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white 
+              ${!isVisible ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}
             aria-label={isMuted ? "Unmute video" : "Mute video"}
             disabled={!isVisible}
           >
@@ -149,21 +205,15 @@ const VideoSection = () => {
         </div>
       ) : (
         <ReactParallaxTilt className="withoutSound relative">
-          <iframe
+          <div
             ref={videoRef}
             className="border-y-0 border-x-[3px] border-x-red-950 relative z-30 rounded-md md:rounded-3xl"
-            width="330"
-            height="590"
-            title="YouTube Shorts Video"
-            frameBorder="0"
-            allow="autoplay"
-            allowFullScreen
+            style={{ width: "330px", height: "590px" }}
           />
           <button
             onClick={toggleMute}
             className={`absolute bottom-4 right-4 z-40 bg-black/50 hover:bg-black/70 transition-colors duration-200 rounded-full p-2 text-white ${
-              !isVisible ? `opacity-50 cursor-not-allowed` : `opacity-100`
-            }`}
+              !isVisible ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}
             aria-label={isMuted ? "Unmute video" : "Mute video"}
             disabled={!isVisible}
           >

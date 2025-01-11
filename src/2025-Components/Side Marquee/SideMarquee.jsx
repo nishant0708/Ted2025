@@ -23,7 +23,7 @@ const SideMarquee = (props) => {
             y: isRight ? '450dvh' :'560dvh',
             rotate: -90,
             x: isRight? -195 : -205,
-            duration: 20,
+            duration: 26,
             repeat: -1,
             ease: 'none'
         })
