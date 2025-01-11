@@ -781,31 +781,6 @@
         "MARKETING-II": [
             {
                 "id": "organisers",
-                "name": "Kratika",
-                "info": "TEDxDAVV",
-                "image": "https://imgur.com/7ferBXE.jpeg",
-                "ig": "https://www.instagram.com/kratika3mj/profilecard/?igsh=MW8yNmttOWxtOW94ZA==",
-                "cuteness":33.3333,
-                "IQ":93.75,
-                "humour":5,
-                "anger":43.56,
-                "fun": 96,
-                "ln":""
-            },
-            {
-                "id": "organisers",
-                "name": "Hariom",
-                "info": "TEDxDAVV",
-                "image": "https://imgur.com/4WoW6Uq.jpeg",
-                "ig": "https://www.instagram.com/shahariom_/profilecard/?igsh=MXhybG1qaHBhcmJ1Nw==",
-                "cuteness":80,
-                "IQ":80,
-                "humour":20,
-                "anger":30,
-                "fun": 46,
-                "ln":"https://www.linkedin.com/in/hariom-shah-7974546716hs?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-            },{
-                "id": "organisers",
                 "name": "Jayansh ",
                 "info": "TEDxDAVV",
                 "image": "https://imgur.com/zubx32f.jpeg",
@@ -878,7 +853,7 @@
                 "ln":"https://www.linkedin.com/in/ankit-rawat-37213721a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             }
         ],
-        "CURATION": [
+      "CURATION": [
             {
                 "id": "organisers",
                 "name": "Komal",
@@ -917,7 +892,7 @@
                 "ln":"https://www.linkedin.com/in/anuva-bhagtya-1239682a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             },{
                 "id": "organisers",
-                "name": "Ruqaiya",
+                "name": "Chitranshi",
                 "info": "TEDxDAVV",
                 "image": "https://imgur.com/3OlwRpS.jpeg",
                 "ig": "https://www.instagram.com/imchitranshee/profilecard/?igsh=d3Rpbzh0NnBpcWk1",
@@ -929,7 +904,7 @@
                 "ln":"https://www.linkedin.com/in/chitranshi-pushpad-a423a5269?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             },{
                 "id": "organisers",
-                "name": "Chitranshi",
+                "name": "Samyak",
                 "info": "TEDxDAVV",
                 "image": "https://imgur.com/AizBz1o.jpeg",
                 "ig": "https://www.instagram.com/_samyakk.j?igsh=MnB1eTcyZGhweDNn",
@@ -941,7 +916,7 @@
                 "ln":"https://www.linkedin.com/in/samyak-jain-211a50295?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             },{
                 "id": "organisers",
-                "name": "Samyak",
+                "name": "Zoha",
                 "info": "TEDxDAVV",
                 "image": "https://imgur.com/s61FRQC.jpeg",
                 "ig": "https://www.instagram.com/zohaaaaa01?igsh=Mm1lYWpzYTQ5dGU2",
@@ -953,7 +928,7 @@
                 "ln":"https://www.linkedin.com/in/zoha-fatima-91994b2b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             },{
                 "id": "organisers",
-                "name": "Zoha",
+                "name": "Mahima",
                 "info": "TEDxDAVV",
                 "image": "https://imgur.com/qYbOysl.jpeg",
                 "ig": "https://www.instagram.com/mahimasisodiaa/profilecard/?igsh=MXZpd25rMDgzNDBuYQ==",
@@ -965,7 +940,7 @@
                 "ln":"https://www.linkedin.com/in/mahima-sisodiya-1a5a512b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
             },{
                 "id": "organisers",
-                "name": "Mahima",
+                "name": "Ruqaiya",
                 "info": "TEDxDAVV",
                 "image": "https://imgur.com/xdRWXnD.jpeg",
                 "ig": "https://www.instagram.com/ruqx_saifee?igsh=MWJwY3lmcnZvM24xOQ==",
