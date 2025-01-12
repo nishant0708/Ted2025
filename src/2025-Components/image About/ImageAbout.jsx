@@ -81,7 +81,7 @@ const ImageAbout = (props) => {
             scrollTrigger:{
                 trigger: aboutImagesContainerRef.current,
                 start: isMobile? 'top center' :'top 20%',
-                end: '+=2000',
+                end: isMobile? '+=3000' :'+=2000',
                 pin: parentElement,
                 pinSpacing: true,
                 scrub:true,
@@ -98,7 +98,7 @@ const ImageAbout = (props) => {
             }
         })
 
-        tl.fromTo(aboutImage3.current,{
+        tl1.fromTo(aboutImage3.current,{
             opacity: 0,
         },{
             opacity: 1,
