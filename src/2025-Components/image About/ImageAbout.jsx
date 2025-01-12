@@ -7,6 +7,7 @@ import gsap from 'gsap';
 
 const ImageAbout = (props) => {
 
+    const isMobile = window.innerWidth <= 768 ? true: false; 
     let aboutImage = props.img;
 
     const aboutImagesContainerRef = useRef(null);
@@ -74,6 +75,20 @@ const ImageAbout = (props) => {
 
     useEffect(() => {
 
+        const parentElement = aboutImagesContainerRef.current.parentElement;
+        
+        const tl1 = gsap.timeline({
+            scrollTrigger:{
+                trigger: aboutImagesContainerRef.current,
+                start: isMobile? 'top center' :'top 20%',
+                end: '+=2000',
+                pin: parentElement,
+                pinSpacing: true,
+                scrub:true,
+                markers: true,
+            }
+        })
+
         const tl = gsap.timeline({
             scrollTrigger:{
                 trigger: aboutImagesContainerRef.current,
@@ -88,49 +103,49 @@ const ImageAbout = (props) => {
         },{
             opacity: 1,
             duration: 0.1,
-            ease: 'power4.out'
+            ease: 'power2.out'
         }).fromTo(aboutImage7.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.6,
-            ease: 'power4.out'
+            ease: 'power2.out'
         }).fromTo(aboutImage4.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.5,
-            ease: 'power4.out'
+            ease: 'power2.out'
         }).fromTo(aboutImage1.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.1,
-            ease: 'power4.out'
+            ease: 'power2.out'
         }).fromTo(aboutImage6.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.3,
-            ease: 'power4.out'
+            ease: 'power2.out'
         }).fromTo(aboutImage8.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.8,
-            ease: 'power4.out'
+            ease: 'power2.out'
         }).fromTo(aboutImage2.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.1,
-            ease: 'power4.out'
+            ease: 'power2.out'
         }).fromTo(aboutImage5.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.6,
-            ease: 'power4.out'
+            ease: 'power2.out'
         })
 
 
