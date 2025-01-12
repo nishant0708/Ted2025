@@ -13,7 +13,7 @@ const SliderComponent = () => {
   const [showTitle, setShowTitle] = useState(false);
   const sliderRef = useRef(null);
   const [selectedYear, setSelectedYear] = useState("2024");
-
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -44,7 +44,7 @@ const SliderComponent = () => {
         scrollPerc = round(
           (window.scrollY / (slider.offsetHeight - window.innerHeight)) * 100,
           2
-        )-80;
+        ) -(isInitialLoad ? 250 : 80);
         sliderStyles.setProperty("--scroll-perc", scrollPerc);
         velocity = clamp(self.getVelocity() / -300);
         if (Math.abs(velocity) > Math.abs(proxy.velocity)) {
@@ -413,13 +413,16 @@ const SliderComponent = () => {
 
   const handleChange = (event) => {
     setSelectedYear(event.target.value);
+    setIsInitialLoad(false);
     
-      const offsetTop = sliderRef.current.offsetTop - window.innerHeight * 0.7; // Offset by 10% of screen height
+    // Add setTimeout to ensure content is updated before scrolling
+    setTimeout(() => {
+      const offsetTop = sliderRef.current.offsetTop - window.innerHeight * 0.7;
       window.scrollTo({
         top: offsetTop,
         behavior: "smooth",
       });
-    
+    }, 100); // 100ms delay should be sufficient
   };
 
 
