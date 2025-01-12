@@ -84,8 +84,8 @@ const ImageAbout = (props) => {
                 end: isMobile? '+=3000' :'+=2000',
                 pin: parentElement,
                 pinSpacing: true,
-                scrub:true,
-                markers: true,
+                scrub: isMobile? true: false,
+                markers: false,
             }
         })
 
