@@ -15,31 +15,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const About = () => {
 
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-
-        const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: '.about_section_1',
-            start: "top 20%",
-            end: "+=1000",
-            // scrub: true,
-            markers: false,
-            pin: '.ABOUT_2025_main',
-            pinSpacing: true
-        },
-        });
-        
-
-        
-
-       
-        return () => { 
-    
-            ScrollTrigger.killAll(); // Cleanup when component unmounts
-        };
-
-    },[])
 
     
   return (
