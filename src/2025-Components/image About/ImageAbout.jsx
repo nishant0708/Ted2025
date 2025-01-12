@@ -81,7 +81,7 @@ const ImageAbout = (props) => {
             scrollTrigger:{
                 trigger: aboutImagesContainerRef.current,
                 start: isMobile? 'top center' :'top 20%',
-                end: isMobile? '+=3000' :'+=2000',
+                end: isMobile? '+=5000' :'+=2000',
                 pin: parentElement,
                 pinSpacing: true,
                 scrub: isMobile? true: false,
