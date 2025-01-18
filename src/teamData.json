@@ -939,19 +939,8 @@
                 "anger":90,
                 "fun": 46,
                 "ln":"https://www.linkedin.com/in/mahima-sisodiya-1a5a512b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-            },{
-                "id": "organisers",
-                "name": "Ruqaiya",
-                "info": "TEDxDAVV",
-                "image": "https://imgur.com/xdRWXnD.jpeg",
-                "ig": "https://www.instagram.com/ruqx_saifee?igsh=MWJwY3lmcnZvM24xOQ==",
-                "cuteness":60,
-                "IQ":80,
-                "humour":20,
-                "anger":90,
-                "fun": 46,
-                "ln":"https://www.linkedin.com/in/ruqx?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-            },{
+            },
+            {
                 "id": "sponsorship",
                 "name": "Priyanshi",
                 "info": "TEDxDAVV",
