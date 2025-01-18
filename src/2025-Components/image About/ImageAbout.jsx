@@ -81,10 +81,10 @@ const ImageAbout = (props) => {
             scrollTrigger:{
                 trigger: aboutImagesContainerRef.current,
                 start: isMobile? 'top center' :'top 20%',
-                end: isMobile? '+=5000' :'+=2000',
+                end: isMobile? '+=5000' :'+=1200',
                 pin: parentElement,
                 pinSpacing: true,
-                scrub: isMobile? true: false,
+                scrub: isMobile? true: true,
                 markers: false,
             }
         })
@@ -103,49 +103,49 @@ const ImageAbout = (props) => {
         },{
             opacity: 1,
             duration: 0.1,
-            ease: 'power2.out'
+            ease: 'power2.in'
         }).fromTo(aboutImage7.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.6,
-            ease: 'power2.out'
+            ease: 'power2.in'
         }).fromTo(aboutImage4.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.5,
-            ease: 'power2.out'
+            ease: 'power2.in'
         }).fromTo(aboutImage1.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.1,
-            ease: 'power2.out'
+            ease: 'power2.in'
         }).fromTo(aboutImage6.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.3,
-            ease: 'power2.out'
+            ease: 'power2.in'
         }).fromTo(aboutImage8.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.8,
-            ease: 'power2.out'
+            ease: 'power2.in'
         }).fromTo(aboutImage2.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.1,
-            ease: 'power2.out'
+            ease: 'power2.in'
         }).fromTo(aboutImage5.current,{
             opacity: 0,
         },{
             opacity: 1,
             duration: 0.6,
-            ease: 'power2.out'
+            ease: 'power2.in'
         })
 
 
