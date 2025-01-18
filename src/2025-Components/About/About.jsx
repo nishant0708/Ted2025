@@ -32,7 +32,7 @@ const About = () => {
             <span className=' flex flex-col gap-[50px] max-w-[500px]' >
                 <TypeHeading content='Interconnectedness' />
 
-                <TypePara para='Our identities are shaped by the reflections we see in others. Relationships and communities help reveal the chaos, the unspoken, and the unexplored within, guiding us toward deeper understanding and bringing us closer to the essence of the within.' />
+                <TypePara para='Our identities are shaped by how we view ourselves through the eyes of others. It is in these relationships and communities that the chaos hidden from our view is revealed, thus bringing us closer to the understanding of our true essence within.' />
 
                 <div className=' lg:self-end md:mt-14 flex lg:flex-col gap-7'>
                     <TypeSmall para='Exploring Identity, Purpose, and the Duality of Being.' />
@@ -48,7 +48,7 @@ const About = () => {
             <span className=' max-w-[500px]' style={{ display: 'flex', flexDirection: 'column', rowGap: '50px'}} >
                 <TypeHeading content='Self - discovery' />
 
-                <TypePara para='The search for purpose leads us through uncertainty, where external pressures often cloud our inner voice. Breaking free from these constraints uncovers raw truths, revealing the core of The Within. It’s a journey toward clarity, where chaos gives way to self-realization.' />
+                <TypePara para='The search for purpose can take us through uncertain times, where outside pressures make it hard to hear our inner voice. By freeing ourselves from these distractions, we start to uncover important truths. It’s a journey of clarity, where confusion slowly turns into self-awareness.' />
 
                 <div className=' self-start flex flex-col md:mt-10'>
                     <TypeSmall para='Be a Part of a Conversation ' />
@@ -69,7 +69,7 @@ const About = () => {
             <span className=' max-w-[500px]' style={{ display: 'flex', flexDirection: 'column', rowGap: '50px'}} >
                 <TypeHeading content='Unseen Forces' />
 
-                <TypePara para='Emotions, beliefs, and memories shape our experiences in ways we don’t always see. Like gravity, these unseen forces guide our actions, creativity, and spirituality, leading us closer to The Within—the hidden energy that influences who we are.' />
+                <TypePara para='Our thoughts, emotions, and even past events may shape us subconsciously into who we become. Such hidden influences take control over our decisions, creativity, and spiritual life and inspire us to unlock deeper levels within ourselves.' />
             </span>
         </div>
 
