@@ -20,10 +20,10 @@ const SideMarquee = (props) => {
             
         },{
             // y: `${document.documentElement.offsetHeight}`,
-            y: isRight ? '450dvh' :'560dvh',
+            y: isRight ? '450dvh' :'6000px',
             rotate: -90,
             x: isRight? -195 : -205,
-            duration: 26,
+            duration: 30,
             repeat: -1,
             ease: 'none'
         })
@@ -38,7 +38,7 @@ const SideMarquee = (props) => {
     console.log(document.documentElement.offsetHeight);
     return ( 
     <div style={{
-        height: isRight ? `400dvh`: '350dvh',
+        height: isRight ? `400dvh`: '6000px',
         // height: `${pageHeight}px`,
       }}
     className={` w-7 SideMarqueeContainer  overflow-y-clip invisible md:visible ${isRight? 'right-2 absolute top-0' : 'left-10 absolute'} z-50 border-l-[1px] border-l-slate-200`}>
