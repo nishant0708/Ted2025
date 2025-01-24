@@ -23,7 +23,7 @@
 
 .dropdown-wrapper{
     position: fixed;
-    color: rgb(255, 255, 255);
+    color: white;
     top: 13vh;
     right: 10vw;
     z-index: 40;
@@ -33,6 +33,7 @@
 .dropdown{
     background: #ffffff23;
     padding:  7px 10px;
+    color: white;
     text-align: center;
     border: 1px solid white;
     backdrop-filter: blur(3px);
@@ -41,6 +42,13 @@
     border-radius: 8px;
     box-shadow: 3px 5px 10px 0px #2e2b2b00;
     /* margin: 20px; */
+}
+.dropdown:focus {
+    color: white; }
+
+.dropdown option {
+    background: white; 
+    color: black; 
 }
 
 @media screen and (max-width: 800px) {
