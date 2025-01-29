@@ -6,13 +6,14 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import linkedin from "../Assests/Images/linkedin.png";
 import instagram from "../Assests/Images/instagram (2).png";
+import youtube from "../Assests/Images/youtube.png";
 import badal from "../../Images/Group 83.svg";
 import badal2 from "../../Images/Group 84.svg";
 const SliderComponent = () => {
   const progressBarRef = useRef(null);
   const [showTitle, setShowTitle] = useState(false);
   const sliderRef = useRef(null);
-  const [selectedYear, setSelectedYear] = useState("2024");
+  const [selectedYear, setSelectedYear] = useState("2025");
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -89,6 +90,64 @@ const SliderComponent = () => {
   /**
    ** Round number with n decimals
    */
+
+const speakerData2025 = [
+  {
+    name: 'Coming',
+    surname: 'Soon',
+    designation: "TEDxDAVV: Where Ideas Come Alive",
+    description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+    image: samp_image,
+    instagramLink: '',
+    linkedinLink: ''
+  },
+  {
+    name: 'Coming',
+    surname: 'Soon',
+    designation: "TEDxDAVV: Where Ideas Come Alive",
+    description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+    image:samp_image,
+    instagramLink: '',
+    linkedinLink: ''
+  },
+  {
+    name: 'Coming',
+    surname: 'Soon',
+    designation: "TEDxDAVV: Where Ideas Come Alive",
+    description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+    image:samp_image,
+    instagramLink: '',
+    linkedinLink: ''
+  },
+  {
+    name: 'Coming',
+    surname: 'Soon',
+    designation: "TEDxDAVV: Where Ideas Come Alive",
+    description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+    image:samp_image,
+    instagramLink: '',
+    linkedinLink: ''
+  },
+  {
+    name: 'Coming',
+    surname: 'Soon',
+    designation: "TEDxDAVV: Where Ideas Come Alive",
+    description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+    image:samp_image,
+    instagramLink: '',
+    linkedinLink: ''
+  },  {
+    name: 'Coming',
+    surname: 'Soon',
+    designation: "TEDxDAVV: Where Ideas Come Alive",
+    description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+    image:samp_image,
+    instagramLink: '',
+    linkedinLink: ''
+  },
+       
+  ];
+
   const speakerData2024 = [
     {
       name: "Abhishek",
@@ -346,7 +405,7 @@ const SliderComponent = () => {
           <span className="log">
             {instagramLink && (
               <a href={instagramLink}>
-                <img loading="lazy" /*style={{ width: "35px" }}*/ src={instagram} alt="" />
+                <img loading="lazy" /*style={{ width: "35px" }}*/ src={youtube} alt="" />
               </a>
             )}
             &nbsp;
@@ -368,6 +427,8 @@ const SliderComponent = () => {
       speakers = speakerData2023;
     } else if (selectedYear === "2024") {
       speakers = speakerData2024;
+    }else if (selectedYear === "2025") {
+      speakers = speakerData2025;
     }
 
     return (
@@ -449,7 +510,10 @@ const SliderComponent = () => {
         <span id="title">Speakers </span>
       </h1>
       <select className="year-drop" onChange={handleChange}>
-        <option className="option" value="2024" selected>
+        <option className="option" value="2025" selected>
+          2025
+        </option>
+        <option className="option" value="2024">
           2024
         </option>
         <option value="2023">2023</option>
@@ -497,6 +561,8 @@ const getSpeakerNameClass = (name) => {
       return "Rahulpc";
     case "Bhaskar":
     return "Bhaskar";
+    case "Coming":
+      return "REVEALING";
     default:
       return "";
   }

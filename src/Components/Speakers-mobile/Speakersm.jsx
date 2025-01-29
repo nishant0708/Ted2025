@@ -5,8 +5,66 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import mlinkedin from "../Assests/Images/linkedin.png";
 import instagram from "../Assests/Images/instagram (2).png";
 import samp_image from "../Assests/Images/rev.png"
-
 import badal from "../Assests/Images/Group 29.png"
+
+const speakers2025 = [
+  {
+    name: 'Coming',
+    surname: 'Soon',
+    designation: "Finance Enthusiast, YouTube, Startup Consultant",
+    description: 'An IIPS DAVV alumni who has made a name for himself in the finance influencers community with 1.6 million followers on insta and 1.2 million on youtube along with an amazon bestseller book -Stocks and Life.',
+    image: samp_image,
+    instagramLink: 'https://www.instagram.com/abhishekkarofficial?igsh=Zm9wZG9jejVjd3o1',
+    linkedinLink: 'https://www.linkedin.com/in/abhishek-kar-/?originalSubdomain=in'
+  },
+  {
+    name: 'Coming',
+    surname: 'Soon',
+    designation: "Educator, Content Creator, Youth Icon",
+    description: "A household name in the digital education community for his specialization in teaching through experiments rather than the conventional theory system. Has a major follower count of 6 million on youtube with the channel becoming the 3rd fastest growing channel in India.",
+    image: samp_image,
+    instagramLink: 'https://www.instagram.com/ashu.ghai/',
+    linkedinLink: 'https://www.linkedin.com/in/ashu-ghai-179892254/?originalSubdomain=in'
+  },
+  {
+    name: 'Coming',
+    surname: 'Soon',
+    designation: "Networking, Brand Building",
+    description: 'A man with diverse roles:Podcaster,anchor,speaker,published author along with 15+ years of work experience as a chief of staff,business analyst and other prestigious corporate positions.',
+    image: samp_image,
+    instagramLink: '',
+    linkedinLink: 'https://www.linkedin.com/in/rahulladha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
+  },
+  {
+    name: 'Coming',
+    surname: 'Soon',
+    designation: "Psychology, Spritual",
+    description: 'A renowned Vaishnava leader,speaker and the scholar of vedic knowledge With a total of 500k+ followers on various social media platforms.',
+    image: samp_image,
+    instagramLink: 'https://www.instagram.com/sripundrik?igsh=MTRnM2ppand4ZTA3ZA',
+    linkedinLink: ''
+  },
+  {
+    name: 'Coming',
+    surname: 'Soon',
+    designation: "Startup Founder, Inspirational, Recently seen on Shark Tank India",
+    description: 'Just recently came and pitched his really successful business venture on the shark tank. With a food chain startup -ZORKO. He has effortlessly collaborated for 150 plus franchises in a small time of one year.',
+    image: samp_image,
+    instagramLink: 'https://www.instagram.com/anand.zorko/',
+    linkedinLink: 'https://www.linkedin.com/in/anandnahar4/?originalSubdomain=in'
+  },  {
+    name: 'Coming',
+    surname: 'Soon',
+    designation: "Actor, Content Creator, TV Icon",
+    description: 'A renowned Indian film and television actor who has worked for numerous projects like mardaani,raid,chicchore and shows like C.I.D,F.I.R and Sacred games to name a few',
+    image: samp_image,
+    instagramLink: 'https://www.instagram.com/saanandverma/?hl=en',
+    linkedinLink: ''
+  },
+
+      
+    
+  ];
 
 
 const speakers2024 = [
@@ -150,7 +208,7 @@ const speakers2024 = [
 
 const Speakersm = () => {
 
-  const [selectedYear, setSelectedYear] = useState('2024');
+  const [selectedYear, setSelectedYear] = useState('2025');
   
     useEffect(()=>{
 
@@ -332,7 +390,7 @@ const Speakersm = () => {
 
 
     // const [selectedYear, setSelectedYear] = useState('2023');
-    const selectedSpeakers = selectedYear === '2024' ? speakers2024 : speakers2023;
+    const selectedSpeakers =  selectedYear === '2025' ? speakers2025 : selectedYear === '2024' ? speakers2024 : speakers2023;
     const handleChange = (event) => {
         setSelectedYear(event.target.value);
       
@@ -354,7 +412,8 @@ const Speakersm = () => {
   <ul class="o-mslider__list">
 
   <select className='myear' onChange={handleChange} value={selectedYear}>
-          <option  value="2024" selected>2024</option>
+          <option  value="2025" selected>2025</option>
+          <option  value="2024">2024</option>
           <option value="2023">2023</option>
         </select>
 
@@ -400,6 +459,33 @@ const Speakersm = () => {
               switch (speaker.name) {
                 
                 case 'Abhishek':
+                  speakerClass = 'Abhishek2';
+                  break;
+                  case 'Ashu':
+                  speakerClass = 'Ashu';
+                  break;
+                  case 'Ananad':
+                    speakerClass = 'Ananad';
+                    break;
+                    case 'Saanand':
+                      speakerClass = 'Saanand';
+                      break;
+                      case 'Sri Pundrik':
+                        speakerClass = 'sri';
+                        break;
+                        case 'Rahul':
+                          speakerClass = 'Rahul';
+                          break;
+                        
+                default:
+                  speakerClass = '';
+              }
+              break;
+            case '2025':
+              // Add switch cases for 2025 here
+              switch (speaker.name) {
+                
+                case 'Coming':
                   speakerClass = 'Abhishek2';
                   break;
                   case 'Ashu':
