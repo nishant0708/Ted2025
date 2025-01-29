@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import linkedin from "../Assests/Images/linkedin.png";
 import instagram from "../Assests/Images/instagram (2).png";
-import youtube from "../Assests/Images/youtube.png"
+import youtube from "../../Images/youtube.png";
 import badal from "../../Images/Group 83.svg";
 import badal2 from "../../Images/Group 84.svg";
 const SliderComponent = () => {
@@ -112,45 +112,45 @@ const speakerData2025 = [
     linkedinLink: '',
     youtubeLink:''
   },
-  {
-    name: 'Coming',
-    surname: 'Soon',
-    designation: "TEDxDAVV: Where Ideas Come Alive",
-    description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
-    image:samp_image,
-    instagramLink: '',
-    linkedinLink: '',
-    youtubeLink:''
-  },
-  {
-    name: 'Coming',
-    surname: 'Soon',
-    designation: "TEDxDAVV: Where Ideas Come Alive",
-    description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
-    image:samp_image,
-    instagramLink: '',
-    linkedinLink: '',
-    youtubeLink:''
-  },
-  {
-    name: 'Coming',
-    surname: 'Soon',
-    designation: "TEDxDAVV: Where Ideas Come Alive",
-    description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
-    image:samp_image,
-    instagramLink: '',
-    linkedinLink: '',
-    youtubeLink:''
-  },  {
-    name: 'Coming',
-    surname: 'Soon',
-    designation: "TEDxDAVV: Where Ideas Come Alive",
-    description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
-    image:samp_image,
-    instagramLink: '',
-    linkedinLink: '',
-    youtubeLink:''
-  },
+  // {
+  //   name: 'Coming',
+  //   surname: 'Soon',
+  //   designation: "TEDxDAVV: Where Ideas Come Alive",
+  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+  //   image:samp_image,
+  //   instagramLink: '',
+  //   linkedinLink: '',
+  //   youtubeLink:''
+  // },
+  // {
+  //   name: 'Coming',
+  //   surname: 'Soon',
+  //   designation: "TEDxDAVV: Where Ideas Come Alive",
+  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+  //   image:samp_image,
+  //   instagramLink: '',
+  //   linkedinLink: '',
+  //   youtubeLink:''
+  // },
+  // {
+  //   name: 'Coming',
+  //   surname: 'Soon',
+  //   designation: "TEDxDAVV: Where Ideas Come Alive",
+  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+  //   image:samp_image,
+  //   instagramLink: '',
+  //   linkedinLink: '',
+  //   youtubeLink:''
+  // },  {
+  //   name: 'Coming',
+  //   surname: 'Soon',
+  //   designation: "TEDxDAVV: Where Ideas Come Alive",
+  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+  //   image:samp_image,
+  //   instagramLink: '',
+  //   linkedinLink: '',
+  //   youtubeLink:''
+  // },
        
   ];
 
@@ -190,7 +190,7 @@ const speakerData2025 = [
       instagramLink: "",
       linkedinLink:
         "https://www.linkedin.com/in/rahulladha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:'',
+        youtubeLink:"https://youtu.be/ml2dWjOrW9M?si=W0fnddzIYjmQeECt",
     },
 
     {
@@ -204,7 +204,7 @@ const speakerData2025 = [
       instagramLink: "https://www.instagram.com/anand.zorko/",
       linkedinLink:
         "https://www.linkedin.com/in/anandnahar4/?originalSubdomain=in",
-        youtubeLink:'',
+        youtubeLink:"https://youtu.be/a88AZdPrzXg?si=Z-sUNFPQacsI8-Xv",
     },
     {
       name: "Sri Pundrik",
@@ -227,7 +227,7 @@ const speakerData2025 = [
       image: "https://imgur.com/vJ5kBL1.png",
       instagramLink: "https://www.instagram.com/saanandverma/?hl=en",
       linkedinLink: "",
-      youtubeLink:'',
+      youtubeLink:"https://youtu.be/GglZSR7tMew?si=x2o79Y_NC_O6itjT",
     },
   ];
 
@@ -243,7 +243,7 @@ const speakerData2025 = [
         "https://www.instagram.com/elladverma?igsh=MXQ0eHNicGF2b2FsaA",
       linkedinLink:
         "https://www.linkedin.com/in/ella-verma-ab6889236?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:'',
+        youtubeLink:"https://youtu.be/H8ygk8LlXE8?si=EeeZ1K0zCb_CmV6z",
     },
 
     {
@@ -256,7 +256,7 @@ const speakerData2025 = [
       instagramLink:
         "https://www.instagram.com/abhisek.mnit?igsh=MTM2MGg2Y3VweGJveQ",
       linkedinLink: "",
-      youtubeLink:'',
+      youtubeLink:"https://youtu.be/-MKbndXvhWk?si=_Jw_RUVUYt2QSz4b",
     },
 
     {
@@ -269,7 +269,7 @@ const speakerData2025 = [
       instagramLink:
         "https://www.instagram.com/dr.raginimakkad?igsh=MXJlN245ZWh3N2phZw==",
       linkedinLink: "",
-      youtubeLink:'',
+      youtubeLink:"https://youtu.be/6MRrwtwHa0I?si=mXTAmysJUKcQv3qc",
     },
 
     {
@@ -283,7 +283,7 @@ const speakerData2025 = [
         "https://www.instagram.com/bhaskar_indrakanti?igsh=MWZjOG1iMzh0bDAzYw==",
       linkedinLink:
         "https://www.linkedin.com/in/bh%C4%81skar-indrakanti-424b6051?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:'',
+        youtubeLink:"https://youtu.be/M0EK2sAu3pQ?si=X2mLXdRXCOgEjWFK",
     },
     {
       name: "Akshay",
@@ -296,7 +296,7 @@ const speakerData2025 = [
         "https://www.instagram.com/theakshay_jointcollector?igsh=MTF6NjZldWNqbWVqOQ==",
       linkedinLink:
         "https://www.linkedin.com/in/akshay-singh-markam-a70178204?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:'',
+        youtubeLink:"https://youtu.be/5liA3nQih-I?si=BeyLwe3m3KIit6ZP",
     },
     {
       name: "Abhijit",
@@ -309,7 +309,7 @@ const speakerData2025 = [
         "https://www.instagram.com/theabhijitchavda?igsh=aXRqMTV2cGljb3pi",
       linkedinLink:
         "https://www.linkedin.com/in/abhijitchavda?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:'',
+        youtubeLink:"https://youtu.be/yaqVHBNXTXo?si=Wo_oDCC8D2zYhX6s",
     },
     {
       name: "Dr. Vineet",
@@ -322,7 +322,7 @@ const speakerData2025 = [
         "https://www.instagram.com/drvineetaggarwal?igsh=MWV5bmxlejN4eXdjcA==",
       linkedinLink:
         "https://www.linkedin.com/in/drvineetaggarwal?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:'',
+        youtubeLink:"https://youtu.be/hz-uhrK8C2U?si=gIxNXTR4QBfEQVKD",
     },
     {
       name: "Aryan",
@@ -336,7 +336,7 @@ const speakerData2025 = [
         "https://www.instagram.com/aryanvijayvergiya?igsh=MWJib2RhcG44dWhwcg==",
       linkedinLink:
         "https://www.linkedin.com/in/aryan-vijayvergiya?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:'',
+        youtubeLink:"https://youtu.be/AUXMBtOzU5g?si=TMDrfl7Fbsc_gdLr",
     },
   ];
 
@@ -432,7 +432,13 @@ const speakerData2025 = [
             &nbsp;
             {linkedinLink && (
               <a href={linkedinLink}>
-                <img loading="lazy" /*style={{ width: "35px" }}*/ src={youtube} alt="" />
+                <img loading="lazy" style={{ width: "35px", height: "35px" }} src={linkedin} alt="" />
+              </a>
+            )}
+             &nbsp;
+            {youtubeLink && (
+              <a href={youtubeLink}>
+                <img loading="lazy" style={{ width: "35px", height: "35px" }} src={youtube} alt="" />
               </a>
             )}
           </span>
