@@ -102,16 +102,16 @@ const speakerData2025 = [
     linkedinLink: '',
     youtubeLink:''
   },
-  {
-    name: 'Coming',
-    surname: 'Soon',
-    designation: "TEDxDAVV: Where Ideas Come Alive",
-    description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
-    image:samp_image,
-    instagramLink: '',
-    linkedinLink: '',
-    youtubeLink:''
-  },
+  // {
+  //   name: 'Coming',
+  //   surname: 'Soon',
+  //   designation: "TEDxDAVV: Where Ideas Come Alive",
+  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+  //   image:samp_image,
+  //   instagramLink: '',
+  //   linkedinLink: '',
+  //   youtubeLink:''
+  // },
   // {
   //   name: 'Coming',
   //   surname: 'Soon',
@@ -366,7 +366,9 @@ const speakerData2025 = [
           yPercent: -80,
           duration: 1,
           scrollTrigger: {
-            trigger: imgRef.current.closest(".o-slider__item"),
+            trigger: selectedYear==="2025"?
+            imgRef.current.closest(".o-slider__item2")
+            :imgRef.current.closest(".o-slider__item"),
             scrub: 1,
             start: "top 40%",
             end: "top 90%",
@@ -377,7 +379,9 @@ const speakerData2025 = [
           xPercent: 170,
           duration: 1,
           scrollTrigger: {
-            trigger: descRef.current.closest(".o-slider__item"),
+            trigger: selectedYear === "2025"?
+            descRef.current.closest(".o-slider__item2")
+            :descRef.current.closest(".o-slider__item"),
             scrub: 1,
             start: "top 40%",
             end: "top 90%",
@@ -388,7 +392,9 @@ const speakerData2025 = [
           xPercent: -190,
           duration: 1,
           scrollTrigger: {
-            trigger: nameRef.current.closest(".o-slider__item"),
+            trigger: selectedYear==="2025"?
+            nameRef.current.closest(".o-slider__item2")
+            :nameRef.current.closest(".o-slider__item"),
             scrub: 1,
             start: "top 30%",
             end: "top 90%",
@@ -398,7 +404,9 @@ const speakerData2025 = [
           xPercent: 155,
           duration: 1,
           scrollTrigger: {
-            trigger: nameRef.current.closest(".o-slider__item"),
+            trigger: selectedYear==="2025"?
+            nameRef.current.closest(".o-slider__item2")
+            :nameRef.current.closest(".o-slider__item"),
             scrub: 1,
             start: "top 40%",
             end: "top 90%",
@@ -412,7 +420,7 @@ const speakerData2025 = [
     const speakerNameClass = getSpeakerNameClass(name);
 
     return (
-      <li className={`o-slider__item ${speakerNameClass}`}>
+      <li className={`${selectedYear === "2025" ? "o-slider__item2" : "o-slider__item"} ${speakerNameClass}`}>
         <div className="speaker_img_container"><img loading="lazy" className="o-slider__img" src={image} alt="" ref={imgRef} /></div>
         <p className="slider__desc" ref={descRef}>
           {description}

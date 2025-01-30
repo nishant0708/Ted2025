@@ -26,7 +26,7 @@ button:focus {
   --title-size: calc(1 / 4 * 100vh);
   background-color: #000000 !important;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 z-index: 0;
 
 }
@@ -132,6 +132,25 @@ z-index: 0;
   z-index: 20;
   overflow: hidden;
   transform: translate(calc((170 - var(--scroll-perc)) * 0.25%), 0)
+    skewY(calc(var(--scroll-y) * var(--scroll-vel) * 2deg));
+}
+
+/*this is for the 2025 section only*/
+.o-slider__item2 {
+  --size: calc(2 / 3 * 100vw);
+  width: var(--size);
+  height: 0;
+  margin-top: 10%;
+  border-radius: 5%;
+  backdrop-filter: blur(5px); /* Apply background blur */
+  -webkit-backdrop-filter: blur(5px);
+  padding-top: calc(var(--size) * 2 / 3);
+  border: 0.5px solid #fff;
+  
+  background-color: rgba(0, 0, 0, 0.432);
+  z-index: 20;
+  overflow: hidden;
+  transform: translate(calc((770 - var(--scroll-perc)) * 0.25%), 0)
     skewY(calc(var(--scroll-y) * var(--scroll-vel) * 2deg));
 }
 
