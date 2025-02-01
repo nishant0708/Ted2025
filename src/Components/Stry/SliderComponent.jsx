@@ -223,7 +223,7 @@ const speakerData2025 = [
       surname: "Verma",
       designation: "Actor, Content Creator, TV Icon",
       description:
-        "A renowned Indian film and television actor who has worked for numerous projects like mardaani,raid,chicchore and shows like C.I.D,F.I.R and Sacred games to name a few",
+        "A renowned Indian film and television actor who has worked for numerous projects like mardaani,raid,chicchore and shows like C.I.D,F.I.R and Sacred games to name a few",
       image: "https://imgur.com/vJ5kBL1.png",
       instagramLink: "https://www.instagram.com/saanandverma/?hl=en",
       linkedinLink: "",
@@ -366,9 +366,7 @@ const speakerData2025 = [
           yPercent: -80,
           duration: 1,
           scrollTrigger: {
-            trigger: selectedYear==="2025"?
-            imgRef.current.closest(".o-slider__item2")
-            :imgRef.current.closest(".o-slider__item"),
+            trigger: imgRef.current.closest(".o-slider__item"),
             scrub: 1,
             start: "top 40%",
             end: "top 90%",
@@ -379,9 +377,7 @@ const speakerData2025 = [
           xPercent: 170,
           duration: 1,
           scrollTrigger: {
-            trigger: selectedYear === "2025"?
-            descRef.current.closest(".o-slider__item2")
-            :descRef.current.closest(".o-slider__item"),
+            trigger: descRef.current.closest(".o-slider__item"),
             scrub: 1,
             start: "top 40%",
             end: "top 90%",
@@ -392,9 +388,7 @@ const speakerData2025 = [
           xPercent: -190,
           duration: 1,
           scrollTrigger: {
-            trigger: selectedYear==="2025"?
-            nameRef.current.closest(".o-slider__item2")
-            :nameRef.current.closest(".o-slider__item"),
+            trigger: nameRef.current.closest(".o-slider__item"),
             scrub: 1,
             start: "top 30%",
             end: "top 90%",
@@ -404,9 +398,7 @@ const speakerData2025 = [
           xPercent: 155,
           duration: 1,
           scrollTrigger: {
-            trigger: selectedYear==="2025"?
-            nameRef.current.closest(".o-slider__item2")
-            :nameRef.current.closest(".o-slider__item"),
+            trigger: nameRef.current.closest(".o-slider__item"),
             scrub: 1,
             start: "top 40%",
             end: "top 90%",
@@ -420,7 +412,7 @@ const speakerData2025 = [
     const speakerNameClass = getSpeakerNameClass(name);
 
     return (
-      <li className={`${selectedYear === "2025" ? "o-slider__item2" : "o-slider__item"} ${speakerNameClass}`}>
+      <li className={`o-slider__item ${speakerNameClass}`}>
         <div className="speaker_img_container"><img loading="lazy" className="o-slider__img" src={image} alt="" ref={imgRef} /></div>
         <p className="slider__desc" ref={descRef}>
           {description}
@@ -434,7 +426,7 @@ const speakerData2025 = [
           <span className="log">
             {instagramLink && (
               <a href={instagramLink}>
-                <img loading="lazy" /*style={{ width: "35px" }}*/ src={instagram} alt="" />
+                <img loading="lazy" style={{ width: "35px" }} src={instagram} alt="" />
               </a>
             )}
             &nbsp;
@@ -465,9 +457,18 @@ const speakerData2025 = [
     }else if (selectedYear === "2025") {
       speakers = speakerData2025;
     }
+    // const handler2025 = () => {
+    //   const sliderList = document.querySelector('.o-slider__list');
+      
+    //   // Check if the element exists before applying the style
+    //   if (sliderList) {
+    //     sliderList.style.transform = 'translateX(3000px)';
+    //   }
+    // };
+    
 
     return (
-      <ul className="o-slider__list">
+      <ul className="o-slider__list" style={speakers.length === 1 ? { transform: "translateX(3000px)" } : {}}>
         {speakers.map((speaker, index) => (
           <SpeakerComponent key={index} {...speaker} />
         ))}
@@ -510,7 +511,18 @@ const speakerData2025 = [
   const handleChange = (event) => {
     setSelectedYear(event.target.value);
     setIsInitialLoad(false);
-    
+    if (event.target.value === "2025" && speakerData2025.length === 1) {
+    const element = document.querySelector('.o-slider__item'); // Update this selector to match your element
+    if (element) {
+      element.style.transform = "translateX(-800px)";
+    }
+  } else {
+    // Reset transform if needed
+    const element = document.querySelector('.o-slider__item');
+    if (element) {
+      element.style.transform = "translateX(0)";
+    }
+  }
     // Add setTimeout to ensure content is updated before scrolling
     setTimeout(() => {
       const offsetTop = sliderRef.current.offsetTop - window.innerHeight * 0.7;
