@@ -5,8 +5,72 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import mlinkedin from "../Assests/Images/linkedin.png";
 import instagram from "../Assests/Images/instagram (2).png";
 import samp_image from "../Assests/Images/rev.png"
-
 import badal from "../Assests/Images/Group 29.png"
+
+const speakers2025 = [
+  {
+    name: 'Coming',
+    surname: 'Soon',
+    designation: "TEDxDAVV: Where Ideas Come Alive",
+    description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+    image: samp_image,
+    instagramLink: '',
+    linkedinLink: '',
+    youtubeLink:'',
+  },
+  // {
+  //   name: 'Coming',
+  //   surname: 'Soon',
+  //   designation: "TEDxDAVV: Where Ideas Come Alive",
+  //   description: "Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!",
+  //   image: samp_image,
+  //   instagramLink: '',
+  //   linkedinLink: '',
+  //   youtubeLink:'',
+  // },
+  // {
+  //   name: 'Coming',
+  //   surname: 'Soon',
+  //   designation: "TEDxDAVV: Where Ideas Come Alive",
+  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+  //   image: samp_image,
+  //   instagramLink: '',
+  //   linkedinLink: '',
+  //   youtubeLink:'',
+  // },
+  // {
+  //   name: 'Coming',
+  //   surname: 'Soon',
+  //   designation: "TEDxDAVV: Where Ideas Come Alive",
+  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+  //   image: samp_image,
+  //   instagramLink: '',
+  //   linkedinLink: '',
+  //   youtubeLink:'',
+  // },
+  // {
+  //   name: 'Coming',
+  //   surname: 'Soon',
+  //   designation: "TEDxDAVV: Where Ideas Come Alive",
+  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+  //   image: samp_image,
+  //   instagramLink: '',
+  //   linkedinLink: '',
+  //   youtubeLink:'',
+  // },  {
+  //   name: 'Coming',
+  //   surname: 'Soon',
+  //   designation: "TEDxDAVV: Where Ideas Come Alive",
+  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
+  //   image: samp_image,
+  //   instagramLink: '',
+  //   linkedinLink: '',
+  //   youtubeLink:'',
+  // },
+
+      
+    
+  ];
 
 
 const speakers2024 = [
@@ -17,7 +81,8 @@ const speakers2024 = [
     description: 'An IIPS DAVV alumni who has made a name for himself in the finance influencers community with 1.6 million followers on insta and 1.2 million on youtube along with an amazon bestseller book -Stocks and Life.',
     image: "https://imgur.com/iCd3rhC.png",
     instagramLink: 'https://www.instagram.com/abhishekkarofficial?igsh=Zm9wZG9jejVjd3o1',
-    linkedinLink: 'https://www.linkedin.com/in/abhishek-kar-/?originalSubdomain=in'
+    linkedinLink: 'https://www.linkedin.com/in/abhishek-kar-/?originalSubdomain=in',
+    youtubeLink:'',
   },
   {
     name: 'Ashu',
@@ -26,7 +91,8 @@ const speakers2024 = [
     description: "A household name in the digital education community for his specialization in teaching through experiments rather than the conventional theory system. Has a major follower count of 6 million on youtube with the channel becoming the 3rd fastest growing channel in India.",
     image: "https://imgur.com/lqGbHub.png",
     instagramLink: 'https://www.instagram.com/ashu.ghai/',
-    linkedinLink: 'https://www.linkedin.com/in/ashu-ghai-179892254/?originalSubdomain=in'
+    linkedinLink: 'https://www.linkedin.com/in/ashu-ghai-179892254/?originalSubdomain=in',
+    youtubeLink:'',
   },
   {
     name: 'Rahul',
@@ -35,7 +101,8 @@ const speakers2024 = [
     description: 'A man with diverse roles:Podcaster,anchor,speaker,published author along with 15+ years of work experience as a chief of staff,business analyst and other prestigious corporate positions.',
     image: "https://imgur.com/A50aOyu.png",
     instagramLink: '',
-    linkedinLink: 'https://www.linkedin.com/in/rahulladha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
+    linkedinLink: 'https://www.linkedin.com/in/rahulladha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    youtubeLink:"https://youtu.be/ml2dWjOrW9M?si=W0fnddzIYjmQeECt",
   },
   {
     name: 'Sri Pundrik',
@@ -44,7 +111,8 @@ const speakers2024 = [
     description: 'A renowned Vaishnava leader,speaker and the scholar of vedic knowledge With a total of 500k+ followers on various social media platforms.',
     image: "https://imgur.com/Jq4Leef.png",
     instagramLink: 'https://www.instagram.com/sripundrik?igsh=MTRnM2ppand4ZTA3ZA',
-    linkedinLink: ''
+    linkedinLink: '',
+    youtubeLink:'',
   },
   {
     name: 'Ananad',
@@ -53,7 +121,8 @@ const speakers2024 = [
     description: 'Just recently came and pitched his really successful business venture on the shark tank. With a food chain startup -ZORKO. He has effortlessly collaborated for 150 plus franchises in a small time of one year.',
     image: "https://imgur.com/4M3NoKA.png",
     instagramLink: 'https://www.instagram.com/anand.zorko/',
-    linkedinLink: 'https://www.linkedin.com/in/anandnahar4/?originalSubdomain=in'
+    linkedinLink: 'https://www.linkedin.com/in/anandnahar4/?originalSubdomain=in',
+    youtubeLink:"https://youtu.be/a88AZdPrzXg?si=Z-sUNFPQacsI8-Xv",
   },  {
     name: 'Saanand',
     surname: 'Verma',
@@ -61,7 +130,8 @@ const speakers2024 = [
     description: 'A renowned Indian film and television actor who has worked for numerous projects like mardaani,raid,chicchore and shows like C.I.D,F.I.R and Sacred games to name a few',
     image: "https://imgur.com/vJ5kBL1.png",
     instagramLink: 'https://www.instagram.com/saanandverma/?hl=en',
-    linkedinLink: ''
+    linkedinLink: '',
+    youtubeLink:"https://youtu.be/GglZSR7tMew?si=x2o79Y_NC_O6itjT",
   },
 
       
@@ -75,7 +145,8 @@ const speakers2024 = [
       image:"https://imgur.com/0xIsfCm.jpeg",
       designation: "Miss International Trans Queen",
       instagramLink: 'https://www.instagram.com/elladverma?igsh=MXQ0eHNicGF2b2FsaA',
-    linkedinLink: 'https://www.linkedin.com/in/ella-verma-ab6889236?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
+    linkedinLink: 'https://www.linkedin.com/in/ella-verma-ab6889236?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    youtubeLink:"https://youtu.be/H8ygk8LlXE8?si=EeeZ1K0zCb_CmV6z",
     },
     
     {
@@ -85,7 +156,8 @@ const speakers2024 = [
       description: 'Abhishek Mishra captivated the audience with his talk on "Transhumanism" and how technology is reshaping the evolutionary path of humanity',
       image: "https://imgur.com/fL2xzjD.jpeg",
       instagramLink: 'https://www.instagram.com/abhisek.mnit?igsh=MTM2MGg2Y3VweGJveQ',
-      linkedinLink: ''
+      linkedinLink: '',
+      youtubeLink:"https://youtu.be/-MKbndXvhWk?si=_Jw_RUVUYt2QSz4b",
     },
   
     {
@@ -95,7 +167,8 @@ const speakers2024 = [
       description: "Dr. Ragini Makkhar, India's Got Talent Season 5 winner, captivated the audience with her talk on ''Evolve with Dance,'' highlighting dance's transformative impact on personal growth and self-expression.",
       image:"https://imgur.com/n00f9ob.jpeg",
       instagramLink: 'https://www.instagram.com/dr.raginimakkad?igsh=MXJlN245ZWh3N2phZw==',
-      linkedinLink: ''
+      linkedinLink: '',
+      youtubeLink:"https://youtu.be/6MRrwtwHa0I?si=mXTAmysJUKcQv3qc",
     },
   
     {
@@ -105,7 +178,8 @@ const speakers2024 = [
       image:"https://imgur.com/K1pcQzu.jpeg",
       designation: "Entrepreneur & Social Engineer",
       instagramLink: 'https://www.instagram.com/bhaskar_indrakanti?igsh=MWZjOG1iMzh0bDAzYw==',
-    linkedinLink: 'https://www.linkedin.com/in/bh%C4%81skar-indrakanti-424b6051?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
+    linkedinLink: 'https://www.linkedin.com/in/bh%C4%81skar-indrakanti-424b6051?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    youtubeLink:"https://youtu.be/M0EK2sAu3pQ?si=X2mLXdRXCOgEjWFK",
     },
     {
       name: 'Akshay',
@@ -114,7 +188,8 @@ const speakers2024 = [
       description: 'Akshay Singh, shared his insights on "Social Rights," advocating for equal opportunities and social justice',
       image: "https://imgur.com/dLQqQ8B.png",
       instagramLink: 'https://www.instagram.com/theakshay_jointcollector?igsh=MTF6NjZldWNqbWVqOQ==',
-    linkedinLink: 'https://www.linkedin.com/in/akshay-singh-markam-a70178204?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
+    linkedinLink: 'https://www.linkedin.com/in/akshay-singh-markam-a70178204?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    youtubeLink:"https://youtu.be/5liA3nQih-I?si=BeyLwe3m3KIit6ZP",
     },
     {
       name: 'Abhijit',
@@ -123,7 +198,8 @@ const speakers2024 = [
       description: 'Abhijit Chavda delivered a compelling talk on "Geo Politics," shedding light on the dynamic interplay of politics and geography in shaping the global landscape',
       image: "https://imgur.com/LQcW3ZO.jpeg",
       instagramLink: 'https://www.instagram.com/theabhijitchavda?igsh=aXRqMTV2cGljb3pi',
-    linkedinLink: 'https://www.linkedin.com/in/abhijitchavda?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
+    linkedinLink: 'https://www.linkedin.com/in/abhijitchavda?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    youtubeLink:"https://youtu.be/yaqVHBNXTXo?si=Wo_oDCC8D2zYhX6s",
     },
     {
       name: 'Dr. Vineet',
@@ -132,7 +208,8 @@ const speakers2024 = [
       description: 'Dr. Vineet Agrawal engaged the audience with his enlightening presentation on "Science and Scriptures," exploring the intersections between scientific advancements and ancient wisdom.',
       image: "https://imgur.com/GmbPB9w.jpeg",
       instagramLink: 'https://www.instagram.com/drvineetaggarwal?igsh=MWV5bmxlejN4eXdjcA==',
-    linkedinLink: 'https://www.linkedin.com/in/drvineetaggarwal?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
+    linkedinLink: 'https://www.linkedin.com/in/drvineetaggarwal?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    youtubeLink:"https://youtu.be/hz-uhrK8C2U?si=gIxNXTR4QBfEQVKD",
     },
     {
       name: 'Aryan',
@@ -141,7 +218,8 @@ const speakers2024 = [
       description: 'In his talk, Aryan discussed the power of positive thinking and its potential to drive the evolution of humanity as a whole.',
       image: "https://imgur.com/JZvsw1P.jpeg",
       instagramLink: 'https://www.instagram.com/aryanvijayvergiya?igsh=MWJib2RhcG44dWhwcg==',
-      linkedinLink: 'https://www.linkedin.com/in/aryan-vijayvergiya?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
+      linkedinLink: 'https://www.linkedin.com/in/aryan-vijayvergiya?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+      youtubeLink:"https://youtu.be/AUXMBtOzU5g?si=TMDrfl7Fbsc_gdLr",
     },
   
   ];
@@ -150,7 +228,7 @@ const speakers2024 = [
 
 const Speakersm = () => {
 
-  const [selectedYear, setSelectedYear] = useState('2024');
+  const [selectedYear, setSelectedYear] = useState('2025');
   
     useEffect(()=>{
 
@@ -332,7 +410,7 @@ const Speakersm = () => {
 
 
     // const [selectedYear, setSelectedYear] = useState('2023');
-    const selectedSpeakers = selectedYear === '2024' ? speakers2024 : speakers2023;
+    const selectedSpeakers =  selectedYear === '2025' ? speakers2025 : selectedYear === '2024' ? speakers2024 : speakers2023;
     const handleChange = (event) => {
         setSelectedYear(event.target.value);
       
@@ -354,7 +432,8 @@ const Speakersm = () => {
   <ul class="o-mslider__list">
 
   <select className='myear' onChange={handleChange} value={selectedYear}>
-          <option  value="2024" selected>2024</option>
+          <option  value="2025" selected>2025</option>
+          <option  value="2024">2024</option>
           <option value="2023">2023</option>
         </select>
 
@@ -400,6 +479,33 @@ const Speakersm = () => {
               switch (speaker.name) {
                 
                 case 'Abhishek':
+                  speakerClass = 'Abhishek2';
+                  break;
+                  case 'Ashu':
+                  speakerClass = 'Ashu';
+                  break;
+                  case 'Ananad':
+                    speakerClass = 'Ananad';
+                    break;
+                    case 'Saanand':
+                      speakerClass = 'Saanand';
+                      break;
+                      case 'Sri Pundrik':
+                        speakerClass = 'sri';
+                        break;
+                        case 'Rahul':
+                          speakerClass = 'Rahul';
+                          break;
+                        
+                default:
+                  speakerClass = '';
+              }
+              break;
+            case '2025':
+              // Add switch cases for 2025 here
+              switch (speaker.name) {
+                
+                case 'Coming':
                   speakerClass = 'Abhishek2';
                   break;
                   case 'Ashu':
