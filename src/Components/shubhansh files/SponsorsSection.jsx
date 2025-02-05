@@ -8,90 +8,52 @@ import SponsorData from '../../Sponors.json';
 
 gsap.registerPlugin(ScrollTrigger);
 
- function SponsorsSection(){
-
-    // const pinRef =useRef(null);
-
+function SponsorsSection() {
+    const [year, setYear] = useState(2025);
+    
     useEffect(() => {
-        
-
         let tl2 = gsap.timeline();
         tl2.fromTo('.word', {
-            y:340,
+            y: 340,
             opacity: 0
-            
         },
         {
-            y:100,
-            opacity:1,
-            stagger:{
-                each:0.1
-            },
-            delay:0.7,
-            duration:1.5,
-             ease: "elastic.out(1,0.5)",
-        })
-
-       
-        // pinRef.current = gsap.fromTo(sponsorContainerRef.current,{
-        //     translateX:'25vw',
-        // },{
-        //     translateX:`-${sponsorLen*17}vw`,
-        //     ease:'power1.inOut',
-        //     duration:1,
-        //     scrollTrigger:{
-        //         trigger: sponsorTriggerRef.current,
-        //         start:'top top',
-        //         end:`+=${sponsorLen*370} top`,
-        //         scrub: 3.3,
-        //         markers: false,
-        //         pin: true
-        //     }
-        // })
-        // return() =>{
-        //     if(pinRef.current){
-        //         pinRef.current.scrollTrigger.kill();
-        //     }
-        // }
+            y: 100,
+            opacity: 1,
+            stagger: { each: 0.1 },
+            delay: 0.7,
+            duration: 1.5,
+            ease: "elastic.out(1,0.5)",
+        });
+    }, []);
     
-
-        
-    }, [])  
-
-    let sponsor_2024 = SponsorData[2024];
-    //console.log(sponsor_2024);
-    
-
-    //length for shifting sponsor container
-    let sponsorLen = sponsor_2024.length;
-    console.log(sponsorLen);
-
-
+    let sponsorList = SponsorData[2024] || [];
     const sponsorTriggerRef = useRef(null);
     const sponsorContainerRef = useRef(null);
-    
-    return(
-        <div className='sponsor-wrapper' ref={sponsorTriggerRef}>
-            <h1 className='sponsor-heading'>
-                    {
-                        'Sponsors'.split('').map((word) => {
-                            return word === '' ? <div className='word'>&nbsp;</div> : <div className='word'>{word}</div>
-                        })
-                    }
-            </h1>
 
-            <Marquee speed={100} pauseOnClick={true}>
-            <div className='sponsors-container' ref={sponsorContainerRef}>
-                {
-                    sponsor_2024.map((sponsor) => {
-                        //console.log(sponsor.image);
-                        return (<Sponsors Image={sponsor}/>)
-                    })
-                }
+    return (
+        <div className='sponsor-wrapper' ref={sponsorTriggerRef}>
+            <div className="header-container">
+                <h1 className='sponsor-heading'>
+                    {'Sponsors'.split('').map((char, index) => (
+                        <div key={index} className='word'>{char === ' ' ? '\u00A0' : char}</div>
+                    ))}
+                </h1>
+                <select className="year-drop" value={year} onChange={(e) => setYear(parseInt(e.target.value))}>
+                    <option className="option" value="2025">2025</option>
+                    <option className="option" value="2024">2024</option>
+                </select>
             </div>
-            </Marquee>
             
+            <Marquee speed={100} pauseOnClick={true}>
+                <div className='sponsors-container' ref={sponsorContainerRef}>
+                    {sponsorList.map((sponsor, index) => (
+                        <Sponsors key={index} Image={sponsor} />
+                    ))}
+                </div>
+            </Marquee>
         </div>
-    )
+    );
 }
-export default SponsorsSection 
+
+export default SponsorsSection;
