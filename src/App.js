@@ -20,31 +20,43 @@ import ScrollToTop from './ScrollToTop';
 function App() {
 
   const productsData = [
-    { title: '', link: '', thumbnail: "https://imgur.com/otCQ1nD.png" },
+    { title: '', link: '', thumbnail: "https://imgur.com/QrWLjTB.png" },  
     { title: '', link: '', thumbnail: "https://imgur.com/QEeDovI.png" },
-    { title: '', link: '', thumbnail: 'https://imgur.com/QrWLjTB.png' },
+    { title: '',  link: '',thumbnail: "https://imgur.com/kRVZARb.png"},
+    { title: '', link: '', thumbnail: "https://imgur.com/d25Kuyo.png" }, 
     { title: '', link: '', thumbnail: "https://imgur.com/2ynO99M.png" },
-    { title: '', link: '', thumbnail: "https://imgur.com/QoHDduf.png" },
-    { title: '', link: '', thumbnail: "https://imgur.com/EKyDkLT.png" },
-    { title: '', link: '', thumbnail: "https://imgur.com/NQ81zNH.png" },
-    { title: '', link: '', thumbnail: "https://imgur.com/ZDCwEiv.png" },
-    { title: '', link: '', thumbnail: "https://imgur.com/8qF1DmB.png" },
+
+    { title: '', link: '', thumbnail: "https://imgur.com/ngDuRXT.png" },
+    { title: '', link: '', thumbnail: "https://imgur.com/Ayedsgw.png" },
+    { title: '', link: '', thumbnail: "https://imgur.com/uXrqoiW.png" },
+    { title: '', link: '', thumbnail: "https://imgur.com/y3Ubqhd.png" },
+    { title: '', link: '', thumbnail: "https://imgur.com/BVndh4I.png" },
+
     { title: '', link: '', thumbnail: "https://imgur.com/0ThBbnS.png" },
+    {title:  '', link:'',  thumbnail: "https://imgur.com/vYuW7YU.png"},
     { title: '', link: '', thumbnail: "https://imgur.com/c6hDt12.png" },
     { title: '', link: '', thumbnail: "https://imgur.com/a8OJfU3.png" },
     { title: '', link: '', thumbnail: "https://imgur.com/ba4Qw2V.png" },
-    { title: '', link: '', thumbnail: "https://imgur.com/lUuIyf7.png" },
-    { title: '', link: '', thumbnail: "https://imgur.com/TusM5x3.png" },
-    { title: '', link: '', thumbnail: "https://imgur.com/aksks8I.png" },
-    { title: '', link: '', thumbnail: "https://imgur.com/jZQPRRB.png" },
-    { title: '', link: '', thumbnail: "https://imgur.com/Zx353W2.png" },
+
+    { title: '', link: '', thumbnail: "https://imgur.com/pBe9EFx.png" },
+    { title: '', link: '', thumbnail: "https://imgur.com/uPjVrt5.png" },
+    { title: '', link: '', thumbnail: "https://imgur.com/7rLLq7o.png" },
+    { title: '',  link: '',thumbnail: "https://imgur.com/huU1heA.png"}, 
+    { title: '', link: '', thumbnail: "https://imgur.com/ena3CxK.png" },
+
+    { title: '', link: '', thumbnail: "https://imgur.com/XFAP3FN.png" }, 
     { title: '', link: '', thumbnail: "https://imgur.com/dCvMOYS.png" },
-    { title: '', link: '', thumbnail: "https://imgur.com/2cZHIYf.png" },
+    { title: '', link: '', thumbnail: "https://imgur.com/4Ly1ZeB.png" }, 
+    { title: '',  link: '',thumbnail: "https://imgur.com/Dz0uIL2.png"},
+    { title: '',  link: '',thumbnail: "https://imgur.com/1CaQccl.png"},
+
     { title: 'Aryan Vijayvargiya', link: '', thumbnail: "https://imgur.com/Qebc43j.png" },
     { title: 'Dr. Ragini Makkhar', link: '', thumbnail: "https://imgur.com/azvGCcl.png" },
     { title: 'Abhishek Mishra', link: '', thumbnail: "https://imgur.com/VB6xoI2.png" },
     { title: 'Bhaskar Indrakanti', link: '', thumbnail: "https://imgur.com/iV9tnue.png" },
     { title: 'Akshay Singh', link: '', thumbnail: "https://imgur.com/L2tS0Cz.png" },
+    
+
     // Add more product data as needed
   ];
   useEffect(() => {
