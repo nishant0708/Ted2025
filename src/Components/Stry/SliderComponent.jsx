@@ -70,11 +70,14 @@ const SliderComponent = () => {
               sliderStyles.setProperty("--scroll-vel", scrollVel);
 
               // Animate title
-              gsap.set(title, {
-                skewX: `${proxy.velocity * 5}deg`,
-                x:
-                  (-scrollPerc / 100) * (title.offsetWidth - window.innerWidth),
-              });
+              let xValue = selectedYear === '2025' 
+              ? (-(scrollPerc / 140) * (title.offsetWidth - window.innerWidth))-4900 
+              : selectedYear === '2024'?(-scrollPerc / 100) * (title.offsetWidth - window.innerWidth):(-scrollPerc / 150) * (title.offsetWidth - window.innerWidth)-200;
+            
+            gsap.set(title, {
+              skewX: `${proxy.velocity * 5}deg`,
+              x: xValue
+            });
             },
           });
         }
