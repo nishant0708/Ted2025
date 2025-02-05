@@ -20,8 +20,8 @@ export const HeroParallax = ({ products }) => {
   const secondRow = products.slice(5, 10);
   const thirdRow = products.slice(10, 15);
   const fourthRow = products.slice(15, 20);
-  
   const fifthRow = products.slice(20, 25);
+  const sixthRow = products.slice(25,30);
  
   
   const ref = React.useRef(null);
@@ -130,7 +130,7 @@ export const HeroParallax = ({ products }) => {
         </motion.div>
         
       </motion.div>
-      <motion.div className="FOURth row flex flex-row  mt-[78vh] space-x-20 ">
+      <motion.div className="FOURth row flex flex-row mt-[95vh] space-x-20 ">
           {fourthRow.map((product) => (
             <ProductCard
               product={product}
@@ -139,8 +139,17 @@ export const HeroParallax = ({ products }) => {
             />
           ))}
         </motion.div>
-        <motion.div className="FIFTH flex flex-row-reverse mt-20 space-x-reverse space-x-20">
+        <motion.div className="FIFTH flex flex-row-reverse mt-24 space-x-reverse space-x-20">
           {fifthRow.map((product) => (
+            <ProductCard
+              product={product}
+              translate={translateX5}
+              key={product.title}
+            />
+          ))}
+        </motion.div>
+        <motion.div className="FIFTH flex flex-row-reverse mt-24 space-x-reverse space-x-20">
+          {sixthRow.map((product) => (
             <ProductCard
               product={product}
               translate={translateX5}
