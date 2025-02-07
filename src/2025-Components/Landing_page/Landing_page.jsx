@@ -155,7 +155,7 @@ useEffect(() => {
     pathTimeline
       .to("#gradientRect", {
         y: "0%",
-        markers: true,
+        markers: false,
         duration: contentTimelineDuration, // Match the duration of contentTimeline
         ease: "none",
       });
