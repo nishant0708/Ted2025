@@ -77,7 +77,7 @@ const VideoSection = () => {
           start: "top center",
           end: "top top",
           scrub: true,
-          markers: false,
+          markers: true,
         },
         ease: "sine.out",
       }
@@ -93,7 +93,7 @@ const VideoSection = () => {
           toggleActions: "play none none reverse",
           start: "top 50%",
           scrub: false,
-          markers: false,
+          markers: true,
         },
         duration: 0.8,
         ease: "sine.out",
@@ -111,7 +111,7 @@ const VideoSection = () => {
           toggleActions: "play none none reverse",
           start: "top 50%",
           scrub: false,
-          markers: false,
+          markers: true,
         },
         duration: 0.8,
         ease: "sine.out",
@@ -122,6 +122,7 @@ const VideoSection = () => {
       trigger: sectionRef.current,
       start: "top center",
       end: "bottom center",
+      markers: true,
       onEnter: () => {
         setIsVisible(true);
         if (playerRef.current) {
