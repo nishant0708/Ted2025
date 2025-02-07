@@ -52,7 +52,7 @@ button:focus {
 .o-mslider__title span {
     position: absolute;
     top: 0;
-    left: 22vw;
+    left: 0;
     display: flex;
     align-items: center;
     line-height: 1;
@@ -255,9 +255,7 @@ text-align: center;
     left: 50%;
     }
 
- .title2024 span{
- left: 30%;
- }   
+ 
 .Abhishek2 .o-mslider__img{
 padding-top: 3vh;
 }
@@ -294,13 +292,8 @@ padding-top: 3vh;
     --title-size: calc(1/8 * 100vh);
   }
   
-  .o-mslider__title span{
-     left: 25vw;
-  }
   
- .title2024 span{
-    left: 45%;
-    }   
+  
   .o-mslider__img{
     width: 50vw;
     height: 30vh;

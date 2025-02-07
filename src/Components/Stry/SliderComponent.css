@@ -93,7 +93,7 @@ z-index: 0;
 .o-slider__title span {
   position: absolute;
   bottom: -0%;
-  left: 15%;
+  left: 0%;
   display: flex;
   align-items: center;
   line-height: 1;
@@ -323,6 +323,9 @@ z-index: 0;
 }
 
 @media (max-width: 1280px) {
+  .o-slider {
+    --title-size: calc(1 / 5 * 100vh);
+  }
   .speaker-name {
     font-size: 45px;
     line-height: 45px;

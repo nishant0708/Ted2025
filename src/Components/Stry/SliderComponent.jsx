@@ -1,19 +1,206 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import "./SliderComponent.css";
 import { useEffect, useState, useRef } from "react";
-import samp_image from "../Assests/Images/rev.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import linkedin from "../Assests/Images/linkedin.png";
 import instagram from "../Assests/Images/instagram (2).png";
-import badal from "../../Images/Group 83.svg";
-import badal2 from "../../Images/Group 84.svg";
+import coming from "../Assests/Images/rev.png";
+
+const speakerData2024 = [
+  {
+    name: "Abhishek",
+    surname: "Kar",
+    designation: "Finance Enthusiast, YouTube, Startup Consultant",
+    description:
+      "An IIPS DAVV alumni who has made a name for himself in the finance influencers community with 1.6 million followers on insta and 1.2 million on youtube along with an amazon bestseller book -Stocks and Life.",
+    image: "https://imgur.com/iCd3rhC.png",
+    instagramLink:
+      "https://www.instagram.com/abhishekkarofficial?igsh=Zm9wZG9jejVjd3o1",
+    linkedinLink:
+      "https://www.linkedin.com/in/abhishek-kar-/?originalSubdomain=in",
+  },
+  {
+    name: "Ashu",
+    surname: "Ghai",
+    designation: "Educator, Content Creator, Youth Icon",
+    description:
+      "A household name in the digital education community for his specialization in teaching through experiments rather than the conventional theory system. Has a major follower count of 6 million on youtube with the channel becoming the 3rd fastest growing channel in India.",
+    image: "https://imgur.com/lqGbHub.png",
+    instagramLink: "https://www.instagram.com/ashu.ghai/",
+    linkedinLink:
+      "https://www.linkedin.com/in/ashu-ghai-179892254/?originalSubdomain=in",
+  },
+  {
+    name: "Rahul",
+    surname: "Laddha",
+    designation: "Networking, Brand Building",
+    description:
+      "A man with diverse roles:Podcaster, anchor, speaker, published author along with 15+ years of work experience as a chief of staff,business analyst and other prestigious corporate positions.",
+    image: "https://imgur.com/A50aOyu.png",
+    instagramLink: "",
+    linkedinLink:
+      "https://www.linkedin.com/in/rahulladha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  },
+
+  {
+    name: "Ananad",
+    surname: "Nahaar",
+    designation:
+      "Startup Founder, Inspirational, Recently seen on Shark Tank India",
+    description:
+      "Just recently came and pitched his really successful business venture on the shark tank. With a food chain startup -ZORKO. He has effortlessly collaborated for 150 plus franchises in a small time of one year.",
+    image: "https://imgur.com/4M3NoKA.png",
+    instagramLink: "https://www.instagram.com/anand.zorko/",
+    linkedinLink:
+      "https://www.linkedin.com/in/anandnahar4/?originalSubdomain=in",
+  },
+  {
+    name: "Sri Pundrik",
+    surname: "Goswami",
+    designation: "Psychology, Spritual",
+    description:
+      "A renowned Vaishnava leader,speaker and the scholar of vedic knowledge With a total of 500k+ followers on various social media platforms.",
+    image: "https://imgur.com/Jq4Leef.png",
+    instagramLink:
+      "https://www.instagram.com/sripundrik?igsh=MTRnM2ppand4ZTA3ZA",
+    linkedinLink: "",
+  },
+  {
+    name: "Saanand",
+    surname: "Verma",
+    designation: "Actor, Content Creator, TV Icon",
+    description:
+      "A renowned Indian film and television actor who has worked for numerous projects like mardaani,raid,chicchore and shows like C.I.D,F.I.R and Sacred games to name a few",
+    image: "https://imgur.com/vJ5kBL1.png",
+    instagramLink: "https://www.instagram.com/saanandverma/?hl=en",
+    linkedinLink: "",
+  },
+];
+
+const speakerData2023 = [
+  {
+    name: "Ella D'",
+    surname: "Verma",
+    description:
+      "Ella D'Verma, delivered a powerful speech on ''Acceptance'', highlighting the significance of embracing diversity and  fostering an inclusive society.",
+    image: "https://imgur.com/0xIsfCm.jpeg",
+    designation: "Miss International Trans Queen",
+    instagramLink:
+      "https://www.instagram.com/elladverma?igsh=MXQ0eHNicGF2b2FsaA",
+    linkedinLink:
+      "https://www.linkedin.com/in/ella-verma-ab6889236?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  },
+
+  {
+    name: "Abhishek ",
+    surname: "Mishra",
+    designation: "CTO and Co-founder at Pisarv Technology",
+    description:
+      'Abhishek Mishra captivated the audience with his talk on "Transhumanism" and how technology is reshaping the evolutionary path of humanity',
+    image: "https://imgur.com/fL2xzjD.jpeg",
+    instagramLink:
+      "https://www.instagram.com/abhisek.mnit?igsh=MTM2MGg2Y3VweGJveQ",
+    linkedinLink: "",
+  },
+
+  {
+    name: "Dr. Ragini",
+    surname: "Makkhar",
+    designation: "Member of UNESCO & Winner of India’s Got Talent Season 5",
+    description:
+      "Dr. Ragini Makkhar, the winner of India's Got Talent Season 5 inspired the audience with her talk on ''Evolve with Dance,'' showcasing the transformative power of dance in personal growth and self-expression.",
+    image: "https://imgur.com/n00f9ob.jpeg",
+    instagramLink:
+      "https://www.instagram.com/dr.raginimakkad?igsh=MXJlN245ZWh3N2phZw==",
+    linkedinLink: "",
+  },
+
+  {
+    name: "Bhaskar",
+    surname: "Indrakanti",
+    description:
+      'Bhaskar Indrakanti delivered a thought-provoking talk on "Mental Awareness," raising awareness about mental health and emphasising the importance of de-stigmatization.',
+    image: "https://imgur.com/K1pcQzu.jpeg",
+    designation: "Entrepreneur & Social Engineer",
+    instagramLink:
+      "https://www.instagram.com/bhaskar_indrakanti?igsh=MWZjOG1iMzh0bDAzYw==",
+    linkedinLink:
+      "https://www.linkedin.com/in/bh%C4%81skar-indrakanti-424b6051?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  },
+  {
+    name: "Akshay",
+    surname: "Singh",
+    designation: "The youngest deputy collector of the MP government.",
+    description:
+      'Akshay Singh, shared his insights on "Social Rights," advocating for equal opportunities and social justice',
+    image: "https://imgur.com/dLQqQ8B.png",
+    instagramLink:
+      "https://www.instagram.com/theakshay_jointcollector?igsh=MTF6NjZldWNqbWVqOQ==",
+    linkedinLink:
+      "https://www.linkedin.com/in/akshay-singh-markam-a70178204?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  },
+  {
+    name: "Abhijit",
+    surname: "Chavda",
+    designation: "Geopolitics, History & Science Expert., Youtuber",
+    description:
+      'Abhijit Chavda delivered a compelling talk on "Geo Politics," shedding light on the dynamic interplay of politics and geography in shaping the global landscape',
+    image: "https://imgur.com/LQcW3ZO.jpeg",
+    instagramLink:
+      "https://www.instagram.com/theabhijitchavda?igsh=aXRqMTV2cGljb3pi",
+    linkedinLink:
+      "https://www.linkedin.com/in/abhijitchavda?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  },
+  {
+    name: "Dr. Vineet",
+    surname: "Agrawal",
+    designation: "Author, History and Mythology Expert",
+    description:
+      'Dr. Vineet Agrawal engaged the audience with his enlightening presentation on "Science and Scriptures," exploring the intersections between scientific advancements and ancient wisdom.',
+    image: "https://imgur.com/GmbPB9w.jpeg",
+    instagramLink:
+      "https://www.instagram.com/drvineetaggarwal?igsh=MWV5bmxlejN4eXdjcA==",
+    linkedinLink:
+      "https://www.linkedin.com/in/drvineetaggarwal?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  },
+  {
+    name: "Aryan",
+    surname: "Vijayvergiya",
+    designation:
+      "Student at IIPS Founder at Mission Vasundhara & Satat Productions",
+    description:
+      "In his talk, Aryan discussed the power of positive thinking and its potential to drive the evolution of humanity as a whole.",
+    image: "https://imgur.com/JZvsw1P.jpeg",
+    instagramLink:
+      "https://www.instagram.com/aryanvijayvergiya?igsh=MWJib2RhcG44dWhwcg==",
+    linkedinLink:
+      "https://www.linkedin.com/in/aryan-vijayvergiya?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  },
+];
+const speakerData2025 = [
+  {
+    name: "Coming",
+    surname: "Soon",
+    designation: "TEDxDAVV: Where Ideas Come Alive",
+    description:
+      "Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!",
+    image: coming,
+    instagramLink:
+      "",
+    linkedinLink:
+      "",
+  },
+]
+
 const SliderComponent = () => {
   const progressBarRef = useRef(null);
   const [showTitle, setShowTitle] = useState(false);
   const sliderRef = useRef(null);
-  const [selectedYear, setSelectedYear] = useState("2024");
+  const [selectedYear, setSelectedYear] = useState("2025");
   const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  // this useEffect hook will run only once when the component is mounted and is the heart of this compoenent
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -41,10 +228,11 @@ const SliderComponent = () => {
       onUpdate: (self) => {
         // Scroll percentage
       
-        scrollPerc = round(
-          (window.scrollY / (slider.offsetHeight - window.innerHeight)) * 100,
-          2
-        ) -(isInitialLoad ? 250 : 80);
+        let scrollPerc = Math.max(
+          0,
+          Math.round(
+            ((window.scrollY - slider.offsetTop) / (slider.offsetHeight - window.innerHeight)) * 100
+          ))
         sliderStyles.setProperty("--scroll-perc", scrollPerc);
         velocity = clamp(self.getVelocity() / -300);
         if (Math.abs(velocity) > Math.abs(proxy.velocity)) {
@@ -86,181 +274,8 @@ const SliderComponent = () => {
     };
   }, [selectedYear]);
 
-  /**
-   ** Round number with n decimals
-   */
-  const speakerData2024 = [
-    {
-      name: "Abhishek",
-      surname: "Kar",
-      designation: "Finance Enthusiast, YouTube, Startup Consultant",
-      description:
-        "An IIPS DAVV alumni who has made a name for himself in the finance influencers community with 1.6 million followers on insta and 1.2 million on youtube along with an amazon bestseller book -Stocks and Life.",
-      image: "https://imgur.com/iCd3rhC.png",
-      instagramLink:
-        "https://www.instagram.com/abhishekkarofficial?igsh=Zm9wZG9jejVjd3o1",
-      linkedinLink:
-        "https://www.linkedin.com/in/abhishek-kar-/?originalSubdomain=in",
-    },
-    {
-      name: "Ashu",
-      surname: "Ghai",
-      designation: "Educator, Content Creator, Youth Icon",
-      description:
-        "A household name in the digital education community for his specialization in teaching through experiments rather than the conventional theory system. Has a major follower count of 6 million on youtube with the channel becoming the 3rd fastest growing channel in India.",
-      image: "https://imgur.com/lqGbHub.png",
-      instagramLink: "https://www.instagram.com/ashu.ghai/",
-      linkedinLink:
-        "https://www.linkedin.com/in/ashu-ghai-179892254/?originalSubdomain=in",
-    },
-    {
-      name: "Rahul",
-      surname: "Laddha",
-      designation: "Networking, Brand Building",
-      description:
-        "A man with diverse roles:Podcaster, anchor, speaker, published author along with 15+ years of work experience as a chief of staff,business analyst and other prestigious corporate positions.",
-      image: "https://imgur.com/A50aOyu.png",
-      instagramLink: "",
-      linkedinLink:
-        "https://www.linkedin.com/in/rahulladha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    },
 
-    {
-      name: "Ananad",
-      surname: "Nahaar",
-      designation:
-        "Startup Founder, Inspirational, Recently seen on Shark Tank India",
-      description:
-        "Just recently came and pitched his really successful business venture on the shark tank. With a food chain startup -ZORKO. He has effortlessly collaborated for 150 plus franchises in a small time of one year.",
-      image: "https://imgur.com/4M3NoKA.png",
-      instagramLink: "https://www.instagram.com/anand.zorko/",
-      linkedinLink:
-        "https://www.linkedin.com/in/anandnahar4/?originalSubdomain=in",
-    },
-    {
-      name: "Sri Pundrik",
-      surname: "Goswami",
-      designation: "Psychology, Spritual",
-      description:
-        "A renowned Vaishnava leader,speaker and the scholar of vedic knowledge With a total of 500k+ followers on various social media platforms.",
-      image: "https://imgur.com/Jq4Leef.png",
-      instagramLink:
-        "https://www.instagram.com/sripundrik?igsh=MTRnM2ppand4ZTA3ZA",
-      linkedinLink: "",
-    },
-    {
-      name: "Saanand",
-      surname: "Verma",
-      designation: "Actor, Content Creator, TV Icon",
-      description:
-        "A renowned Indian film and television actor who has worked for numerous projects like mardaani,raid,chicchore and shows like C.I.D,F.I.R and Sacred games to name a few",
-      image: "https://imgur.com/vJ5kBL1.png",
-      instagramLink: "https://www.instagram.com/saanandverma/?hl=en",
-      linkedinLink: "",
-    },
-  ];
-
-  const speakerData2023 = [
-    {
-      name: "Ella D'",
-      surname: "Verma",
-      description:
-        "Ella D'Verma, delivered a powerful speech on ''Acceptance'', highlighting the significance of embracing diversity and  fostering an inclusive society.",
-      image: "https://imgur.com/0xIsfCm.jpeg",
-      designation: "Miss International Trans Queen",
-      instagramLink:
-        "https://www.instagram.com/elladverma?igsh=MXQ0eHNicGF2b2FsaA",
-      linkedinLink:
-        "https://www.linkedin.com/in/ella-verma-ab6889236?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    },
-
-    {
-      name: "Abhishek ",
-      surname: "Mishra",
-      designation: "CTO and Co-founder at Pisarv Technology",
-      description:
-        'Abhishek Mishra captivated the audience with his talk on "Transhumanism" and how technology is reshaping the evolutionary path of humanity',
-      image: "https://imgur.com/fL2xzjD.jpeg",
-      instagramLink:
-        "https://www.instagram.com/abhisek.mnit?igsh=MTM2MGg2Y3VweGJveQ",
-      linkedinLink: "",
-    },
-
-    {
-      name: "Dr. Ragini",
-      surname: "Makkhar",
-      designation: "Member of UNESCO & Winner of India’s Got Talent Season 5",
-      description:
-        "Dr. Ragini Makkhar, the winner of India's Got Talent Season 5 inspired the audience with her talk on ''Evolve with Dance,'' showcasing the transformative power of dance in personal growth and self-expression.",
-      image: "https://imgur.com/n00f9ob.jpeg",
-      instagramLink:
-        "https://www.instagram.com/dr.raginimakkad?igsh=MXJlN245ZWh3N2phZw==",
-      linkedinLink: "",
-    },
-
-    {
-      name: "Bhaskar",
-      surname: "Indrakanti",
-      description:
-        'Bhaskar Indrakanti delivered a thought-provoking talk on "Mental Awareness," raising awareness about mental health and emphasising the importance of de-stigmatization.',
-      image: "https://imgur.com/K1pcQzu.jpeg",
-      designation: "Entrepreneur & Social Engineer",
-      instagramLink:
-        "https://www.instagram.com/bhaskar_indrakanti?igsh=MWZjOG1iMzh0bDAzYw==",
-      linkedinLink:
-        "https://www.linkedin.com/in/bh%C4%81skar-indrakanti-424b6051?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    },
-    {
-      name: "Akshay",
-      surname: "Singh",
-      designation: "The youngest deputy collector of the MP government.",
-      description:
-        'Akshay Singh, shared his insights on "Social Rights," advocating for equal opportunities and social justice',
-      image: "https://imgur.com/dLQqQ8B.png",
-      instagramLink:
-        "https://www.instagram.com/theakshay_jointcollector?igsh=MTF6NjZldWNqbWVqOQ==",
-      linkedinLink:
-        "https://www.linkedin.com/in/akshay-singh-markam-a70178204?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    },
-    {
-      name: "Abhijit",
-      surname: "Chavda",
-      designation: "Geopolitics, History & Science Expert., Youtuber",
-      description:
-        'Abhijit Chavda delivered a compelling talk on "Geo Politics," shedding light on the dynamic interplay of politics and geography in shaping the global landscape',
-      image: "https://imgur.com/LQcW3ZO.jpeg",
-      instagramLink:
-        "https://www.instagram.com/theabhijitchavda?igsh=aXRqMTV2cGljb3pi",
-      linkedinLink:
-        "https://www.linkedin.com/in/abhijitchavda?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    },
-    {
-      name: "Dr. Vineet",
-      surname: "Agrawal",
-      designation: "Author, History and Mythology Expert",
-      description:
-        'Dr. Vineet Agrawal engaged the audience with his enlightening presentation on "Science and Scriptures," exploring the intersections between scientific advancements and ancient wisdom.',
-      image: "https://imgur.com/GmbPB9w.jpeg",
-      instagramLink:
-        "https://www.instagram.com/drvineetaggarwal?igsh=MWV5bmxlejN4eXdjcA==",
-      linkedinLink:
-        "https://www.linkedin.com/in/drvineetaggarwal?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    },
-    {
-      name: "Aryan",
-      surname: "Vijayvergiya",
-      designation:
-        "Student at IIPS Founder at Mission Vasundhara & Satat Productions",
-      description:
-        "In his talk, Aryan discussed the power of positive thinking and its potential to drive the evolution of humanity as a whole.",
-      image: "https://imgur.com/JZvsw1P.jpeg",
-      instagramLink:
-        "https://www.instagram.com/aryanvijayvergiya?igsh=MWJib2RhcG44dWhwcg==",
-      linkedinLink:
-        "https://www.linkedin.com/in/aryan-vijayvergiya?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    },
-  ];
-
+// this useeffect handles animations inside the slider <li> elements
   const SpeakerComponent = ({
     name,
     surname,
@@ -361,6 +376,7 @@ const SliderComponent = () => {
     );
   };
 
+  // this component renders the list of speakers based on the selected year
   const SpeakerList = ({ selectedYear }) => {
     let speakers;
 
@@ -368,6 +384,9 @@ const SliderComponent = () => {
       speakers = speakerData2023;
     } else if (selectedYear === "2024") {
       speakers = speakerData2024;
+    }
+    else if (selectedYear === "2025") {
+      speakers = speakerData2025;
     }
 
     return (
@@ -379,15 +398,13 @@ const SliderComponent = () => {
     );
   };
 
+  // this is useeffect handles the progress bar animation
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     const oSliderItems = document.querySelectorAll(".o-slider__item");
     const sliderContainer = document.querySelector(".o-slider");
     
-    // Calculate total scroll distance
-    const totalDistance = sliderContainer.offsetHeight - window.innerHeight;
-
     // Create a ScrollTrigger for the progress bar
     ScrollTrigger.create({
       trigger: sliderContainer,
@@ -425,22 +442,12 @@ const SliderComponent = () => {
     }, 100); // 100ms delay should be sufficient
   };
 
-
-  // console.log("Selected Year:", selectedYear);
-
+// this is the main return of the component
   return (
     <div id="slider" className="o-slider" ref={sliderRef}>
     <div className="landing_2025_stars"></div>
-      {/* <div className="badal1">
-        <img loading="lazy" src={badal} className="badal" />
-      </div>
-      <div className="badal2">
-        <img loading="lazy" src={badal2} className="badal" />
-      </div> */}
       <h1
-        className={`o-slider__title ${
-          selectedYear === "2024" ? "o-slider__title-2024" : ""
-        }`}
+        className={`o-slider__title `}
         style={{
           position: showTitle ? "fixed" : "block",
           transition: "opacity 0.5s ease",
@@ -449,10 +456,12 @@ const SliderComponent = () => {
         <span id="title">Speakers </span>
       </h1>
       <select className="year-drop" onChange={handleChange}>
-        <option className="option" value="2024" selected>
+      <option className="option" value="2025"  selected>2025</option>
+        <option  value="2024">
           2024
         </option>
         <option value="2023">2023</option>
+        
       </select>
 
       <SpeakerList selectedYear={selectedYear} />
@@ -464,6 +473,8 @@ const SliderComponent = () => {
 };
 
 export default SliderComponent;
+
+// this function returns the class name based on the speaker name
 const getSpeakerNameClass = (name) => {
   switch (name) {
     case "Aryan":
@@ -497,6 +508,7 @@ const getSpeakerNameClass = (name) => {
       return "Rahulpc";
     case "Bhaskar":
     return "Bhaskar";
+    
     default:
       return "";
   }
