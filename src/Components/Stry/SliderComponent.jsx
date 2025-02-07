@@ -186,12 +186,10 @@ const speakerData2025 = [
     description:
       "Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!",
     image: coming,
-    instagramLink:
-      "",
-    linkedinLink:
-      "",
+    instagramLink: "",
+    linkedinLink: "",
   },
-]
+];
 
 const SliderComponent = () => {
   const progressBarRef = useRef(null);
@@ -199,7 +197,7 @@ const SliderComponent = () => {
   const sliderRef = useRef(null);
   const [selectedYear, setSelectedYear] = useState("2025");
   const [isInitialLoad, setIsInitialLoad] = useState(true);
-
+  const animationRef = useRef(null);
   // this useEffect hook will run only once when the component is mounted and is the heart of this compoenent
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -208,6 +206,7 @@ const SliderComponent = () => {
     const slider = document.getElementById("slider");
     const title = document.getElementById("title");
     const toggle = document.getElementById("toggle");
+
     const sliderStyles = slider.style;
 
     // Scroll trigger
@@ -227,12 +226,15 @@ const SliderComponent = () => {
       start: "Top 80%",
       onUpdate: (self) => {
         // Scroll percentage
-      
+
         let scrollPerc = Math.max(
           0,
           Math.round(
-            ((window.scrollY - slider.offsetTop) / (slider.offsetHeight - window.innerHeight)) * 100
-          ))
+            ((window.scrollY - slider.offsetTop) /
+              (slider.offsetHeight - window.innerHeight)) *
+              100
+          )
+        );
         sliderStyles.setProperty("--scroll-perc", scrollPerc);
         velocity = clamp(self.getVelocity() / -300);
         if (Math.abs(velocity) > Math.abs(proxy.velocity)) {
@@ -274,8 +276,7 @@ const SliderComponent = () => {
     };
   }, [selectedYear]);
 
-
-// this useeffect handles animations inside the slider <li> elements
+  // this useeffect handles animations inside the slider <li> elements
   const SpeakerComponent = ({
     name,
     surname,
@@ -348,7 +349,15 @@ const SliderComponent = () => {
 
     return (
       <li className={`o-slider__item ${speakerNameClass}`}>
-        <div className="speaker_img_container"><img loading="lazy" className="o-slider__img" src={image} alt="" ref={imgRef} /></div>
+        <div className="speaker_img_container">
+          <img
+            loading="lazy"
+            className="o-slider__img"
+            src={image}
+            alt=""
+            ref={imgRef}
+          />
+        </div>
         <p className="slider__desc" ref={descRef}>
           {description}
         </p>
@@ -361,13 +370,21 @@ const SliderComponent = () => {
           <span className="log">
             {instagramLink && (
               <a href={instagramLink}>
-                <img loading="lazy" /*style={{ width: "35px" }}*/ src={instagram} alt="" />
+                <img
+                  loading="lazy"
+                  /*style={{ width: "35px" }}*/ src={instagram}
+                  alt=""
+                />
               </a>
             )}
             &nbsp;
             {linkedinLink && (
               <a href={linkedinLink}>
-                <img loading="lazy" /*style={{ width: "35px" }}*/ src={linkedin} alt="" />
+                <img
+                  loading="lazy"
+                  /*style={{ width: "35px" }}*/ src={linkedin}
+                  alt=""
+                />
               </a>
             )}
           </span>
@@ -384,8 +401,7 @@ const SliderComponent = () => {
       speakers = speakerData2023;
     } else if (selectedYear === "2024") {
       speakers = speakerData2024;
-    }
-    else if (selectedYear === "2025") {
+    } else if (selectedYear === "2025") {
       speakers = speakerData2025;
     }
 
@@ -404,7 +420,6 @@ const SliderComponent = () => {
 
     const oSliderItems = document.querySelectorAll(".o-slider__item");
     const sliderContainer = document.querySelector(".o-slider");
-    
     // Create a ScrollTrigger for the progress bar
     ScrollTrigger.create({
       trigger: sliderContainer,
@@ -416,22 +431,16 @@ const SliderComponent = () => {
           gsap.to(progressBarRef.current, {
             width: `${progress}%`,
             duration: 0.1,
-            ease: "none"
+            ease: "none",
           });
         }
-      }
+      },
     });
-
-    // Clean up
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
   }, [selectedYear]);
 
   const handleChange = (event) => {
     setSelectedYear(event.target.value);
     setIsInitialLoad(false);
-    
     // Add setTimeout to ensure content is updated before scrolling
     setTimeout(() => {
       const offsetTop = sliderRef.current.offsetTop - window.innerHeight * 0.7;
@@ -442,10 +451,10 @@ const SliderComponent = () => {
     }, 100); // 100ms delay should be sufficient
   };
 
-// this is the main return of the component
+  // this is the main return of the component
   return (
     <div id="slider" className="o-slider" ref={sliderRef}>
-    <div className="landing_2025_stars"></div>
+      <div className="landing_2025_stars"></div>
       <h1
         className={`o-slider__title `}
         style={{
@@ -456,12 +465,11 @@ const SliderComponent = () => {
         <span id="title">Speakers </span>
       </h1>
       <select className="year-drop" onChange={handleChange}>
-      <option className="option" value="2025"  selected>2025</option>
-        <option  value="2024">
-          2024
+        <option className="option" value="2025" selected>
+          2025
         </option>
+        <option value="2024">2024</option>
         <option value="2023">2023</option>
-        
       </select>
 
       <SpeakerList selectedYear={selectedYear} />
@@ -501,14 +509,13 @@ const getSpeakerNameClass = (name) => {
     case "Ananad":
       return "Ananadpc";
     case "Abhishek ":
-      return "abhishek23"
+      return "abhishek23";
     case "Saanand":
       return "Saanandpc";
     case "Rahul":
       return "Rahulpc";
     case "Bhaskar":
-    return "Bhaskar";
-    
+      return "Bhaskar";
     default:
       return "";
   }
