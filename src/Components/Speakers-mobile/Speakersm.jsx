@@ -4,11 +4,24 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import mlinkedin from "../Assests/Images/linkedin.png";
 import instagram from "../Assests/Images/instagram (2).png";
-import samp_image from "../Assests/Images/rev.png"
+import coming from "../Assests/Images/rev.png";
 
 import badal from "../Assests/Images/Group 29.png"
 
-
+const speakers2025 = [
+  {
+    name: "Coming",
+    surname: "Soon",
+    designation: "TEDxDAVV: Where Ideas Come Alive",
+    description:
+      "Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!",
+    image: coming,
+    instagramLink:
+      "",
+    linkedinLink:
+      "",
+  }
+];
 const speakers2024 = [
   {
     name: 'Abhishek',
@@ -150,7 +163,7 @@ const speakers2024 = [
 
 const Speakersm = () => {
 
-  const [selectedYear, setSelectedYear] = useState('2024');
+  const [selectedYear, setSelectedYear] = useState('2025');
   
     useEffect(()=>{
 
@@ -182,7 +195,11 @@ const Speakersm = () => {
           
           onUpdate: self => {
             // Scroll percentage
-            scrollPerc = round(window.scrollY / (slider.offsetHeight - window.innerHeight) * 100, 2);
+            let scrollPerc = Math.max(
+              0,
+              Math.round(
+                ((window.scrollY - slider.offsetTop) / (slider.offsetHeight - window.innerHeight)) * 100
+              ))
             sliderStyles.setProperty('--scroll-perc', scrollPerc);
             velocity = clamp(self.getVelocity() / -300);
             if (Math.abs(velocity) > Math.abs(proxy.velocity)) {
@@ -332,7 +349,11 @@ const Speakersm = () => {
 
 
     // const [selectedYear, setSelectedYear] = useState('2023');
-    const selectedSpeakers = selectedYear === '2024' ? speakers2024 : speakers2023;
+    const selectedSpeakers = selectedYear === '2024' 
+  ? speakers2024 
+  : selectedYear === '2025' 
+    ? speakers2025 
+    : speakers2023;
     const handleChange = (event) => {
         setSelectedYear(event.target.value);
       
@@ -354,7 +375,8 @@ const Speakersm = () => {
   <ul class="o-mslider__list">
 
   <select className='myear' onChange={handleChange} value={selectedYear}>
-          <option  value="2024" selected>2024</option>
+  <option  value="2025" selected>2025</option>
+          <option  value="2024" >2024</option>
           <option value="2023">2023</option>
         </select>
 
