@@ -12,36 +12,36 @@ gsap.registerPlugin(ScrollTrigger);
 function SponsorMobileSection() {
     const [selectedYear, setSelectedYear] = useState('2025');
 
-    useEffect(() => {
-        let tl2 = gsap.timeline();
-        tl2.fromTo('.word', {
-            y: 140,
-            opacity: 0
+useEffect(() => {
+    let tl2 = gsap.timeline();
+    tl2.fromTo('.word', {
+        y: 140,
+        opacity: 0
+    },
+    {
+        y: 0,
+        opacity: 1,
+        stagger: {
+            each: 0.1
         },
-        {
-            y: 0,
-            opacity: 1,
-            stagger: {
-                each: 0.1
-            },
-            delay: 0.05,
-            duration: 1.5,
-            ease: "elastic.out(1,0.9)",
-        });
+        delay: 0.05,
+        duration: 1.5,
+        ease: "elastic.out(1,0.9)",
+    });
 
-        gsap.fromTo('.sponsor_image', {
-            yPercent: 100,
-            scale: 0.2,
-            opacity: 0.4
-        }, {
-            yPercent: 0,
-            scale: 1,
-            opacity: 1,
-            duration: 1,
-            delay: 2,
-            ease: "power2.out"
-        });
-    }, [selectedYear]);
+    gsap.fromTo('.sponsor_image', {
+        yPercent: 100,
+        scale: 0.2,
+        opacity: 0.4
+    }, {
+        yPercent: 0,
+        scale: 1,
+        opacity: 1,
+        duration: 1,
+        delay: 2,
+        ease: "power2.out"
+    });
+}, [selectedYear]);
 
     const sponsor_data = SponsorData[selectedYear];
     const sponsorLen = sponsor_data?.length || 0;
@@ -104,23 +104,20 @@ function SponsorMobileSection() {
             </div>
 
             <Marquee speed={80} pauseOnClick={true}>
-                <div className='sponsors-container-Mobile sponsor_scroll' ref={sponsorContainerRefMobile}>
-                    {
-                        sponsor_data?.map((sponsor) => (
-                            <Sponsors className='sponsor_image' Image={sponsor} />
-                        ))
-                    }
-                </div>
-            </Marquee>
-            <Marquee speed={80} pauseOnClick={true}>
-                <div className='sponsors-container-Mobile2 sponsor_scroll' ref={sponsorContainerRefMobile}>
-                    {
-                        sponsor_data?.map((sponsor) => (
-                            <Sponsors className='sponsor_image' Image={sponsor} />
-                        ))
-                    }
-                </div>
-            </Marquee>
+    <div className='sponsors-container-Mobile'>
+        {sponsor_data?.map((sponsor, index) => (
+            <Sponsors key={index} className='sponsor_image' Image={sponsor} />
+        ))}
+    </div>
+</Marquee>
+
+<Marquee speed={80} pauseOnClick={true}>
+    <div className='sponsors-container-Mobile2'>
+        {sponsor_data?.map((sponsor, index) => (
+            <Sponsors key={index} className='sponsor_image' Image={sponsor} />
+        ))}
+    </div>
+</Marquee>
         </div>
     );
 }
