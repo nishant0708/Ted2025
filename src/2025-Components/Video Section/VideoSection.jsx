@@ -6,7 +6,6 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { Volume2, VolumeX } from "lucide-react";
 import { useMediaQuery } from "react-responsive";
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const VideoSection = () => {
@@ -15,10 +14,11 @@ const VideoSection = () => {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
   const sectionRef = useRef(null);
+  const scrollTriggerRef = useRef(null);
 
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
-  // Load YouTube IFrame API
+  // YouTube API setup remains the same
   useEffect(() => {
     const loadYouTubeAPI = () => {
       const tag = document.createElement('script');
@@ -65,97 +65,128 @@ const VideoSection = () => {
     };
   }, []);
 
+  // Setup animations and ScrollTrigger
   useEffect(() => {
-    // GSAP Animations
-    gsap.fromTo(
-      ".highlightsBG",
-      { opacity: 0 },
-      {
-        opacity: 1,
-        scrollTrigger: {
-          trigger: ".highlightsBG",
-          start: "top center",
-          end: "top top",
-          scrub: true,
-          markers: false,
-        },
-        ease: "sine.out",
-      }
-    );
+    const setupScrollTriggers = () => {
+      // Background animation
+      gsap.fromTo(
+        ".highlightsBG",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          scrollTrigger: {
+            trigger: ".highlightsBG",
+            start: "top center",
+            end: "top top",
+            scrub: true,
+            markers: false,
+          },
+          ease: "sine.out",
+        }
+      );
 
-    gsap.fromTo(
-      ".highlightsText",
-      { xPercent: -100 },
-      {
-        xPercent: 0,
-        scrollTrigger: {
-          trigger: ".highlightsText",
-          toggleActions: "play none none reverse",
-          start: "top 50%",
-          scrub: false,
-          markers: false,
-        },
-        duration: 0.8,
-        ease: "sine.out",
-      }
-    );
+      // Text animations
+      gsap.fromTo(
+        ".highlightsText",
+        { xPercent: -100 },
+        {
+          xPercent: 0,
+          scrollTrigger: {
+            trigger: ".highlightsText",
+            toggleActions: "play none none reverse",
+            start: "top 50%",
+            scrub: false,
+            markers: false,
+          },
+          duration: 0.8,
+          ease: "sine.out",
+        }
+      );
 
-    gsap.fromTo(
-      ".withoutSound",
-      { opacity: 0, xPercent: 100 },
-      {
-        opacity: 1,
-        xPercent: 0,
-        scrollTrigger: {
-          trigger: ".highlightsText",
-          toggleActions: "play none none reverse",
-          start: "top 50%",
-          scrub: false,
-          markers: false,
-        },
-        duration: 0.8,
-        ease: "sine.out",
-      }
-    );
+      gsap.fromTo(
+        ".withoutSound",
+        { opacity: 0, xPercent: 100 },
+        {
+          opacity: 1,
+          xPercent: 0,
+          scrollTrigger: {
+            trigger: ".highlightsText",
+            toggleActions: "play none none reverse",
+            start: "top 50%",
+            scrub: false,
+            markers: false,
+          },
+          duration: 0.8,
+          ease: "sine.out",
+        }
+      );
 
-    const videoTrigger = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top center",
-      end: "bottom center",
-      markers: true,
-      onEnter: () => {
-        setIsVisible(true);
-        if (playerRef.current) {
-          playerRef.current.playVideo();
-          playerRef.current.unMute();
-        }
-      },
-      onLeave: () => {
-        setIsVisible(false);
-        setIsMuted(true);
-        if (playerRef.current) {
-          playerRef.current.pauseVideo();
-        }
-      },
-      onEnterBack: () => {
-        setIsVisible(true);
-        if (playerRef.current) {
-          playerRef.current.playVideo();
-          playerRef.current.unMute();
-        }
-      },
-      onLeaveBack: () => {
-        setIsVisible(false);
-        setIsMuted(true);
-        if (playerRef.current) {
-          playerRef.current.pauseVideo();
-        }
-      },
-      markers: false,
+      // Main video section trigger
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+      }
+
+      scrollTriggerRef.current = ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top center",
+        end: "bottom center",
+        onEnter: () => {
+          setIsVisible(true);
+          if (playerRef.current) {
+            playerRef.current.playVideo();
+            playerRef.current.unMute();
+          }
+        },
+        onLeave: () => {
+          setIsVisible(false);
+          setIsMuted(true);
+          if (playerRef.current) {
+            playerRef.current.pauseVideo();
+          }
+        },
+        onEnterBack: () => {
+          setIsVisible(true);
+          if (playerRef.current) {
+            playerRef.current.playVideo();
+            playerRef.current.unMute();
+          }
+        },
+        onLeaveBack: () => {
+          setIsVisible(false);
+          setIsMuted(true);
+          if (playerRef.current) {
+            playerRef.current.pauseVideo();
+          }
+        },
+        markers: false,
+      });
+    };
+
+    // Initial setup
+    setupScrollTriggers();
+
+    // Create ResizeObserver to watch for height changes
+    const resizeObserver = new ResizeObserver(() => {
+      // Refresh all ScrollTriggers to account for new positions
+      ScrollTrigger.refresh();
+      
+      // Optional: Re-run setup if needed
+      setupScrollTriggers();
     });
 
+    // Observe the section and its parent (to catch changes from siblings)
+    if (sectionRef.current) {
+      resizeObserver.observe(sectionRef.current);
+      if (sectionRef.current.parentElement) {
+        resizeObserver.observe(sectionRef.current.parentElement);
+      }
+    }
+
     return () => {
-      videoTrigger.kill();
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+      }
+      resizeObserver.disconnect();
     };
   }, []);
 
@@ -175,6 +206,7 @@ const VideoSection = () => {
     }
   };
 
+  // Rest of the component remains the same
   return (
     <div
       ref={sectionRef}
