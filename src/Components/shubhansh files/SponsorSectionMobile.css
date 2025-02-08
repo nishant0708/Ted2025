@@ -17,7 +17,8 @@
     display: flex;
     flex-direction: column;
     row-gap: 0vh;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     width: 100vw;
     overflow: hidden;
     justify-content: center;
@@ -64,17 +65,17 @@
     gap: 5vw;
     height: max-content ;
     left: 0vw;
-    margin-top: 15vh;
-    padding: 55px;
-    overflow-x: visible;
+    margin-top: 10vh;
+    padding: 40px;
+    overflow-x: hidden;
 }
 .sponsors-container-Mobile2{
     position: relative;
     display: flex;
     flex-direction: row;
     gap: 5vw;
-    margin-top: 7vh;
-    margin-left: 25vw;
+    margin-top: 10vh;
+    margin-left: 0;
     height: 40vh;
     right: 0vw;
     padding: 30px;
