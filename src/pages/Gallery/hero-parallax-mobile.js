@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React , {useState,useEffect} from "react";
 import {
   motion,
   useScroll,
@@ -14,8 +14,9 @@ export const HeroParallax2 = ({ products }) => {
   const fourthRow = products.slice(15,20);
   const fifthRow = products.slice(20,25);
   const sixthRow = products.slice(25,30);
-  
+  const [height, setHeight] = useState("290vh");
   const ref = React.useRef(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -30,7 +31,30 @@ export const HeroParallax2 = ({ products }) => {
     springConfig
   );
 
-  
+  useEffect(() => {
+    const updateHeight = () => {
+      if (window.innerWidth === 375) {
+        setHeight("320vh");
+
+      }
+      else if(window.innerWidth < 375){
+        setHeight("300vh")
+      } 
+      else if(window.innerWidth>400) {
+        setHeight("285vh");
+      }
+      else{
+        setHeight("275vh")
+      }
+    };
+
+    updateHeight(); // Set height initially
+    window.addEventListener("resize", updateHeight); // Listen for screen resize
+
+    return () => {
+      window.removeEventListener("resize", updateHeight); // Cleanup listener
+    };
+  }, []);
 
   const translateXThird = useSpring(
     useTransform(scrollYProgress, [0, 1], [-530, 250]),
@@ -66,12 +90,14 @@ export const HeroParallax2 = ({ products }) => {
     springConfig
   );
   
+ 
 
 
   return (
     <div
       ref={ref}
-      className="h-[280vh] py-40 overflow-hidden bg-black  antialiased relative  flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      style={{ height }}
+      className="py-40 overflow-hidden bg-black  antialiased relative  flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <div className="absolute z-10"><motion.div
@@ -83,7 +109,7 @@ export const HeroParallax2 = ({ products }) => {
         }}
         className=""
       >
-        <motion.div className="FIRST flex flex-row-reverse mt-[95vh] w-screen space-x-reverse space-x-5">
+        <motion.div className="FIRST flex flex-row-reverse -translate-y-3 mt-[95vh] w-screen space-x-reverse space-x-5">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -92,7 +118,7 @@ export const HeroParallax2 = ({ products }) => {
             />
           ))}
         </motion.div>
-        <motion.div className="SECOND flex flex-row space-x-5">
+        <motion.div className="SECOND flex translate-y-3 flex-row space-x-5">
           {secondRow.map((product) => (
             <ProductCardLandscape
               product={product}
@@ -101,7 +127,7 @@ export const HeroParallax2 = ({ products }) => {
             />
           ))}
         </motion.div>
-        <motion.div className="THIRD flex -translate-x-80 flex-row-reverse space-x-reverse space-x-5">
+        <motion.div className="THIRD flex -translate-x-80 -translate-y-4 flex-row-reverse space-x-reverse space-x-5">
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
@@ -110,7 +136,7 @@ export const HeroParallax2 = ({ products }) => {
             />
           ))}
         </motion.div>
-        <motion.div className="FOURTH flex flex-row space-x-5">
+        <motion.div className="FOURTH flex translate-y-5 flex-row space-x-5">
           {fourthRow.map((product) => (
             <ProductCardLandscape
               product={product}
@@ -119,7 +145,7 @@ export const HeroParallax2 = ({ products }) => {
             />
           ))}
         </motion.div>
-        <motion.div className="FIFTH flex -translate-x-80 flex-row-reverse space-x-reverse space-x-5">
+        <motion.div className="FIFTH flex -translate-x-80 -translate-y-6  flex-row-reverse space-x-reverse space-x-5">
           {fifthRow.map((product) => (
             <ProductCard
               product={product}
@@ -128,7 +154,7 @@ export const HeroParallax2 = ({ products }) => {
             />
           ))}
         </motion.div>
-        <motion.div className="FIFTH flex -translate-x-80 flex-row-reverse space-x-reverse space-x-5">
+        <motion.div className="FIFTH flex -translate-x-80 -translate-y-14 flex-row-reverse space-x-reverse space-x-5">
           {sixthRow.map((product) => (
             <ProductCard
               product={product}
@@ -192,7 +218,7 @@ export const ProductCard = ({ product, translate }) => {
           x: translate,
         }}
         whileHover={{
-          y: -20,
+          scale:1.02,
         }}
         key={product.title}
         className="group/product opacity-100 mt-20 h-60 w-40 relative flex-shrink-0"
@@ -228,7 +254,7 @@ export const ProductCard = ({ product, translate }) => {
           y: -20,
         }}
         key={product.title}
-        className="group/product opacity-100 mt-20 h-40 w-60 relative flex-shrink-0"
+        className="group/product opacity-100 h-40 w-60 relative flex-shrink-0"
       >
         <a
           href='javascript:void(0)'

@@ -60,7 +60,10 @@ export const HeroParallax = ({ products }) => {
     useTransform(scrollYProgress, [0, 1], [1000, -1500]),
     springConfig
   );  
-
+  const translateX6 = useSpring(
+    useTransform(scrollYProgress, [0, 1], [2000, -100]),
+    springConfig
+  );
   const rotateX = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [15, 0]),
     springConfig
@@ -148,11 +151,11 @@ export const HeroParallax = ({ products }) => {
             />
           ))}
         </motion.div>
-        <motion.div className="FIFTH flex flex-row-reverse mt-24 space-x-reverse space-x-20">
+        <motion.div className="FIFTH flex flex-row-reverse -translate-y-4 mt-24 space-x-reverse space-x-20">
           {sixthRow.map((product) => (
             <ProductCard
               product={product}
-              translate={translateX5}
+              translate={translateX6}
               key={product.title}
             />
           ))}
@@ -181,14 +184,15 @@ export const Header = () => {
 export const ProductCard = ({ product, translate }) => {
   return (
     <motion.div
+      
       style={{
         x: translate,
       }}
       whileHover={{
-        y: -20,
+        scale:1.02,
       }}
       key={product.title}
-      className="group/product rounded-xl  h-96 w-[30rem] relative flex-shrink-0"
+      className="group/product rounded-xl overflow-hidden h-96 w-[30rem] relative flex-shrink-0"
     >
       <a
         href='javascript:void(0)'
@@ -198,7 +202,7 @@ export const ProductCard = ({ product, translate }) => {
           src={product.thumbnail}
           height="600"
           width="600"
-          className="object-cover rounded-3xl  object-left-top absolute h-full w-full opacity-100 inset-0"
+          className="object-cover rounded-3xl object-left-top overflow-hidden absolute h-full w-full opacity-100 inset-0"
           alt={product.title}
         />
       </a>
