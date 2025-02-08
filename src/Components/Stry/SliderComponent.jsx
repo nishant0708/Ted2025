@@ -6,14 +6,13 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import linkedin from "../Assests/Images/linkedin.png";
 import instagram from "../Assests/Images/instagram (2).png";
-import youtube from "../../Images/youtube.png";
 import badal from "../../Images/Group 83.svg";
 import badal2 from "../../Images/Group 84.svg";
 const SliderComponent = () => {
   const progressBarRef = useRef(null);
   const [showTitle, setShowTitle] = useState(false);
   const sliderRef = useRef(null);
-  const [selectedYear, setSelectedYear] = useState("2025");
+  const [selectedYear, setSelectedYear] = useState("2024");
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -70,14 +69,10 @@ const SliderComponent = () => {
               sliderStyles.setProperty("--scroll-vel", scrollVel);
 
               // Animate title
-              let xValue = selectedYear === '2025' 
-              ? (-(scrollPerc / 140) * (title.offsetWidth - window.innerWidth))+(isInitialLoad ? -4900: -973) 
-              : selectedYear === '2024'?(-scrollPerc / 100) * (title.offsetWidth - window.innerWidth):(-scrollPerc / 150) * (title.offsetWidth - window.innerWidth)-200;
-              console.log((-(scrollPerc / 140) * (title.offsetWidth - window.innerWidth)));
-              console.log("xValue",xValue);
               gsap.set(title, {
                 skewX: `${proxy.velocity * 5}deg`,
-                x:xValue,
+                x:
+                  (-scrollPerc / 100) * (title.offsetWidth - window.innerWidth),
               });
             },
           });
@@ -94,70 +89,6 @@ const SliderComponent = () => {
   /**
    ** Round number with n decimals
    */
-
-const speakerData2025 = [
-  {
-    name: 'Coming',
-    surname: 'Soon',
-    designation: "TEDxDAVV: Where Ideas Come Alive",
-    description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
-    image: samp_image,
-    instagramLink: '',
-    linkedinLink: '',
-    youtubeLink:''
-  },
-  // {
-  //   name: 'Coming',
-  //   surname: 'Soon',
-  //   designation: "TEDxDAVV: Where Ideas Come Alive",
-  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
-  //   image:samp_image,
-  //   instagramLink: '',
-  //   linkedinLink: '',
-  //   youtubeLink:''
-  // },
-  // {
-  //   name: 'Coming',
-  //   surname: 'Soon',
-  //   designation: "TEDxDAVV: Where Ideas Come Alive",
-  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
-  //   image:samp_image,
-  //   instagramLink: '',
-  //   linkedinLink: '',
-  //   youtubeLink:''
-  // },
-  // {
-  //   name: 'Coming',
-  //   surname: 'Soon',
-  //   designation: "TEDxDAVV: Where Ideas Come Alive",
-  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
-  //   image:samp_image,
-  //   instagramLink: '',
-  //   linkedinLink: '',
-  //   youtubeLink:''
-  // },
-  // {
-  //   name: 'Coming',
-  //   surname: 'Soon',
-  //   designation: "TEDxDAVV: Where Ideas Come Alive",
-  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
-  //   image:samp_image,
-  //   instagramLink: '',
-  //   linkedinLink: '',
-  //   youtubeLink:''
-  // },  {
-  //   name: 'Coming',
-  //   surname: 'Soon',
-  //   designation: "TEDxDAVV: Where Ideas Come Alive",
-  //   description: 'Get ready for inspiring talks from innovative speakers at TEDxDAVV! Their stories and ideas will ignite meaningful conversations. Don’t miss out on this unforgettable experience!',
-  //   image:samp_image,
-  //   instagramLink: '',
-  //   linkedinLink: '',
-  //   youtubeLink:''
-  // },
-       
-  ];
-
   const speakerData2024 = [
     {
       name: "Abhishek",
@@ -170,7 +101,6 @@ const speakerData2025 = [
         "https://www.instagram.com/abhishekkarofficial?igsh=Zm9wZG9jejVjd3o1",
       linkedinLink:
         "https://www.linkedin.com/in/abhishek-kar-/?originalSubdomain=in",
-        youtubeLink:'',
     },
     {
       name: "Ashu",
@@ -182,7 +112,6 @@ const speakerData2025 = [
       instagramLink: "https://www.instagram.com/ashu.ghai/",
       linkedinLink:
         "https://www.linkedin.com/in/ashu-ghai-179892254/?originalSubdomain=in",
-        youtubeLink:'',
     },
     {
       name: "Rahul",
@@ -194,7 +123,6 @@ const speakerData2025 = [
       instagramLink: "",
       linkedinLink:
         "https://www.linkedin.com/in/rahulladha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:"https://youtu.be/ml2dWjOrW9M?si=W0fnddzIYjmQeECt",
     },
 
     {
@@ -208,7 +136,6 @@ const speakerData2025 = [
       instagramLink: "https://www.instagram.com/anand.zorko/",
       linkedinLink:
         "https://www.linkedin.com/in/anandnahar4/?originalSubdomain=in",
-        youtubeLink:"https://youtu.be/a88AZdPrzXg?si=Z-sUNFPQacsI8-Xv",
     },
     {
       name: "Sri Pundrik",
@@ -220,7 +147,6 @@ const speakerData2025 = [
       instagramLink:
         "https://www.instagram.com/sripundrik?igsh=MTRnM2ppand4ZTA3ZA",
       linkedinLink: "",
-      youtubeLink:'',
     },
     {
       name: "Saanand",
@@ -231,7 +157,6 @@ const speakerData2025 = [
       image: "https://imgur.com/vJ5kBL1.png",
       instagramLink: "https://www.instagram.com/saanandverma/?hl=en",
       linkedinLink: "",
-      youtubeLink:"https://youtu.be/GglZSR7tMew?si=x2o79Y_NC_O6itjT",
     },
   ];
 
@@ -247,7 +172,6 @@ const speakerData2025 = [
         "https://www.instagram.com/elladverma?igsh=MXQ0eHNicGF2b2FsaA",
       linkedinLink:
         "https://www.linkedin.com/in/ella-verma-ab6889236?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:"https://youtu.be/H8ygk8LlXE8?si=EeeZ1K0zCb_CmV6z",
     },
 
     {
@@ -260,7 +184,6 @@ const speakerData2025 = [
       instagramLink:
         "https://www.instagram.com/abhisek.mnit?igsh=MTM2MGg2Y3VweGJveQ",
       linkedinLink: "",
-      youtubeLink:"https://youtu.be/-MKbndXvhWk?si=_Jw_RUVUYt2QSz4b",
     },
 
     {
@@ -273,7 +196,6 @@ const speakerData2025 = [
       instagramLink:
         "https://www.instagram.com/dr.raginimakkad?igsh=MXJlN245ZWh3N2phZw==",
       linkedinLink: "",
-      youtubeLink:"https://youtu.be/6MRrwtwHa0I?si=mXTAmysJUKcQv3qc",
     },
 
     {
@@ -287,7 +209,6 @@ const speakerData2025 = [
         "https://www.instagram.com/bhaskar_indrakanti?igsh=MWZjOG1iMzh0bDAzYw==",
       linkedinLink:
         "https://www.linkedin.com/in/bh%C4%81skar-indrakanti-424b6051?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:"https://youtu.be/M0EK2sAu3pQ?si=X2mLXdRXCOgEjWFK",
     },
     {
       name: "Akshay",
@@ -300,7 +221,6 @@ const speakerData2025 = [
         "https://www.instagram.com/theakshay_jointcollector?igsh=MTF6NjZldWNqbWVqOQ==",
       linkedinLink:
         "https://www.linkedin.com/in/akshay-singh-markam-a70178204?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:"https://youtu.be/5liA3nQih-I?si=BeyLwe3m3KIit6ZP",
     },
     {
       name: "Abhijit",
@@ -313,7 +233,6 @@ const speakerData2025 = [
         "https://www.instagram.com/theabhijitchavda?igsh=aXRqMTV2cGljb3pi",
       linkedinLink:
         "https://www.linkedin.com/in/abhijitchavda?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:"https://youtu.be/yaqVHBNXTXo?si=Wo_oDCC8D2zYhX6s",
     },
     {
       name: "Dr. Vineet",
@@ -326,7 +245,6 @@ const speakerData2025 = [
         "https://www.instagram.com/drvineetaggarwal?igsh=MWV5bmxlejN4eXdjcA==",
       linkedinLink:
         "https://www.linkedin.com/in/drvineetaggarwal?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:"https://youtu.be/hz-uhrK8C2U?si=gIxNXTR4QBfEQVKD",
     },
     {
       name: "Aryan",
@@ -340,7 +258,6 @@ const speakerData2025 = [
         "https://www.instagram.com/aryanvijayvergiya?igsh=MWJib2RhcG44dWhwcg==",
       linkedinLink:
         "https://www.linkedin.com/in/aryan-vijayvergiya?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        youtubeLink:"https://youtu.be/AUXMBtOzU5g?si=TMDrfl7Fbsc_gdLr",
     },
   ];
 
@@ -352,7 +269,6 @@ const speakerData2025 = [
     image,
     instagramLink,
     linkedinLink,
-    youtubeLink,
   }) => {
     // Refs for elements to animate
     const imgRef = useRef(null);
@@ -361,7 +277,6 @@ const speakerData2025 = [
     const desgRef = useRef(null);
 
     const [animationInitialized, setAnimationInitialized] = useState(false);
-    console.log(isInitialLoad,"hello");
 
     useEffect(() => {
       if (!animationInitialized) {
@@ -437,13 +352,7 @@ const speakerData2025 = [
             &nbsp;
             {linkedinLink && (
               <a href={linkedinLink}>
-                <img loading="lazy" style={{ width: "35px", height: "35px" }} src={linkedin} alt="" />
-              </a>
-            )}
-             &nbsp;
-            {youtubeLink && (
-              <a href={youtubeLink}>
-                <img loading="lazy" style={{ width: "35px", height: "35px" }} src={youtube} alt="" />
+                <img loading="lazy" /*style={{ width: "35px" }}*/ src={linkedin} alt="" />
               </a>
             )}
           </span>
@@ -453,33 +362,16 @@ const speakerData2025 = [
   };
 
   const SpeakerList = ({ selectedYear }) => {
-    const [isTransitioned, setIsTransitioned] = useState(false);
-  
     let speakers;
-  
+
     if (selectedYear === "2023") {
       speakers = speakerData2023;
     } else if (selectedYear === "2024") {
       speakers = speakerData2024;
-    } else if (selectedYear === "2025") {
-      speakers = speakerData2025;
     }
 
-
-    useEffect(() => {
-      // Only set transition when moving to a single-speaker year
-      setIsTransitioned(speakers.length === 1 && selectedYear==='2025');
-    }, [selectedYear, speakers]);
-
     return (
-      <ul 
-        className={       selectedYear === '2025' 
-          ? 'o-slider_2025' 
-          : 'o-slider__list'}
-        // style={selectedYear==='2025' && speakers.length === 1 && isTransitioned 
-        //   ? { transform: 'translateX(3000px)', zIndex: '100' } 
-        //   : {}}
-      >
+      <ul className="o-slider__list">
         {speakers.map((speaker, index) => (
           <SpeakerComponent key={index} {...speaker} />
         ))}
@@ -557,10 +449,7 @@ const speakerData2025 = [
         <span id="title">Speakers </span>
       </h1>
       <select className="year-drop" onChange={handleChange}>
-        <option className="option" value="2025" selected>
-          2025
-        </option>
-        <option className="option" value="2024">
+        <option className="option" value="2024" selected>
           2024
         </option>
         <option value="2023">2023</option>
@@ -608,8 +497,6 @@ const getSpeakerNameClass = (name) => {
       return "Rahulpc";
     case "Bhaskar":
     return "Bhaskar";
-    case "Coming":
-      return "REVEALING";
     default:
       return "";
   }
